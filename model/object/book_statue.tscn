@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://material/block/city/silver_metal.tres" type="Material" id=1]
+[ext_resource path="res://material/block/city/bronze_metal.tres" type="Material" id=2]
+[ext_resource path="res://model/object/book.tscn" type="PackedScene" id=3]
+
+
+
+[sub_resource type="CubeMesh" id=1]
+size = Vector3( 0.95, 0.05, 0.6 )
+
+[sub_resource type="SphereMesh" id=2]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CylinderMesh" id=3]
+top_radius = 0.03
+bottom_radius = 0.03
+height = 1.0
+
+[sub_resource type="CylinderMesh" id=4]
+top_radius = 0.3
+bottom_radius = 0.3
+height = 0.05
+
+[node name="BookStatue" type="Spatial"]
+
+[node name="Book" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 1.13256, 0 )
+
+[node name="SupportMeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 1.08961, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="JointMeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.025, -0.05 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="BarMeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525, -0.05 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 1 )
+
+[node name="BaseMeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025, -0.05 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 2 )

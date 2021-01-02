@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/snowman_skill.wav-a0a61af97e084184e42b3077beed9542.sample"
+
+[deps]
+
+source_file="res://sound/snowman/snowman_skill.wav"
+dest_files=[ "res://.import/snowman_skill.wav-a0a61af97e084184e42b3077beed9542.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

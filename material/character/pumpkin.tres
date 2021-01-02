@@ -1,0 +1,37 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/pumpkin_albedo.png-7d5f9dbfbbd2b42df88a4560fad84e93.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/pumpkin_ao.png-fa1d5e5a0f34e0338fed4655bf07f1a2.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/pumpkin_normal.png-ffed18d9bef6a280be2808d0ee3f9ccf.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/pumpkin_roughness.png-68e432a2ff01ec6c1918322313163448.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_texture = SubResource( 1 )
+roughness = 0.7
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 3.0
+normal_texture = SubResource( 3 )
+rim_enabled = true
+rim = 0.18
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0

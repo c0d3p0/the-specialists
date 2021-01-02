@@ -1,0 +1,410 @@
+[gd_scene load_steps=58 format=2]
+
+[ext_resource path="res://model/character/blindcannon.tscn" type="PackedScene" id=1]
+[ext_resource path="res://material/character/red_blindcannon.tres" type="Material" id=2]
+[ext_resource path="res://animation/character/blindcannon/idle.tres" type="Animation" id=3]
+[ext_resource path="res://source/character/CharacterMove.cs" type="Script" id=4]
+[ext_resource path="res://source/character/CharacterPhysics.cs" type="Script" id=5]
+[ext_resource path="res://source/character/enemy/DefaultEnemyAction.cs" type="Script" id=6]
+[ext_resource path="res://source/character/enemy/DefaultEnemyCharacter.cs" type="Script" id=7]
+[ext_resource path="res://source/character/enemy/DefaultEnemyInitializer.cs" type="Script" id=8]
+[ext_resource path="res://source/character/enemy/behavior/SkillRandomWalkerEnemyBehavior.cs" type="Script" id=9]
+[ext_resource path="res://source/character/boss/BossEnemyStatus.cs" type="Script" id=10]
+[ext_resource path="res://animation/character/blindcannon/hit.tres" type="Animation" id=11]
+[ext_resource path="res://animation/character/blindcannon/walk.tres" type="Animation" id=12]
+[ext_resource path="res://animation/character/blindcannon/die.tres" type="Animation" id=13]
+[ext_resource path="res://animation/character/blindcannon/skill.tres" type="Animation" id=14]
+[ext_resource path="res://animation/character/blindcannon/t_pose.tres" type="Animation" id=15]
+[ext_resource path="res://animation/character/blindcannon/inactive.tres" type="Animation" id=16]
+[ext_resource path="res://animation/character/blindcannon/active.tres" type="Animation" id=17]
+[ext_resource path="res://animation/character/blindcannon/invulnerable.tres" type="Animation" id=18]
+[ext_resource path="res://source/character/skill/Boss2Skill.cs" type="Script" id=19]
+[ext_resource path="res://material/laser_device/laser_ray.tres" type="Material" id=20]
+[ext_resource path="res://material/laser_device/laser_ray_thick.tres" type="Material" id=21]
+[ext_resource path="res://animation/character/blindcannon/immortal.tres" type="Animation" id=22]
+[ext_resource path="res://animation/default/start.tres" type="Animation" id=23]
+[ext_resource path="res://.import/laser_ray.wav-11414b5a64c33f76e2e41c8101522704.sample" type="AudioStream" id=24]
+[ext_resource path="res://.import/blindcannon_death.wav-156f116b235fea7167567c46849fd9a0.sample" type="AudioStream" id=25]
+[ext_resource path="res://.import/blindcannon_hit.wav-ed258eaecbe8c1d8117413ea2bcd5004.sample" type="AudioStream" id=26]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.49
+height = 0.3
+
+[sub_resource type="CylinderMesh" id=2]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 22.0
+
+[sub_resource type="CylinderMesh" id=3]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 22.0
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.1, 0.4, 11 )
+
+[sub_resource type="BoxShape" id=5]
+extents = Vector3( 0.2, 0.5, 0.2 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "cannon"
+length = 2.7
+step = 0.04
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Cannon/InnerMeshInstance:material/0:shader_param/alpha_override")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.12, 1.12, 1.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Cannon/MeshInstance:material/0:shader_param/alpha_override")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.12, 1.12, 1.24 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 1.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Cannon/StrikeArea:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.12, 1.12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Cannon/StrikeArea:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.16 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.001, 0.001, 0.001 ), Vector3( 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HurtArea/CollisionShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.64 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/5/type = "audio"
+tracks/5/path = NodePath("CannonAudioStreamPlayer3D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 24 )
+} ],
+"times": PoolRealArray( 0.16 )
+}
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "active"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "hit"
+
+[sub_resource type="AnimationNodeTimeScale" id=10]
+
+[sub_resource type="AnimationNodeBlendTree" id=11]
+graph_offset = Vector2( -411.091, 65.5 )
+nodes/Animation/node = SubResource( 9 )
+nodes/Animation/position = Vector2( -100, 140 )
+nodes/TimeScale/node = SubResource( 10 )
+nodes/TimeScale/position = Vector2( 100, 140 )
+nodes/output/position = Vector2( 300, 140 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "inactive"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "skill"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "start"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "walk"
+
+[sub_resource type="AnimationNodeTimeScale" id=17]
+
+[sub_resource type="AnimationNodeBlendTree" id=18]
+graph_offset = Vector2( -251.282, 0 )
+nodes/Animation/node = SubResource( 16 )
+nodes/Animation/position = Vector2( -100, 140 )
+nodes/TimeScale/node = SubResource( 17 )
+nodes/TimeScale/position = Vector2( 100, 140 )
+nodes/output/position = Vector2( 300, 140 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=30]
+states/active/node = SubResource( 7 )
+states/active/position = Vector2( 141, 186.906 )
+states/die/node = SubResource( 8 )
+states/die/position = Vector2( 661, 186.906 )
+states/hit/node = SubResource( 11 )
+states/hit/position = Vector2( 412, 186.906 )
+states/idle/node = SubResource( 12 )
+states/idle/position = Vector2( 298, 107.1 )
+states/inactive/node = SubResource( 13 )
+states/inactive/position = Vector2( 141, 107.1 )
+states/skill/node = SubResource( 14 )
+states/skill/position = Vector2( 412, 16.8519 )
+states/start/node = SubResource( 15 )
+states/start/position = Vector2( 141, 16.8519 )
+states/walk/node = SubResource( 18 )
+states/walk/position = Vector2( 524.151, 107.1 )
+transitions = [ "inactive", "active", SubResource( 19 ), "active", "idle", SubResource( 20 ), "idle", "skill", SubResource( 21 ), "skill", "idle", SubResource( 22 ), "idle", "walk", SubResource( 23 ), "walk", "idle", SubResource( 24 ), "walk", "skill", SubResource( 25 ), "idle", "hit", SubResource( 26 ), "walk", "hit", SubResource( 27 ), "hit", "idle", SubResource( 28 ), "start", "inactive", SubResource( 29 ) ]
+start_node = "start"
+end_node = "die"
+graph_offset = Vector2( -42.849, -20.6738 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=31]
+
+[node name="Blindcannon" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 28
+script = ExtResource( 7 )
+enemyActionNP = NodePath("Source/EnemyAction")
+enemyStatusNP = NodePath("Source/EnemyStatus")
+enemyBehaviorNP = NodePath("Source/EnemyBehavior")
+enemySkillNP = NodePath("Source/EnemySkill")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.64, 0 )
+shape = SubResource( 1 )
+
+[node name="Body" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
+
+[node name="Blindcannon" parent="Body" instance=ExtResource( 1 )]
+transform = Transform( 60, 0, 0, 0, 60, 0, 0, 0, 60, 0, -0.2, 0 )
+
+[node name="MeshInstance" parent="Body/Blindcannon" index="0"]
+material/0 = ExtResource( 2 )
+
+[node name="FrontRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( 0, 0, 0.54 )
+collision_mask = 28
+
+[node name="BackRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 28
+
+[node name="LeftRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( 0.54, 0, 0 )
+collision_mask = 28
+
+[node name="RightRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( -0.54, 0, 0 )
+collision_mask = 28
+
+[node name="Cannon" type="Spatial" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0501015, 0.588197, 0.516093 )
+
+[node name="InnerMeshInstance" type="MeshInstance" parent="Body/Cannon"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 10.98 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 20 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Body/Cannon"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 10.98 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 21 )
+
+[node name="StrikeArea" type="Area" parent="Body/Cannon"]
+transform = Transform( 0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0, 0 )
+monitoring = false
+monitorable = false
+collision_layer = 17408
+collision_mask = 992
+
+[node name="CollisionShape" type="CollisionShape" parent="Body/Cannon/StrikeArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 10.98 )
+shape = SubResource( 4 )
+
+[node name="HurtArea" type="Area" parent="."]
+collision_layer = 64
+collision_mask = 17408
+
+[node name="CollisionShape" type="CollisionShape" parent="HurtArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+shape = SubResource( 5 )
+
+[node name="StrikeArea" type="Area" parent="."]
+monitoring = false
+collision_layer = 4096
+collision_mask = 32
+
+[node name="CollisionShape" type="CollisionShape" parent="StrikeArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+shape = SubResource( 5 )
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 26 )
+attenuation_model = 3
+
+[node name="CannonAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 25 )
+attenuation_model = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/active = ExtResource( 17 )
+anims/die = ExtResource( 13 )
+anims/hit = ExtResource( 11 )
+anims/idle = ExtResource( 3 )
+anims/inactive = ExtResource( 16 )
+anims/skill = ExtResource( 14 )
+anims/start = ExtResource( 23 )
+anims/t_pose = ExtResource( 15 )
+anims/walk = ExtResource( 12 )
+
+[node name="InvulnerableAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/invulnerable = ExtResource( 18 )
+
+[node name="SkillAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/cannon = SubResource( 6 )
+anims/immortal = ExtResource( 22 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 30 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 31 )
+parameters/hit/TimeScale/scale = 1.0
+parameters/walk/TimeScale/scale = 1.7
+
+[node name="Source" type="Node" parent="."]
+
+[node name="CharacterPhysics" type="Node" parent="Source"]
+script = ExtResource( 5 )
+kinematicBodyNP = NodePath("../..")
+
+[node name="CharacterMove" type="Node" parent="Source"]
+script = ExtResource( 4 )
+moveSpeed = Vector3( 3.2, 0, 3.2 )
+acceleration = 41.0
+
+[node name="EnemyAction" type="Node" parent="Source"]
+script = ExtResource( 6 )
+characterNP = NodePath("../..")
+bodyNP = NodePath("../../Body")
+hurtAreaNP = NodePath("../../HurtArea")
+animationTreeNP = NodePath("../../AnimationTree")
+toMoveMap = {
+"idle": "walk",
+"walk": "walk"
+}
+toSkillMap = {
+"idle": "skill",
+"walk": "skill"
+}
+
+[node name="EnemyStatus" type="Node" parent="Source"]
+script = ExtResource( 10 )
+speedLevelRange = Vector2( 1, 1 )
+startingHealth = 800
+bossId = 1
+
+[node name="EnemyBehavior" type="Node" parent="Source"]
+script = ExtResource( 9 )
+enemyCharacterNP = NodePath("../..")
+bodyNP = NodePath("../../Body")
+rayCastListNP = [ NodePath("../../Body/FrontRayCast"), NodePath("../../Body/BackRayCast"), NodePath("../../Body/LeftRayCast"), NodePath("../../Body/RightRayCast") ]
+skillCooldownTimerNP = NodePath("../../CooldownTimer")
+skillCooldownTimeRange = Vector2( 10, 12 )
+skillRNG = 500
+
+[node name="EnemySkill" type="Node" parent="Source"]
+script = ExtResource( 19 )
+skillAnimationPlayerNP = NodePath("../../SkillAnimationPlayer")
+skillAnimationNameList = [ "immortal", "cannon" ]
+
+[node name="EnemyInitializer" type="Node" parent="Source"]
+script = ExtResource( 8 )
+enemyCharacterNP = NodePath("../..")
+characterPhysicsNP = NodePath("../CharacterPhysics")
+characterMoveNP = NodePath("../CharacterMove")
+enemyActionNP = NodePath("../EnemyAction")
+enemyStatusNP = NodePath("../EnemyStatus")
+enemyBehaviorNP = NodePath("../EnemyBehavior")
+hurtAreaNP = NodePath("../../HurtArea")
+[connection signal="area_entered" from="Body/Cannon/StrikeArea" to="Source/EnemyAction" method="OnStrikeAreaEntered"]
+[connection signal="area_entered" from="HurtArea" to="Source/EnemyAction" method="OnHurtAreaEntered"]
+[connection signal="area_entered" from="StrikeArea" to="Source/EnemyAction" method="OnStrikeAreaEntered"]
+
+[editable path="Body/Blindcannon"]

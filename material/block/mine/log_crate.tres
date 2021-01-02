@@ -1,0 +1,36 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/crate_log_albedo.png-093e63a59229a5c7d3979f15747d5a9b.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/crate_log_ao.png-8e552c8ae42711fbb3baaa0c5b2795f4.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/crate_log_specular.png-e1acf001be1e55ddf11844d5c586a329.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/crate_log_normal.png-b6992c2b6f2226226bd8478ad1f21b6e.stex"
+
+[resource]
+resource_name = "LogEdgeWeathered"
+params_cull_mode = 2
+albedo_texture = SubResource( 1 )
+metallic_texture = SubResource( 3 )
+roughness = 0.35
+normal_enabled = true
+normal_scale = -0.3
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.15
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 2, 1, 1 )

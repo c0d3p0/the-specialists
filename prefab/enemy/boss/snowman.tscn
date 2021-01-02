@@ -1,0 +1,286 @@
+[gd_scene load_steps=46 format=2]
+
+[ext_resource path="res://animation/character/snowman/active.tres" type="Animation" id=1]
+[ext_resource path="res://animation/character/snowman/inactive.tres" type="Animation" id=2]
+[ext_resource path="res://model/character/snowman.tscn" type="PackedScene" id=3]
+[ext_resource path="res://source/character/CharacterMove.cs" type="Script" id=4]
+[ext_resource path="res://source/character/CharacterPhysics.cs" type="Script" id=5]
+[ext_resource path="res://source/character/enemy/behavior/SkillRandomWalkerEnemyBehavior.cs" type="Script" id=6]
+[ext_resource path="res://source/character/enemy/DefaultEnemyCharacter.cs" type="Script" id=7]
+[ext_resource path="res://source/character/enemy/DefaultEnemyInitializer.cs" type="Script" id=8]
+[ext_resource path="res://source/character/enemy/DefaultEnemyAction.cs" type="Script" id=9]
+[ext_resource path="res://source/character/boss/BossEnemyStatus.cs" type="Script" id=10]
+[ext_resource path="res://animation/character/snowman/die.tres" type="Animation" id=11]
+[ext_resource path="res://animation/character/snowman/move.tres" type="Animation" id=12]
+[ext_resource path="res://animation/character/snowman/idle.tres" type="Animation" id=13]
+[ext_resource path="res://animation/character/snowman/hit.tres" type="Animation" id=14]
+[ext_resource path="res://animation/character/snowman/skill.tres" type="Animation" id=15]
+[ext_resource path="res://prefab/specialist_item/random_decrease_item.tscn" type="PackedScene" id=16]
+[ext_resource path="res://source/character/skill/Boss1Skill.cs" type="Script" id=17]
+[ext_resource path="res://animation/default/start.tres" type="Animation" id=18]
+[ext_resource path="res://.import/snowman_skill.wav-a0a61af97e084184e42b3077beed9542.sample" type="AudioStream" id=19]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.49
+height = 0.8
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.3, 0.8, 0.3 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "invulnerable"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Snowman/HeadMI:material/0:next_pass:shader_param/blink")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Source/EnemyAction")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "SetIgnoreHit"
+} ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "active"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "hit"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "inactive"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "move"
+
+[sub_resource type="AnimationNodeTimeScale" id=10]
+
+[sub_resource type="AnimationNodeBlendTree" id=11]
+graph_offset = Vector2( -201.549, 101.5 )
+nodes/Animation/node = SubResource( 9 )
+nodes/Animation/position = Vector2( -100, 140 )
+nodes/TimeScale/node = SubResource( 10 )
+nodes/TimeScale/position = Vector2( 100, 140 )
+nodes/output/position = Vector2( 300, 140 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "skill"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "start"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=25]
+states/active/node = SubResource( 4 )
+states/active/position = Vector2( 141, 186.906 )
+states/die/node = SubResource( 5 )
+states/die/position = Vector2( 661, 186.906 )
+states/hit/node = SubResource( 6 )
+states/hit/position = Vector2( 412, 186.906 )
+states/idle/node = SubResource( 7 )
+states/idle/position = Vector2( 298, 107.1 )
+states/inactive/node = SubResource( 8 )
+states/inactive/position = Vector2( 141, 107.1 )
+states/move/node = SubResource( 11 )
+states/move/position = Vector2( 524.151, 107.1 )
+states/skill/node = SubResource( 12 )
+states/skill/position = Vector2( 412, 13.8519 )
+states/start/node = SubResource( 13 )
+states/start/position = Vector2( 141, 13.8519 )
+transitions = [ "inactive", "active", SubResource( 14 ), "active", "idle", SubResource( 15 ), "idle", "hit", SubResource( 16 ), "hit", "idle", SubResource( 17 ), "idle", "move", SubResource( 18 ), "move", "idle", SubResource( 19 ), "move", "hit", SubResource( 20 ), "idle", "skill", SubResource( 21 ), "skill", "idle", SubResource( 22 ), "move", "skill", SubResource( 23 ), "start", "inactive", SubResource( 24 ) ]
+start_node = "start"
+end_node = "die"
+graph_offset = Vector2( -42.849, -35.6018 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=26]
+
+[node name="Snowman" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 28
+script = ExtResource( 7 )
+enemyActionNP = NodePath("Source/EnemyAction")
+enemyStatusNP = NodePath("Source/EnemyStatus")
+enemyBehaviorNP = NodePath("Source/EnemyBehavior")
+enemySkillNP = NodePath("Source/EnemySkill")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.89, 0 )
+shape = SubResource( 1 )
+
+[node name="Body" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
+
+[node name="Snowman" parent="Body" instance=ExtResource( 3 )]
+
+[node name="FrontRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( 0, 0, 0.54 )
+collision_mask = 28
+
+[node name="BackRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 28
+
+[node name="LeftRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( 0.54, 0, 0 )
+collision_mask = 28
+
+[node name="RightRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( -0.54, 0, 0 )
+collision_mask = 28
+
+[node name="HurtArea" type="Area" parent="."]
+collision_layer = 2147483712
+collision_mask = 17408
+
+[node name="CollisionShape" type="CollisionShape" parent="HurtArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
+shape = SubResource( 2 )
+
+[node name="StrikeArea" type="Area" parent="."]
+monitoring = false
+collision_layer = 4096
+collision_mask = 32
+
+[node name="CollisionShape" type="CollisionShape" parent="StrikeArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
+shape = SubResource( 2 )
+
+[node name="CooldownTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 19 )
+attenuation_model = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/active = ExtResource( 1 )
+anims/die = ExtResource( 11 )
+anims/hit = ExtResource( 14 )
+anims/idle = ExtResource( 13 )
+anims/inactive = ExtResource( 2 )
+anims/move = ExtResource( 12 )
+anims/skill = ExtResource( 15 )
+anims/start = ExtResource( 18 )
+
+[node name="InvulnerableAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/invulnerable = SubResource( 3 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 25 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 26 )
+parameters/move/TimeScale/scale = 1.0
+
+[node name="Source" type="Node" parent="."]
+
+[node name="CharacterPhysics" type="Node" parent="Source"]
+script = ExtResource( 5 )
+kinematicBodyNP = NodePath("../..")
+
+[node name="CharacterMove" type="Node" parent="Source"]
+script = ExtResource( 4 )
+acceleration = 38.0
+
+[node name="EnemyAction" type="Node" parent="Source"]
+script = ExtResource( 9 )
+characterNP = NodePath("../..")
+bodyNP = NodePath("../../Body")
+hurtAreaNP = NodePath("../../HurtArea")
+animationTreeNP = NodePath("../../AnimationTree")
+toMoveMap = {
+"idle": "move",
+"move": "move"
+}
+toSkillMap = {
+"idle": "skill",
+"move": "skill"
+}
+
+[node name="EnemyStatus" type="Node" parent="Source"]
+script = ExtResource( 10 )
+speedLevelRange = Vector2( 1, 1 )
+startingHealth = 700
+
+[node name="EnemyBehavior" type="Node" parent="Source"]
+script = ExtResource( 6 )
+enemyCharacterNP = NodePath("../..")
+bodyNP = NodePath("../../Body")
+rayCastListNP = [ NodePath("../../Body/FrontRayCast"), NodePath("../../Body/BackRayCast"), NodePath("../../Body/LeftRayCast"), NodePath("../../Body/RightRayCast") ]
+skillCooldownTimerNP = NodePath("../../CooldownTimer")
+skillCooldownTimeRange = Vector2( 8, 10 )
+
+[node name="EnemySkill" type="Node" parent="Source"]
+script = ExtResource( 17 )
+characterNP = NodePath("../..")
+itemPS = ExtResource( 16 )
+
+[node name="EnemyInitializer" type="Node" parent="Source"]
+script = ExtResource( 8 )
+enemyCharacterNP = NodePath("../..")
+characterPhysicsNP = NodePath("../CharacterPhysics")
+characterMoveNP = NodePath("../CharacterMove")
+enemyActionNP = NodePath("../EnemyAction")
+enemyStatusNP = NodePath("../EnemyStatus")
+enemyBehaviorNP = NodePath("../EnemyBehavior")
+hurtAreaNP = NodePath("../../HurtArea")
+[connection signal="area_entered" from="HurtArea" to="Source/EnemyAction" method="OnHurtAreaEntered"]
+[connection signal="area_entered" from="StrikeArea" to="Source/EnemyAction" method="OnStrikeAreaEntered"]

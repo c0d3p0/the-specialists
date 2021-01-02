@@ -1,0 +1,442 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://gui/theme/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://shader/ui_border.shader" type="Shader" id=2]
+[ext_resource path="res://source/hud/SpecialistStoryHUD.cs" type="Script" id=3]
+[ext_resource path="res://gui/theme/gui_layout_style.tres" type="StyleBox" id=4]
+
+[sub_resource type="StreamTexture" id=13]
+flags = 4
+load_path = "res://.import/brown_specialist_profile.png-fbd20047cdd0c8cb19816e184f8073fe.stex"
+
+[sub_resource type="StreamTexture" id=14]
+flags = 4
+load_path = "res://.import/gray_specialist_profile.png-f34f54dd6e84ea5bdec526a343616ba5.stex"
+
+[sub_resource type="StreamTexture" id=15]
+flags = 4
+load_path = "res://.import/blue_specialist_profile.png-7b58c66f4f7368e680b6fd3a165f8e31.stex"
+
+[sub_resource type="StreamTexture" id=16]
+flags = 4
+load_path = "res://.import/green_specialist_profile.png-69b9e3c0e8688a36136ecad28662b4bd.stex"
+
+[sub_resource type="StreamTexture" id=17]
+flags = 4
+load_path = "res://.import/magenta_specialist_profile.png-4bb4a46de1ead6131a29a7c6944999ba.stex"
+
+[sub_resource type="StreamTexture" id=18]
+flags = 7
+load_path = "res://.import/punch_hud.png-e3c7bb0ac0ed3e00832f2a9732d47634.stex"
+
+[sub_resource type="StreamTexture" id=19]
+flags = 7
+load_path = "res://.import/laser_trigger_hud.png-d65d7f87e581225584dc7d41124325d9.stex"
+
+[sub_resource type="StreamTexture" id=20]
+flags = 7
+load_path = "res://.import/movespeed_hud.png-d60c06fc6527d066ace6145d8577927f.stex"
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/hud_border.png-4b0cb611e9b315638c2954f1d8dfa6ef.stex"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 2 )
+shader_param/color_1 = Color( 0.72, 0.89, 2, 1 )
+shader_param/color_2 = Color( 2, 2, 2, 1 )
+shader_param/color_3 = Color( 0.72, 0.89, 2, 1 )
+shader_param/resolution = Vector2( 1, 1 )
+shader_param/ui_texture = SubResource( 1 )
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/border_hud.png-f822c254b45e79de273545cc834a884a.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/brown_specialist_profile.png-fbd20047cdd0c8cb19816e184f8073fe.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/border_hud.png-f822c254b45e79de273545cc834a884a.stex"
+
+[sub_resource type="StreamTexture" id=6]
+flags = 7
+load_path = "res://.import/border_hud.png-f822c254b45e79de273545cc834a884a.stex"
+
+[sub_resource type="StreamTexture" id=7]
+flags = 7
+load_path = "res://.import/armor_hud.png-2c0bfde764e9684eca54cf612a70c02a.stex"
+
+[sub_resource type="StreamTexture" id=8]
+
+[sub_resource type="StreamTexture" id=9]
+flags = 7
+load_path = "res://.import/movespeed_hud.png-d60c06fc6527d066ace6145d8577927f.stex"
+
+[sub_resource type="StreamTexture" id=10]
+flags = 7
+load_path = "res://.import/laser_ray_hud.png-5070902af69ab7627bbed219fdb36791.stex"
+
+[sub_resource type="StreamTexture" id=11]
+flags = 7
+load_path = "res://.import/device_amount_hud.png-c569fa9ee055e5475a644df1d6c2e008.stex"
+
+[sub_resource type="StreamTexture" id=12]
+flags = 7
+load_path = "res://.import/detonate_time_hud.png-34563d1429d5efc95a5fda8f6d0335df.stex"
+
+[node name="SpecialistStoryHUD" type="Control"]
+margin_left = 10.0
+margin_top = 2.0
+margin_right = 370.0
+margin_bottom = 80.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+dataControlNP = NodePath("DataControl")
+notInBattleControlNP = NodePath("NotInBattleControl")
+profileControlNP = NodePath("DataControl/ProfileControl")
+deviceSlotControlNP = NodePath("DataControl/DeviceSlotControl")
+extrasControlNP = NodePath("DataControl/ExtrasControl")
+speedLevelControlNP = NodePath("DataControl/SpeedLevelControl")
+laserRayLevelControlNP = NodePath("DataControl/LaserRayLevelSlotControl")
+deviceAmountControlNP = NodePath("DataControl/DeviceAmountLevelSlotControl")
+detonateTimeControlNP = NodePath("DataControl/DetonateTimeLevelControl")
+updateTimerNP = NodePath("DataControl/UpdateTimer")
+specialistTextureList = [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ) ]
+skillTextureList = [ SubResource( 18 ), SubResource( 19 ), SubResource( 20 ) ]
+increaseColor = Color( 0.4, 0.901961, 0.101961, 1 )
+decreaseColor = Color( 0.901961, 0.0509804, 0.0509804, 1 )
+
+[node name="BorderPanel" type="Panel" parent="."]
+material = SubResource( 2 )
+margin_right = 360.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGPanel" type="Panel" parent="."]
+margin_top = 8.0
+margin_right = 360.0
+margin_bottom = 70.0
+custom_styles/panel = ExtResource( 4 )
+
+[node name="DataControl" type="Control" parent="."]
+margin_top = 8.0
+margin_right = 360.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfileControl" type="Control" parent="DataControl"]
+margin_left = 5.0
+margin_right = 105.0
+margin_bottom = 62.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BorderTextureRect" type="TextureRect" parent="DataControl/ProfileControl"]
+margin_left = 5.0
+margin_top = 1.0
+margin_right = 1029.0
+margin_bottom = 1025.0
+rect_scale = Vector2( 0.058, 0.058 )
+texture = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DataControl/ProfileControl"]
+margin_left = 9.0
+margin_top = 6.0
+margin_right = 489.0
+margin_bottom = 486.0
+rect_scale = Vector2( 0.105, 0.105 )
+texture = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LivesLabel" type="Label" parent="DataControl/ProfileControl"]
+margin_left = 45.0
+margin_top = 32.0
+margin_right = 81.0
+margin_bottom = 64.0
+text = "9"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpdateLabel" type="Label" parent="DataControl/ProfileControl"]
+visible = false
+margin_left = 76.0
+margin_top = 32.0
+margin_right = 98.0
+margin_bottom = 64.0
+custom_colors/font_color = Color( 0.901961, 0.0509804, 0.0509804, 1 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeviceSlotControl" type="Control" parent="DataControl"]
+margin_left = 100.0
+margin_right = 190.0
+margin_bottom = 33.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1BorderTextureButton" type="TextureButton" parent="DataControl/DeviceSlotControl"]
+margin_left = 10.0
+margin_top = 2.0
+margin_right = 1034.0
+margin_bottom = 1026.0
+rect_scale = Vector2( 0.03, 0.03 )
+disabled = true
+texture_disabled = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1Label" type="Label" parent="DataControl/DeviceSlotControl"]
+margin_left = 10.0
+margin_top = 1.0
+margin_right = 42.0
+margin_bottom = 33.0
+text = "R"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot2BorderTextureButton" type="TextureButton" parent="DataControl/DeviceSlotControl"]
+margin_left = 50.0
+margin_top = 2.0
+margin_right = 1074.0
+margin_bottom = 1026.0
+rect_scale = Vector2( 0.03, 0.03 )
+disabled = true
+texture_disabled = SubResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot2Label" type="Label" parent="DataControl/DeviceSlotControl"]
+margin_left = 51.0
+margin_top = 1.0
+margin_right = 83.0
+margin_bottom = 33.0
+text = "R"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExtrasControl" type="Control" parent="DataControl"]
+margin_left = 190.0
+margin_right = 280.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArmorTextureRect" type="TextureRect" parent="DataControl/ExtrasControl"]
+visible = false
+margin_left = 10.0
+margin_right = 1034.0
+margin_bottom = 1024.0
+rect_scale = Vector2( 0.031, 0.031 )
+focus_mode = 1
+texture = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkillTextureRect" type="TextureRect" parent="DataControl/ExtrasControl"]
+margin_left = 50.0
+margin_right = 1074.0
+margin_bottom = 1024.0
+rect_scale = Vector2( 0.03, 0.03 )
+texture = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeedLevelControl" type="Control" parent="DataControl"]
+margin_left = 280.0
+margin_right = 360.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DataControl/SpeedLevelControl"]
+margin_left = 10.0
+margin_right = 490.0
+margin_bottom = 480.0
+rect_scale = Vector2( 0.031, 0.031 )
+texture = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DataControl/SpeedLevelControl"]
+margin_left = 40.0
+margin_right = 62.0
+margin_bottom = 32.0
+text = "9"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpdateLabel" type="Label" parent="DataControl/SpeedLevelControl"]
+visible = false
+margin_left = 56.0
+margin_right = 78.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.901961, 0.0509804, 0.0509804, 1 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LaserRayLevelSlotControl" type="Control" parent="DataControl"]
+margin_left = 100.0
+margin_top = 30.0
+margin_right = 190.0
+margin_bottom = 60.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DataControl/LaserRayLevelSlotControl"]
+margin_left = 6.0
+margin_top = -2.0
+margin_right = 1030.0
+margin_bottom = 1022.0
+rect_scale = Vector2( 0.035, 0.035 )
+texture = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DataControl/LaserRayLevelSlotControl"]
+margin_left = 38.0
+margin_right = 74.0
+margin_bottom = 32.0
+text = "99"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpdateLabel" type="Label" parent="DataControl/LaserRayLevelSlotControl"]
+visible = false
+margin_left = 68.0
+margin_right = 90.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.4, 0.9, 0.1, 1 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeviceAmountLevelSlotControl" type="Control" parent="DataControl"]
+margin_left = 190.0
+margin_top = 30.0
+margin_right = 280.0
+margin_bottom = 60.0
+rect_scale = Vector2( 1, 1.08719 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DataControl/DeviceAmountLevelSlotControl"]
+margin_left = 10.0
+margin_right = 42.0
+margin_bottom = 32.0
+rect_scale = Vector2( 0.03, 0.03 )
+texture = SubResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DataControl/DeviceAmountLevelSlotControl"]
+margin_left = 38.0
+margin_right = 60.0
+margin_bottom = 32.0
+text = "9"
+
+[node name="UpdateLabel" type="Label" parent="DataControl/DeviceAmountLevelSlotControl"]
+visible = false
+margin_left = 54.0
+margin_right = 76.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.4, 0.9, 0.1, 1 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DetonateTimeLevelControl" type="Control" parent="DataControl"]
+margin_left = 280.0
+margin_top = 30.0
+margin_right = 360.0
+margin_bottom = 60.0
+
+[node name="TextureRect" type="TextureRect" parent="DataControl/DetonateTimeLevelControl"]
+margin_left = 10.0
+margin_right = 490.0
+margin_bottom = 480.0
+rect_scale = Vector2( 0.031, 0.031 )
+texture = SubResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DataControl/DetonateTimeLevelControl"]
+margin_left = 40.0
+margin_right = 62.0
+margin_bottom = 32.0
+text = "9"
+
+[node name="UpdateLabel" type="Label" parent="DataControl/DetonateTimeLevelControl"]
+visible = false
+margin_left = 56.0
+margin_right = 78.0
+margin_bottom = 32.0
+custom_colors/font_color = Color( 0.4, 0.9, 0.1, 1 )
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpdateTimer" type="Timer" parent="DataControl"]
+wait_time = 5.0
+one_shot = true
+
+[node name="NotInBattleControl" type="Control" parent="."]
+visible = false
+margin_top = 8.0
+margin_right = 360.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NotInBattleControl"]
+margin_top = 11.0
+margin_right = 360.0
+margin_bottom = 43.0
+text = "Not in Battle"
+align = 1
+valign = 1
+[connection signal="timeout" from="DataControl/UpdateTimer" to="." method="OnUpdateTimerTimeout"]

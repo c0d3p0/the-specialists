@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://material/block/city/bronze_metal.tres" type="Material" id=1]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.2
+height = 0.4
+radial_segments = 8
+rings = 8
+
+[sub_resource type="Animation" id=2]
+resource_name = "fly"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("MeshInstance:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, -0.1, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0.1, 0 ), Vector3( 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MeshInstance:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 270, 0 ), Vector3( 0, 360, 0 ) ]
+}
+
+[node name="HelperLight" type="Spatial"]
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 0.973613, 0, -0.228204, 0, 1, 0, 0.228204, 0, 0.973613, 0, 0.0146571, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="SpotLight" type="SpotLight" parent="MeshInstance"]
+transform = Transform( 0.969126, 0.246564, 4.01704e-08, 0, -1.62921e-07, 1, 0.246564, -0.969126, -1.57891e-07, 0, -0.0846219, 0 )
+light_energy = 3.0
+spot_range = 8.0
+spot_angle = 50.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "fly"
+anims/fly = SubResource( 2 )

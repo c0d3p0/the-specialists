@@ -1,0 +1,235 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://gui/font/madcat_64.tres" type="DynamicFont" id=1]
+[ext_resource path="res://gui/font/madcat_20.tres" type="DynamicFont" id=2]
+[ext_resource path="res://gui/theme/gui_layout_style.tres" type="StyleBox" id=3]
+[ext_resource path="res://gui/theme/secondary_theme.tres" type="Theme" id=4]
+[ext_resource path="res://gui/font/madcat_30.tres" type="DynamicFont" id=5]
+[ext_resource path="res://source/godot/JsonSerializer.cs" type="Script" id=6]
+[ext_resource path="res://source/screen/save/SaveGameData.cs" type="Script" id=7]
+[ext_resource path="res://source/screen/save/SaveGameScreen.cs" type="Script" id=8]
+
+[node name="LoadGameScreen" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+saveGameDataNP = NodePath("Source/SaveGameData")
+dataControlNP = NodePath("DataControl")
+noDataControlNP = NodePath("NoDataControl")
+locationNameList = [ "Snow Village", "Mine", "Small City", "Laboratory" ]
+labelPrefixMap = {
+"continues": "Continues: ",
+"gameMode": "",
+"locationIndex": "Location: ",
+"p1Deaths": "P1 Deaths: ",
+"p2Deaths": "P2 Deaths: ",
+"totalTime": "Total Time: "
+}
+shouldLoadGame = true
+
+[node name="TitleLayoutPanel" type="Panel" parent="."]
+margin_left = 100.0
+margin_top = 40.0
+margin_right = 1180.0
+margin_bottom = 130.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BodyLayoutPanel" type="Panel" parent="."]
+margin_left = 101.0
+margin_top = 180.0
+margin_right = 1181.0
+margin_bottom = 700.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoControl" type="Control" parent="."]
+margin_left = 1.0
+margin_right = 1281.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="InfoControl"]
+margin_top = 40.0
+margin_right = 1280.0
+margin_bottom = 127.0
+custom_fonts/font = ExtResource( 1 )
+text = "Load Game"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HintLabel" type="Label" parent="InfoControl"]
+margin_top = 660.0
+margin_right = 1280.0
+margin_bottom = 699.0
+custom_fonts/font = ExtResource( 2 )
+text = "Press \"ESC\" to go back to \"Title Screen\"."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DataControl" type="Control" parent="."]
+margin_left = 100.0
+margin_top = 180.0
+margin_right = 1180.0
+margin_bottom = 700.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="DataControl"]
+margin_left = 390.0
+margin_top = 90.0
+margin_right = 690.0
+margin_bottom = 134.0
+custom_fonts/font = ExtResource( 5 )
+text = "2P Story Mode"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FirstLabel" type="Label" parent="DataControl"]
+margin_left = 390.0
+margin_top = 170.0
+margin_right = 496.0
+margin_bottom = 202.0
+text = "Location: S"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SecondLabel" type="Label" parent="DataControl"]
+margin_left = 390.0
+margin_top = 210.0
+margin_right = 586.0
+margin_bottom = 242.0
+text = "P1 Deaths: 1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ThirdLabel" type="Label" parent="DataControl"]
+margin_left = 390.0
+margin_top = 250.0
+margin_right = 586.0
+margin_bottom = 282.0
+text = "P2 Deaths: 1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FourthLabel" type="Label" parent="DataControl"]
+margin_left = 390.0
+margin_top = 290.0
+margin_right = 556.0
+margin_bottom = 322.0
+text = "Continues: 10"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FifthLabel" type="Label" parent="DataControl"]
+margin_left = 390.0
+margin_top = 330.0
+margin_right = 680.0
+margin_bottom = 362.0
+text = "Total Time: 00:00:00.000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionControl" type="Control" parent="DataControl"]
+margin_right = 1080.0
+margin_bottom = 520.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="DataControl/ActionControl"]
+margin_left = 340.0
+margin_top = 224.0
+margin_right = 360.0
+margin_bottom = 256.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="DataControl/ActionControl"]
+margin_left = 700.0
+margin_top = 224.0
+margin_right = 724.0
+margin_bottom = 256.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RemoveButton" type="Button" parent="DataControl/ActionControl"]
+margin_left = 390.0
+margin_top = 400.0
+margin_right = 494.0
+margin_bottom = 432.0
+text = "Remove"
+
+[node name="LoadButton" type="Button" parent="DataControl/ActionControl"]
+margin_left = 622.0
+margin_top = 400.0
+margin_right = 690.0
+margin_bottom = 432.0
+text = "Load"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NoDataControl" type="Control" parent="."]
+visible = false
+margin_left = 140.0
+margin_top = 400.0
+margin_right = 1140.0
+margin_bottom = 440.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NoDataControl"]
+margin_right = 1000.0
+margin_bottom = 32.0
+text = "No data."
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Source" type="Node" parent="."]
+
+[node name="JsonSerializer" type="Node" parent="Source"]
+script = ExtResource( 6 )
+
+[node name="SaveGameData" type="Node" parent="Source"]
+script = ExtResource( 7 )
+jsonSerializerNP = NodePath("../JsonSerializer")
+saveGameFolderName = "data"
+saveGameFileName = "story_save_game"
+[connection signal="pressed" from="DataControl/ActionControl/PreviousButton" to="." method="OnLoadGameDataChangeButtonPressed" binds= [ 1 ]]
+[connection signal="pressed" from="DataControl/ActionControl/NextButton" to="." method="OnLoadGameDataChangeButtonPressed" binds= [ -1 ]]
+[connection signal="pressed" from="DataControl/ActionControl/RemoveButton" to="." method="OnRemoveButtonPressed"]
+[connection signal="pressed" from="DataControl/ActionControl/LoadButton" to="." method="OnLoadButtonPressed"]

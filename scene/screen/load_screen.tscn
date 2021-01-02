@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://gui/theme/secondary_theme.tres" type="Theme" id=1]
+[ext_resource path="res://gui/font/madcat_80.tres" type="DynamicFont" id=2]
+[ext_resource path="res://source/screen/load/LoadScreen.cs" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/godot logo.png-6e6cf238a1ee20913383b2948ba09958.stex"
+
+[sub_resource type="Animation" id=3]
+resource_name = "loading"
+length = 2.0
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("ContentControl/LoadingLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="LoadScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+margin_right = 1280.0
+margin_bottom = 720.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContentControl" type="Control" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="ContentControl"]
+margin_top = 40.0
+margin_right = 1280.0
+margin_bottom = 136.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.721569, 0.890196, 1, 1 )
+text = "The Specialists"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadingLabel" type="Label" parent="ContentControl"]
+modulate = Color( 1, 1, 1, 0.818423 )
+margin_top = 400.0
+margin_right = 1280.0
+margin_bottom = 432.0
+text = "Loading ..."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LogoTextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 320.0
+margin_top = 230.0
+margin_right = 960.0
+margin_bottom = 489.0
+texture = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadScreenTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "loading"
+anims/loading = SubResource( 3 )
+
+[node name="Source" type="Node" parent="."]
+
+[node name="LoadScreen" type="Node" parent="Source"]
+script = ExtResource( 3 )

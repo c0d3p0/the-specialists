@@ -1,0 +1,385 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://gui/font/madcat_20.tres" type="DynamicFont" id=1]
+[ext_resource path="res://gui/font/madcat_64.tres" type="DynamicFont" id=2]
+[ext_resource path="res://gui/theme/secondary_theme.tres" type="Theme" id=3]
+[ext_resource path="res://source/screen/input/InputMappingScreen.cs" type="Script" id=4]
+[ext_resource path="res://source/screen/input/InputMappingGUI.cs" type="Script" id=5]
+[ext_resource path="res://source/godot/JsonSerializer.cs" type="Script" id=6]
+[ext_resource path="res://source/screen/input/InputMappingScreenInitializer.cs" type="Script" id=7]
+[ext_resource path="res://gui/theme/gui_layout_style.tres" type="StyleBox" id=8]
+
+[node name="InputMappingScreen" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+inputMappingGUINP = NodePath("Source/InputMappingGUI")
+jsonSerializerNP = NodePath("Source/JsonSerializer")
+
+[node name="TopLayoutPanel" type="Panel" parent="."]
+margin_left = 100.0
+margin_top = 40.0
+margin_right = 1180.0
+margin_bottom = 130.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BottomLayoutPanel" type="Panel" parent="."]
+margin_left = 100.0
+margin_top = 180.0
+margin_right = 1180.0
+margin_bottom = 700.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoControl" type="Control" parent="."]
+margin_left = 1.0
+margin_right = 1281.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="InfoControl"]
+margin_top = 40.0
+margin_right = 1280.0
+margin_bottom = 127.0
+custom_fonts/font = ExtResource( 2 )
+text = "Input Mapping"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HintLabel" type="Label" parent="InfoControl"]
+margin_top = 660.0
+margin_right = 1280.0
+margin_bottom = 699.0
+custom_fonts/font = ExtResource( 1 )
+text = "Click on the input you want and press the desired key to map it. Press 'ESC' to cancel."
+align = 1
+
+[node name="PlayerIdControl" type="Control" parent="."]
+margin_left = 561.0
+margin_top = 200.0
+margin_right = 719.0
+margin_bottom = 240.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerIdLabel" type="Label" parent="PlayerIdControl"]
+margin_left = 30.0
+margin_right = 129.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 99, 0 )
+text = "Player 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="PlayerIdControl"]
+margin_right = 20.0
+margin_bottom = 22.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="PlayerIdControl"]
+margin_left = 131.0
+margin_right = 155.0
+margin_bottom = 32.0
+text = ">"
+
+[node name="DeviceTypeControl" type="Control" parent="."]
+margin_left = 550.0
+margin_top = 260.0
+margin_right = 730.0
+margin_bottom = 300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeviceTypeLabel" type="Label" parent="DeviceTypeControl"]
+margin_left = 30.0
+margin_right = 129.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 122, 0 )
+text = "Keyboard"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="DeviceTypeControl"]
+margin_right = 20.0
+margin_bottom = 22.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="DeviceTypeControl"]
+margin_left = 153.0
+margin_right = 177.0
+margin_bottom = 32.0
+text = ">"
+
+[node name="DirectionLabelControl" type="Control" parent="."]
+margin_left = 200.0
+margin_top = 340.0
+margin_right = 260.0
+margin_bottom = 500.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpLabel" type="Label" parent="DirectionLabelControl"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "Up"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DownLabel" type="Label" parent="DirectionLabelControl"]
+margin_top = 40.0
+margin_right = 71.0
+margin_bottom = 77.0
+text = "Down"
+
+[node name="LeftLabel" type="Label" parent="DirectionLabelControl"]
+margin_top = 80.0
+margin_right = 45.0
+margin_bottom = 117.0
+text = "Left"
+
+[node name="RightLabel" type="Label" parent="DirectionLabelControl"]
+margin_top = 120.0
+margin_right = 62.0
+margin_bottom = 157.0
+text = "Right"
+
+[node name="DirectionMappedControl" type="Control" parent="."]
+margin_left = 320.0
+margin_top = 340.0
+margin_right = 540.0
+margin_bottom = 500.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpButton" type="Button" parent="DirectionMappedControl"]
+margin_right = 220.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 220, 0 )
+text = "None"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DownButton" type="Button" parent="DirectionMappedControl"]
+margin_top = 40.0
+margin_right = 220.0
+margin_bottom = 77.0
+rect_min_size = Vector2( 220, 0 )
+text = "None"
+
+[node name="LeftButton" type="Button" parent="DirectionMappedControl"]
+margin_top = 80.0
+margin_right = 220.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 220, 0 )
+text = "None"
+
+[node name="RightButton" type="Button" parent="DirectionMappedControl"]
+margin_top = 120.0
+margin_right = 220.0
+margin_bottom = 157.0
+rect_min_size = Vector2( 220, 0 )
+text = "None"
+
+[node name="ButtonLabelControl" type="Control" parent="."]
+margin_left = 640.0
+margin_top = 340.0
+margin_right = 776.0
+margin_bottom = 500.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlantDeviceLabel" type="Label" parent="ButtonLabelControl"]
+margin_right = 81.0
+margin_bottom = 37.0
+text = "Plant Device"
+
+[node name="ChangeSlotLabel" type="Label" parent="ButtonLabelControl"]
+margin_top = 40.0
+margin_right = 65.0
+margin_bottom = 77.0
+text = "Change Slot"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExecuteSkillLabel" type="Label" parent="ButtonLabelControl"]
+margin_top = 80.0
+margin_right = 116.0
+margin_bottom = 117.0
+text = "Skill"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseLabel" type="Label" parent="ButtonLabelControl"]
+margin_top = 120.0
+margin_right = 69.0
+margin_bottom = 157.0
+text = "Pause"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonMappedControl" type="Control" parent="."]
+margin_left = 836.0
+margin_top = 340.0
+margin_right = 1056.0
+margin_bottom = 500.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlantDeviceButton" type="Button" parent="ButtonMappedControl"]
+margin_right = 220.0
+margin_bottom = 37.0
+rect_min_size = Vector2( 220, 0 )
+text = "None"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChangeSlotButton" type="Button" parent="ButtonMappedControl"]
+margin_top = 40.0
+margin_right = 220.0
+margin_bottom = 77.0
+rect_min_size = Vector2( 220, 0 )
+text = "None"
+
+[node name="ExecuteSkillButton" type="Button" parent="ButtonMappedControl"]
+margin_top = 80.0
+margin_right = 220.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 220, 0 )
+text = "None"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseButton" type="Button" parent="ButtonMappedControl"]
+margin_top = 120.0
+margin_right = 220.0
+margin_bottom = 157.0
+rect_min_size = Vector2( 220, 0 )
+text = "None"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ActionControl" type="Control" parent="."]
+margin_left = 560.0
+margin_top = 580.0
+margin_right = 720.0
+margin_bottom = 620.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IgnoreButton" type="Button" parent="ActionControl"]
+margin_right = 77.0
+margin_bottom = 37.0
+text = "Ignore"
+
+[node name="SaveButton" type="Button" parent="ActionControl"]
+margin_left = 100.0
+margin_right = 161.0
+margin_bottom = 37.0
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Source" type="Node" parent="."]
+
+[node name="InputMappingGUI" type="Node" parent="Source"]
+script = ExtResource( 5 )
+inputMappingScreenNP = NodePath("../..")
+playerIdLabelNP = NodePath("../../PlayerIdControl/PlayerIdLabel")
+deviceTypeLabelNP = NodePath("../../DeviceTypeControl/DeviceTypeLabel")
+buttonNPMap = {
+"change_slot": NodePath("../../ButtonMappedControl/ChangeSlotButton"),
+"down": NodePath("../../DirectionMappedControl/DownButton"),
+"execute_skill": NodePath("../../ButtonMappedControl/ExecuteSkillButton"),
+"left": NodePath("../../DirectionMappedControl/LeftButton"),
+"pause": NodePath("../../ButtonMappedControl/PauseButton"),
+"plant_device": NodePath("../../ButtonMappedControl/PlantDeviceButton"),
+"right": NodePath("../../DirectionMappedControl/RightButton"),
+"up": NodePath("../../DirectionMappedControl/UpButton")
+}
+ignoreKeyMap = {
+16777217: null,
+16777241: null,
+16777242: null,
+16777243: null,
+16777244: null,
+16777245: null,
+16777246: null,
+16777247: null,
+16777248: null,
+16777249: null,
+16777250: null,
+16777251: null,
+16777252: null,
+16777253: null,
+16777254: null,
+16777255: null,
+16777256: null,
+16777258: null,
+16777259: null
+}
+inputMappingFolderName = "config"
+keyboardMappingFileName = "keyboard_mapping"
+controllerMappingFileName = "controller_mapping"
+
+[node name="JsonSerializer" type="Node" parent="Source"]
+script = ExtResource( 6 )
+
+[node name="InputMappingScrenInitializer" type="Node" parent="Source"]
+script = ExtResource( 7 )
+inputMappingScreenNP = NodePath("../..")
+inputMappingGUINP = NodePath("../InputMappingGUI")
+jsonSerializerNP = NodePath("../JsonSerializer")
+[connection signal="pressed" from="PlayerIdControl/PreviousButton" to="Source/InputMappingGUI" method="OnPlayerIdButtonPressed" binds= [ -1 ]]
+[connection signal="pressed" from="PlayerIdControl/NextButton" to="Source/InputMappingGUI" method="OnPlayerIdButtonPressed" binds= [ 1 ]]
+[connection signal="pressed" from="DeviceTypeControl/PreviousButton" to="Source/InputMappingGUI" method="OnDeviceTypeButtonPressed" binds= [ true ]]
+[connection signal="pressed" from="DeviceTypeControl/NextButton" to="Source/InputMappingGUI" method="OnDeviceTypeButtonPressed" binds= [ false ]]
+[connection signal="pressed" from="DirectionMappedControl/UpButton" to="Source/InputMappingGUI" method="OnInputButtonPressed" binds= [ "up" ]]
+[connection signal="pressed" from="DirectionMappedControl/DownButton" to="Source/InputMappingGUI" method="OnInputButtonPressed" binds= [ "down" ]]
+[connection signal="pressed" from="DirectionMappedControl/LeftButton" to="Source/InputMappingGUI" method="OnInputButtonPressed" binds= [ "left" ]]
+[connection signal="pressed" from="DirectionMappedControl/RightButton" to="Source/InputMappingGUI" method="OnInputButtonPressed" binds= [ "right" ]]
+[connection signal="pressed" from="ButtonMappedControl/PlantDeviceButton" to="Source/InputMappingGUI" method="OnInputButtonPressed" binds= [ "plant_device" ]]
+[connection signal="pressed" from="ButtonMappedControl/ChangeSlotButton" to="Source/InputMappingGUI" method="OnInputButtonPressed" binds= [ "change_slot" ]]
+[connection signal="pressed" from="ButtonMappedControl/ExecuteSkillButton" to="Source/InputMappingGUI" method="OnInputButtonPressed" binds= [ "execute_skill" ]]
+[connection signal="pressed" from="ButtonMappedControl/PauseButton" to="Source/InputMappingGUI" method="OnInputButtonPressed" binds= [ "pause" ]]
+[connection signal="pressed" from="ActionControl/IgnoreButton" to="Source/InputMappingGUI" method="OnIgnoreButtonPressed"]
+[connection signal="pressed" from="ActionControl/SaveButton" to="Source/InputMappingGUI" method="OnSaveButtonPressed"]

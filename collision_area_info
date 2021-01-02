@@ -1,0 +1,34 @@
+==================== Physic Boxes ====================
+
+Layer 1:		Player
+Layer 2:		Enemy
+Layer 3:		Hard Block
+Layer 4:		Soft Block
+Layer 5:		Laser Device
+
+=================== Hurt Boxes =======================
+
+Layer 6:		Player Hurt
+Layer 7:		Enemy Hurt
+Layer 8:		Hard
+Layer 9:		Laser Device Hurt
+Layer 10:		Soft Block Hurt / Item Hurt
+
+==================== Strike Boxes ====================
+
+Layer 11:		Laser Ray Strike
+Layer 12:		Laser Device Trigger Strike
+Layer 13:		Enemy Strike
+Layer 14:		Enemy Projectile Strike
+Layer 15:		Enemy Strike All
+
+==================== Trigger Boxes ====================
+
+Layer 16:		Level Exit Trigger
+Layer 17:		Laser Device Trigger Sensor
+Layer 18:		Ignore Collision
+Layer 19:		Unused
+Layer 20:		Unused
+
+======================================================
+

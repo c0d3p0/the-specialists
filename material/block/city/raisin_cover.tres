@@ -1,0 +1,30 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/raisin_grains_albedo.png-74064e7ef2bd72cc861e9902e77ccf4d.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/raisin_grains_ao.png-0c027536bde3c534004e3985dd83b584.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/raisin_grains_normal.png-a360bec9d7de4f5028a608d2671fc5b5.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/raisin_grains_roughness.png-f570c31f437a32f5b8c03b5dc19e27b5.stex"
+
+[resource]
+albedo_texture = SubResource( 1 )
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 3.0
+normal_texture = SubResource( 3 )
+ao_enabled = true
+ao_light_affect = 0.97
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 2, 2, 1 )

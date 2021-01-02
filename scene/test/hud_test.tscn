@@ -1,0 +1,187 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://gui/theme/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://test_focus.gd" type="Script" id=2]
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/splash.png-4bc082897262048e327c4cc13ad431cf.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/splash.png-4bc082897262048e327c4cc13ad431cf.stex"
+
+[sub_resource type="Gradient" id=6]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=7]
+gradient = SubResource( 6 )
+width = 30
+
+[node name="Control" type="Control"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 304.0
+margin_bottom = 74.0
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 300.0
+margin_bottom = 70.0
+
+[node name="ProfileControl" type="Control" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 119.0
+margin_bottom = 66.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ProfileControl"]
+margin_right = 60.0
+margin_bottom = 60.0
+rect_scale = Vector2( 1.937, 1.937 )
+texture = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ProfileControl"]
+margin_left = 26.0
+margin_top = 32.0
+margin_right = 62.0
+margin_bottom = 64.0
+text = "99"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthControl" type="Control" parent="."]
+margin_left = 80.0
+margin_top = 4.0
+margin_right = 150.0
+margin_bottom = 34.0
+
+[node name="ProgressBar" type="ProgressBar" parent="HealthControl"]
+margin_right = 70.0
+margin_bottom = 30.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeviceSlotControl" type="Control" parent="."]
+margin_left = 80.0
+margin_top = 36.0
+margin_right = 150.0
+margin_bottom = 66.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="DeviceSlotControl"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_scale = Vector2( 0.937, 0.937 )
+disabled = true
+texture_disabled = SubResource( 5 )
+texture_focused = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton2" type="TextureButton" parent="DeviceSlotControl"]
+margin_left = 40.0
+margin_right = 72.0
+margin_bottom = 32.0
+rect_scale = Vector2( 0.937, 0.937 )
+disabled = true
+texture_disabled = SubResource( 5 )
+texture_focused = SubResource( 7 )
+
+[node name="SpeedLevelControl" type="Control" parent="."]
+margin_left = 160.0
+margin_top = 4.0
+margin_right = 220.0
+margin_bottom = 34.0
+
+[node name="TextureRect" type="TextureRect" parent="SpeedLevelControl"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_scale = Vector2( 0.937, 0.937 )
+texture = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="SpeedLevelControl"]
+margin_left = 36.0
+margin_right = 58.0
+margin_bottom = 32.0
+text = "9"
+
+[node name="DeviceAmountLevelSlotControl" type="Control" parent="."]
+margin_left = 160.0
+margin_top = 36.0
+margin_right = 220.0
+margin_bottom = 66.0
+
+[node name="TextureRect" type="TextureRect" parent="DeviceAmountLevelSlotControl"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_scale = Vector2( 0.937, 0.937 )
+texture = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DeviceAmountLevelSlotControl"]
+margin_left = 36.0
+margin_right = 58.0
+margin_bottom = 32.0
+text = "9"
+
+[node name="LaserRayLevelSlotControl3" type="Control" parent="."]
+margin_left = 223.0
+margin_top = 4.0
+margin_right = 303.0
+margin_bottom = 34.0
+
+[node name="TextureRect" type="TextureRect" parent="LaserRayLevelSlotControl3"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_scale = Vector2( 0.937, 0.937 )
+texture = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="LaserRayLevelSlotControl3"]
+margin_left = 36.0
+margin_right = 72.0
+margin_bottom = 32.0
+text = "99"
+
+[node name="SkillControl" type="Control" parent="."]
+margin_left = 223.0
+margin_top = 36.0
+margin_right = 303.0
+margin_bottom = 66.0
+
+[node name="TextureRect" type="TextureRect" parent="SkillControl"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_scale = Vector2( 0.937, 0.937 )
+texture = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Source" type="Node" parent="."]
+
+[node name="Node" type="Node" parent="Source"]
+script = ExtResource( 2 )

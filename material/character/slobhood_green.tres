@@ -1,0 +1,33 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/green_slobhood_albedo.png-24bd2d4320f051bbfbdfa734532bc0f1.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/slobhood_specular.png-481cf4598d597048026cf4009110cd83.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/slobhood_normal.png-54a5bc05d803693dbc8393c7af4148cb.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/slobhood_roughness.png-ce4260e71486ccca10582bb811d04286.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_texture = SubResource( 1 )
+metallic_texture = SubResource( 2 )
+roughness = 0.7
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 3 )
+rim_enabled = true
+rim = 0.19
+rim_tint = 1.0

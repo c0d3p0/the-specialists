@@ -1,0 +1,35 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/ice_brick_albedo.png-a78c2bc8f15f5c67cb802aeb4450e3e2.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/ice_brick_ao.png-7a0eea8fb39b42a4829713cfbb61006f.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/ice_brick_normal.png-c2da0056e68e48f5ae6e05ff45d15ced.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/ice_brick_roughness.png-d98fccbf1648d82cb6321a49fe88bdde.stex"
+
+[resource]
+albedo_color = Color( 0.862745, 0.862745, 0.862745, 1 )
+albedo_texture = SubResource( 1 )
+roughness = 0.9
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 3 )
+rim_enabled = true
+rim = 0.25
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 3, 2, 1 )

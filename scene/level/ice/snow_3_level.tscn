@@ -1,0 +1,202 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://prefab/block/ice/ice_exit_small_border.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefab/block/ice/ice_large_border.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefab/block/ice/ice_hard_block_line_1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefab/block/ice/ice_hard_block_line_2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://prefab/ground/snow_ground.tscn" type="PackedScene" id=5]
+[ext_resource path="res://prefab/block/ice/ice_cleared_exit_gate.tscn" type="PackedScene" id=6]
+[ext_resource path="res://prefab/block/ice/ice_exit_gate.tscn" type="PackedScene" id=7]
+[ext_resource path="res://prefab/block/ice/ice_hard_block_line_3.tscn" type="PackedScene" id=8]
+[ext_resource path="res://prefab/player/player_specialist.tscn" type="PackedScene" id=9]
+[ext_resource path="res://prefab/screen/pause_screen.tscn" type="PackedScene" id=10]
+[ext_resource path="res://prefab/hud/specialist_story_hud.tscn" type="PackedScene" id=11]
+[ext_resource path="res://prefab/level/level_manager.tscn" type="PackedScene" id=12]
+[ext_resource path="res://prefab/level/node_container.tscn" type="PackedScene" id=13]
+[ext_resource path="res://prefab/enemy/stonepaunch/ice_stonepaunch.tscn" type="PackedScene" id=14]
+[ext_resource path="res://prefab/level/laser_device_manager.tscn" type="PackedScene" id=15]
+[ext_resource path="res://prefab/block/ice/snow_ball_block.tscn" type="PackedScene" id=16]
+[ext_resource path="res://prefab/block/ice/ice_ball_block.tscn" type="PackedScene" id=17]
+[ext_resource path="res://prefab/level/helper_light.tscn" type="PackedScene" id=18]
+[ext_resource path="res://prefab/specialist_item/increase_device_amount_item.tscn" type="PackedScene" id=19]
+[ext_resource path="res://prefab/specialist_item/random_increase_item.tscn" type="PackedScene" id=20]
+[ext_resource path="res://prefab/specialist_item/increase_laser_ray_item.tscn" type="PackedScene" id=21]
+[ext_resource path="res://prefab/enemy/meagerplant/purple_meagerplant.tscn" type="PackedScene" id=22]
+[ext_resource path="res://prefab/enemy/slobhood/green_slobhood.tscn" type="PackedScene" id=23]
+[ext_resource path="res://prefab/level/skill_manager.tscn" type="PackedScene" id=24]
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.027451, 0.152941, 0.313726, 1 )
+sky_horizon_color = Color( 0.0509804, 0.0666667, 0.231373, 1 )
+sun_latitude = 30.0
+sun_longitude = -170.0
+sun_angle_min = 0.5
+sun_angle_max = 8.0
+sun_energy = 1.5
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 0.00784314, 0.0156863, 0.137255, 1 )
+ambient_light_energy = 0.1
+tonemap_exposure = 0.2
+auto_exposure_enabled = true
+auto_exposure_scale = 0.15
+ss_reflections_enabled = true
+ssao_enabled = true
+glow_enabled = true
+glow_strength = 1.05
+glow_blend_mode = 0
+
+[sub_resource type="GIProbeData" id=3]
+bounds = AABB( -20, -10, -20, 40, 20, 40 )
+cell_size = 0.3125
+to_cell_xform = Transform( 3.2, 0, 0, 0, 3.2, 0, 0, 0, 3.2, 64, 32, 64 )
+dynamic_data = PoolIntArray( 0, 8, 128, 64, 128, 1, 0, 0, 0, 1065353216, 0, 0, 0, 0, 0, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
+dynamic_range = 4
+energy = 0.3
+bias = 1.5
+normal_bias = 0.0
+propagation = 0.7
+
+[node name="Snow3LevelWE" type="WorldEnvironment"]
+environment = SubResource( 2 )
+
+[node name="NodeContainer" parent="." instance=ExtResource( 13 )]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.984807, 0.086824, -0.150384, 0, 0.866025, 0.5, 0.173648, -0.492404, 0.852868, -0.839063, 134.597, 50 )
+light_color = Color( 0.0156863, 0.0156863, 0.341176, 1 )
+shadow_enabled = true
+directional_shadow_normal_bias = 0.1
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.52992, 0.848049, 0, -0.848049, 0.52992, 0, 35, 21 )
+fov = 20.0
+
+[node name="GIProbe" type="GIProbe" parent="."]
+extents = Vector3( 20, 10, 20 )
+energy = 0.3
+data = SubResource( 3 )
+
+[node name="SpecialistStoryHUD_1" parent="." instance=ExtResource( 11 )]
+
+[node name="SpecialistStoryHUD_2" parent="." instance=ExtResource( 11 )]
+margin_left = 910.0
+margin_right = 1260.0
+specialistId = 1
+
+[node name="LevelManager" parent="." instance=ExtResource( 12 )]
+pauseScreenNP = NodePath("../PauseScreen")
+exitGateNP = NodePath("../IceExitGate")
+specialistCharacterNPList = [ NodePath("../PlayerSpecialist_1"), NodePath("../PlayerSpecialist_2") ]
+enemyCharacterNPList = [ NodePath("../IceStonepaunch_1"), NodePath("../IceStonepaunch_2"), NodePath("../PurpleMeagerplant_1"), NodePath("../PurpleMeagerplant_2"), NodePath("../PurpleMeagerplant_3"), NodePath("../PurpleMeagerplant_4"), NodePath("../GreenSlobhood_1"), NodePath("../GreenSlobhood_2") ]
+bossCharacterNPList = [  ]
+currentLevelScenePath = "level/ice/snow_3_level"
+nextLevelScenePath = "level/ice/snow_4_level"
+softBlockPrefabList = [ ExtResource( 17 ), ExtResource( 16 ) ]
+itemPrefabList = [ ExtResource( 21 ), ExtResource( 19 ), ExtResource( 20 ) ]
+bgmAnimationName = "snow_bgm"
+levelName = "Snow Village&Area 3"
+levelTime = 450.0
+itemAmountList = [ 1, 1, 3 ]
+hasEnemy = true
+
+[node name="IceExitSmallBorder_1" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 1, 0 )
+
+[node name="IceExitSmallBorder2" parent="." instance=ExtResource( 1 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 11, 1, 0 )
+
+[node name="IceLargeBorder_1" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7 )
+
+[node name="IceLargeBorder_2" parent="." instance=ExtResource( 2 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 1, 7 )
+
+[node name="IceExitGate" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, 5.5 )
+levelManagerNP = NodePath("../LevelManager")
+
+[node name="IceClearedExitGate" parent="." instance=ExtResource( 6 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 13, 1, -5.5 )
+
+[node name="SnowGround" parent="." instance=ExtResource( 5 )]
+
+[node name="IceHardBlockLine1_1" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5 )
+
+[node name="IceHardBlockLine2_1" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3 )
+
+[node name="IceHardBlockLine3_1" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1 )
+
+[node name="IceHardBlockLine3_2" parent="." instance=ExtResource( 8 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0.5, 1 )
+
+[node name="IceHardBlockLine2_2" parent="." instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0.5, 3 )
+
+[node name="IceHardBlockLine1_2" parent="." instance=ExtResource( 3 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0.5, 5 )
+
+[node name="HelperLight_1" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 5, -4 )
+
+[node name="HelperLight_2" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -4 )
+
+[node name="HelperLight_3" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 5, -4 )
+
+[node name="HelperLight_4" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 5, 4 )
+
+[node name="HelperLight_5" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 4 )
+
+[node name="HelperLight_6" parent="." instance=ExtResource( 18 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 5, 4 )
+
+[node name="LaserDeviceManager" parent="." instance=ExtResource( 15 )]
+levelManagerNP = NodePath("../LevelManager")
+
+[node name="SkillManager" parent="." instance=ExtResource( 24 )]
+
+[node name="PlayerSpecialist_1" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6 )
+laserDeviceManagerNP = NodePath("../LaserDeviceManager")
+skillManagerNP = NodePath("../SkillManager")
+
+[node name="PlayerSpecialist_2" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -6 )
+laserDeviceManagerNP = NodePath("../LaserDeviceManager")
+skillManagerNP = NodePath("../SkillManager")
+specialistId = 1
+
+[node name="IceStonepaunch_1" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2 )
+
+[node name="IceStonepaunch_2" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2 )
+
+[node name="PurpleMeagerplant_1" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0 )
+
+[node name="PurpleMeagerplant_2" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
+
+[node name="PurpleMeagerplant_3" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+
+[node name="PurpleMeagerplant_4" parent="." instance=ExtResource( 22 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
+
+[node name="GreenSlobhood_1" parent="." instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2 )
+
+[node name="GreenSlobhood_2" parent="." instance=ExtResource( 23 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2 )
+
+[node name="PauseScreen" parent="." instance=ExtResource( 10 )]

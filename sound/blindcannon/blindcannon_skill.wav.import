@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/blindcannon_skill.wav-377a99557ce622c7d379b2bd182c34f6.sample"
+
+[deps]
+
+source_file="res://sound/blindcannon/blindcannon_skill.wav"
+dest_files=[ "res://.import/blindcannon_skill.wav-377a99557ce622c7d379b2bd182c34f6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

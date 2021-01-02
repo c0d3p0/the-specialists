@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://shader/color_change.shader" type="Shader" id=1]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/color1 = Color( 1, 0, 0, 0.784314 )
+shader_param/color2 = Color( 1, 1, 0, 0.784314 )
+shader_param/color3 = Color( 0, 1, 0, 0.784314 )
+shader_param/color4 = Color( 0, 1, 1, 0.784314 )
+shader_param/color5 = Color( 0, 0, 1, 0.784314 )
+shader_param/color6 = Color( 1, 0, 1, 0.784314 )
+shader_param/alpha_override = 0.0
+shader_param/duration = 0.24

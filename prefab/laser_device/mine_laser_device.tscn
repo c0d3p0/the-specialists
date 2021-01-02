@@ -1,0 +1,345 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://animation/laser_device/mine/active.tres" type="Animation" id=1]
+[ext_resource path="res://.import/laser_device_active.wav-b3dfc152597f47cfd4e4e03d45342bc0.sample" type="AudioStream" id=2]
+[ext_resource path="res://source/laser_device/mine/MineLaserDeviceAction.cs" type="Script" id=3]
+[ext_resource path="res://prefab/laser_device/laser_ray_area.tscn" type="PackedScene" id=4]
+[ext_resource path="res://material/laser_device/laser_ray_thick.tres" type="Material" id=5]
+[ext_resource path="res://animation/laser_device/default/detonate.tres" type="Animation" id=6]
+[ext_resource path="res://model/laser_device/laser_device_structure.tscn" type="PackedScene" id=7]
+[ext_resource path="res://animation/laser_device/default/idle.tres" type="Animation" id=8]
+[ext_resource path="res://animation/laser_device/mine/inactive.tres" type="Animation" id=9]
+[ext_resource path="res://material/laser_device/red_laser_device.tres" type="Material" id=10]
+[ext_resource path="res://animation/laser_device/default/recycle.tres" type="Animation" id=11]
+[ext_resource path="res://model/laser_device/laser_device_glass.tscn" type="PackedScene" id=12]
+[ext_resource path="res://material/laser_device/glass.tres" type="Material" id=13]
+[ext_resource path="res://animation/default/start.tres" type="Animation" id=14]
+[ext_resource path="res://material/laser_device/glass_ray.tres" type="Material" id=15]
+[ext_resource path="res://shader/color_change.shader" type="Shader" id=16]
+[ext_resource path="res://source/character/CharacterPhysics.cs" type="Script" id=17]
+[ext_resource path="res://source/character/CharacterMove.cs" type="Script" id=18]
+[ext_resource path="res://source/laser_device/DefaultLaserDevice.cs" type="Script" id=19]
+[ext_resource path="res://source/laser_device/DefaultLaserDeviceInitializer.cs" type="Script" id=20]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.48, 0.48, 0.48 )
+
+[sub_resource type="CylinderMesh" id=2]
+top_radius = 0.45
+bottom_radius = 0.45
+height = 0.8
+
+[sub_resource type="SphereMesh" id=3]
+radius = 0.5
+height = 1.0
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 16 )
+shader_param/color1 = Color( 2, 0, 0, 1 )
+shader_param/color2 = Color( 2, 2, 0, 1 )
+shader_param/color3 = Color( 0, 2, 0, 1 )
+shader_param/color4 = Color( 0, 2, 2, 1 )
+shader_param/color5 = Color( 0, 0, 2, 1 )
+shader_param/color6 = Color( 2, 0, 2, 1 )
+shader_param/alpha_override = 1.0
+shader_param/duration = 0.24
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 16 )
+shader_param/color1 = Color( 1, 0, 0, 0.784314 )
+shader_param/color2 = Color( 1, 1, 0, 0.784314 )
+shader_param/color3 = Color( 0, 1, 0, 0.784314 )
+shader_param/color4 = Color( 0, 1, 1, 0.784314 )
+shader_param/color5 = Color( 0, 0, 1, 0.784314 )
+shader_param/color6 = Color( 1, 0, 1, 0.784314 )
+shader_param/alpha_override = 1.0
+shader_param/duration = 0.24
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.49, 0.99, 1.49 )
+
+[sub_resource type="BoxShape" id=7]
+extents = Vector3( 0.3, 0.4, 0.3 )
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "active"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "detonate"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "inactive"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "recycle"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "start"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=20]
+states/active/node = SubResource( 8 )
+states/active/position = Vector2( 334, 13 )
+states/detonate/node = SubResource( 9 )
+states/detonate/position = Vector2( 665, 13 )
+states/idle/node = SubResource( 10 )
+states/idle/position = Vector2( 496, 13 )
+states/inactive/node = SubResource( 11 )
+states/inactive/position = Vector2( 165, 13 )
+states/recycle/node = SubResource( 12 )
+states/recycle/position = Vector2( 417, 119 )
+states/start/node = SubResource( 13 )
+states/start/position = Vector2( 165, 119 )
+transitions = [ "inactive", "active", SubResource( 14 ), "active", "idle", SubResource( 15 ), "idle", "detonate", SubResource( 16 ), "detonate", "recycle", SubResource( 17 ), "recycle", "inactive", SubResource( 18 ), "start", "inactive", SubResource( 19 ) ]
+start_node = "start"
+graph_offset = Vector2( 0, -31.584 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=21]
+
+[node name="MineLaserDevice" type="KinematicBody" groups=[
+"laser_device",
+]]
+collision_layer = 16
+collision_mask = 31
+script = ExtResource( 19 )
+laserDeviceActionNP = NodePath("Source/LaserDeviceAction")
+characterMoveNP = NodePath("Source/CharacterMove")
+laserDeviceType = "M"
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Structure" type="Spatial" parent="."]
+transform = Transform( 0.500664, 0, -0.865642, 0, 1, 0, 0.865642, 0, 0.500664, 0, 0.0666179, 0 )
+
+[node name="LaserDeviceStructureMI" parent="Structure" instance=ExtResource( 7 )]
+material/0 = ExtResource( 10 )
+
+[node name="LaserDeviceGlassMI" parent="Structure" instance=ExtResource( 12 )]
+material/0 = ExtResource( 15 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Structure"]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 13 )
+
+[node name="HurtArea" type="Area" parent="."]
+collision_layer = 256
+collision_mask = 19456
+
+[node name="CollisionShape" type="CollisionShape" parent="HurtArea"]
+shape = SubResource( 1 )
+
+[node name="CenterRayArea" type="Area" parent="."]
+visible = false
+monitoring = false
+monitorable = false
+collision_layer = 1024
+collision_mask = 992
+
+[node name="CollisionShape" type="CollisionShape" parent="CenterRayArea"]
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CenterRayArea"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 5 )
+
+[node name="ForwardRayArea" parent="." instance=ExtResource( 4 )]
+transform = Transform( -1, 1.74846e-07, -8.74228e-11, 1.74846e-07, 1, 0, 8.74228e-08, -1.52855e-14, -0.001, 0, 0, 0.5 )
+visible = false
+collision_layer = 1024
+collision_mask = 992
+
+[node name="LaserRay" parent="ForwardRayArea" index="1"]
+transform = Transform( 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="LaserRayMeshInstance" parent="ForwardRayArea/LaserRay" index="0"]
+material/0 = SubResource( 4 )
+
+[node name="LaserRayThickMeshInstance" parent="ForwardRayArea/LaserRay" index="1"]
+material/0 = SubResource( 5 )
+
+[node name="LeftRayArea" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 7.64274e-15, 0.001, 1.74846e-07, 1, 0, -1, 1.74846e-07, -4.37114e-11, -0.5, 0, 0 )
+visible = false
+collision_layer = 1024
+collision_mask = 992
+
+[node name="LaserRay" parent="LeftRayArea" index="1"]
+transform = Transform( 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="LaserRayMeshInstance" parent="LeftRayArea/LaserRay" index="0"]
+material/0 = SubResource( 4 )
+
+[node name="LaserRayThickMeshInstance" parent="LeftRayArea/LaserRay" index="1"]
+material/0 = SubResource( 5 )
+
+[node name="BackRayArea" parent="." instance=ExtResource( 4 )]
+transform = Transform( 1, -1.74846e-07, 0, 1.74846e-07, 1, 0, 0, 0, 0.001, 0, 0, -0.5 )
+visible = false
+collision_layer = 1024
+collision_mask = 992
+
+[node name="LaserRay" parent="BackRayArea" index="1"]
+transform = Transform( 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="LaserRayMeshInstance" parent="BackRayArea/LaserRay" index="0"]
+material/0 = SubResource( 4 )
+
+[node name="LaserRayThickMeshInstance" parent="BackRayArea/LaserRay" index="1"]
+material/0 = SubResource( 5 )
+
+[node name="RightRayArea" parent="." instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 7.64274e-15, -0.001, 1.74846e-07, 1, 0, 1, -1.74846e-07, -4.37114e-11, 0.5, 0, 0 )
+visible = false
+collision_layer = 1024
+collision_mask = 992
+
+[node name="LaserRay" parent="RightRayArea" index="1"]
+transform = Transform( 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="LaserRayMeshInstance" parent="RightRayArea/LaserRay" index="0"]
+material/0 = SubResource( 4 )
+
+[node name="LaserRayThickMeshInstance" parent="RightRayArea/LaserRay" index="1"]
+material/0 = SubResource( 5 )
+
+[node name="SensorArea" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+monitorable = false
+collision_layer = 65536
+collision_mask = 864
+
+[node name="VCollisionShape" type="CollisionShape" parent="SensorArea"]
+shape = SubResource( 6 )
+
+[node name="HCollisionShape" type="CollisionShape" parent="SensorArea"]
+transform = Transform( -1.62921e-07, 0, 1, 0, 1, 0, -1, 0, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="IgnoreCollisionArea" type="Area" parent="."]
+monitorable = false
+collision_layer = 131072
+collision_mask = 3
+
+[node name="CollisionShape" type="CollisionShape" parent="IgnoreCollisionArea"]
+shape = SubResource( 7 )
+
+[node name="FrontRayCast" type="RayCast" parent="."]
+cast_to = Vector3( 0, 0, 23 )
+collision_mask = 896
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="LeftRayCast" type="RayCast" parent="."]
+cast_to = Vector3( -23, 0, 0 )
+collision_mask = 896
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="BackRayCast" type="RayCast" parent="."]
+cast_to = Vector3( 0, 0, -23 )
+collision_mask = 896
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="RightRayCast" type="RayCast" parent="."]
+cast_to = Vector3( 23, 0, 0 )
+collision_mask = 896
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/active = ExtResource( 1 )
+anims/detonate = ExtResource( 6 )
+anims/idle = ExtResource( 8 )
+anims/inactive = ExtResource( 9 )
+anims/recycle = ExtResource( 11 )
+anims/start = ExtResource( 14 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 20 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 21 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
+attenuation_model = 3
+
+[node name="Source" type="Node" parent="."]
+
+[node name="CharacterPhysics" type="Node" parent="Source"]
+script = ExtResource( 17 )
+kinematicBodyNP = NodePath("../..")
+lockYPosition = 1.0
+
+[node name="CharacterMove" type="Node" parent="Source"]
+script = ExtResource( 18 )
+moveSpeed = Vector3( 20, 0, 20 )
+acceleration = 50.0
+deacceleration = 40.0
+
+[node name="LaserDeviceAction" type="Node" parent="Source"]
+script = ExtResource( 3 )
+laserDeviceNP = NodePath("../..")
+growLaserRayAreaNPList = [ NodePath("../../ForwardRayArea"), NodePath("../../LeftRayArea"), NodePath("../../BackRayArea"), NodePath("../../RightRayArea") ]
+sizeRayCastNPList = [ NodePath("../../FrontRayCast"), NodePath("../../LeftRayCast"), NodePath("../../BackRayCast"), NodePath("../../RightRayCast") ]
+centerLaserRayAreaNP = NodePath("../../CenterRayArea")
+animationTreeNP = NodePath("../../AnimationTree")
+hurtAreaNP = NodePath("../../HurtArea")
+toDetonateMap = {
+"active": "detonate",
+"idle": "detonate"
+}
+laserGrowVectorList = [ Vector3( 0, 0, 1 ), Vector3( 0, 0, 1 ), Vector3( 0, 0, 1 ), Vector3( 0, 0, 1 ) ]
+detonateTimeLevelRange = Vector2( 1, 1 )
+damageGiven = 80
+hasTimer = false
+sensorAreaNP = NodePath("../../SensorArea")
+
+[node name="LaserDeviceInitializer" type="Node" parent="Source"]
+script = ExtResource( 20 )
+laserDeviceNP = NodePath("../..")
+characterPhysicsNP = NodePath("../CharacterPhysics")
+characterMoveNP = NodePath("../CharacterMove")
+laserDeviceActionNP = NodePath("../LaserDeviceAction")
+hurtAreaNP = NodePath("../../HurtArea")
+[connection signal="area_entered" from="HurtArea" to="Source/LaserDeviceAction" method="OnHurtAreaEntered"]
+[connection signal="area_entered" from="CenterRayArea" to="Source/LaserDeviceAction" method="OnLaserRayAreaEntered"]
+[connection signal="area_entered" from="ForwardRayArea" to="Source/LaserDeviceAction" method="OnLaserRayAreaEntered"]
+[connection signal="area_entered" from="LeftRayArea" to="Source/LaserDeviceAction" method="OnLaserRayAreaEntered"]
+[connection signal="area_entered" from="BackRayArea" to="Source/LaserDeviceAction" method="OnLaserRayAreaEntered"]
+[connection signal="area_entered" from="RightRayArea" to="Source/LaserDeviceAction" method="OnLaserRayAreaEntered"]
+[connection signal="area_entered" from="SensorArea" to="Source/LaserDeviceAction" method="OnSensorAreaEntered"]
+[connection signal="body_entered" from="IgnoreCollisionArea" to="Source/LaserDeviceAction" method="OnIgnoreCollisionBodyEntered"]
+[connection signal="body_exited" from="IgnoreCollisionArea" to="Source/LaserDeviceAction" method="OnIgnoreCollisionBodyExited"]
+
+[editable path="ForwardRayArea"]
+
+[editable path="LeftRayArea"]
+
+[editable path="BackRayArea"]
+
+[editable path="RightRayArea"]

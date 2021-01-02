@@ -1,0 +1,42 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/metal_albedo.png-b5c4571ede33d902078ce6e472556b51.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/metal_ao.png-f8bbf0b756682a3f24fb3caf0e9ac252.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/metal_specular.png-9ef8011cdaf6ccb6e4ab30fabd228750.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/metal_normal.png-2bd7342f75911c3287a1acfe314c9d79.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/metal_roughness.png-219fd1db658d85d8bb6796108c278e6e.stex"
+
+[resource]
+resource_name = "TCone_Base"
+params_cull_mode = 2
+albedo_color = Color( 1, 0.705882, 0, 1 )
+albedo_texture = SubResource( 1 )
+metallic = 1.0
+metallic_texture = SubResource( 3 )
+roughness = 0.2
+roughness_texture = SubResource( 5 )
+normal_enabled = true
+normal_scale = 0.3
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.09
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.93
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0

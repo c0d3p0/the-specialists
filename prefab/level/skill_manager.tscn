@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://source/level/SkillManager.cs" type="Script" id=1]
+[ext_resource path="res://prefab/projectile/laser_device_trigger.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefab/projectile/red_laser_ball.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefab/laser_device/weak_radial_laser_device.tscn" type="PackedScene" id=4]
+[ext_resource path="res://prefab/projectile/ice_spike.tscn" type="PackedScene" id=5]
+[ext_resource path="res://prefab/laser_device/pierce_laser_device.tscn" type="PackedScene" id=6]
+
+[node name="SkillManager" type="Spatial"]
+script = ExtResource( 1 )
+projectilePrefabList = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ) ]
+projectileAmountList = [ 2, 0, 0, 0, 0 ]
+
+[node name="SpecialistProjectile" type="Spatial" parent="."]
+
+[node name="JunkbotProjectile" type="Spatial" parent="."]
+
+[node name="SnowmanProjectile" type="Spatial" parent="."]
+
+[node name="WeakRadialLaserDevice" type="Spatial" parent="."]
+
+[node name="MineLaserDevice" type="Spatial" parent="."]

@@ -1,0 +1,93 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://source/level/SpecialistItem.cs" type="Script" id=1]
+[ext_resource path="res://animation/specialist_item/red/inactive.tres" type="Animation" id=2]
+[ext_resource path="res://animation/specialist_item/active.tres" type="Animation" id=3]
+[ext_resource path="res://model/object/item.tscn" type="PackedScene" id=4]
+[ext_resource path="res://material/item/red_glow.tres" type="Material" id=5]
+[ext_resource path="res://material/item/random_decrease_item.tres" type="Material" id=6]
+[ext_resource path="res://animation/specialist_item/idle.tres" type="Animation" id=7]
+[ext_resource path="res://animation/specialist_item/red/dissolve.tres" type="Animation" id=8]
+[ext_resource path="res://animation/specialist_item/get_picked.tres" type="Animation" id=9]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.45, 0.45, 0.45 )
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+animation = "active"
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "dissolve"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "get_picked"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "inactive"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachine" id=11]
+states/active/node = SubResource( 2 )
+states/active/position = Vector2( 151, 170 )
+states/dissolve/node = SubResource( 3 )
+states/dissolve/position = Vector2( 496, 170 )
+states/get_picked/node = SubResource( 4 )
+states/get_picked/position = Vector2( 496, 73 )
+states/idle/node = SubResource( 5 )
+states/idle/position = Vector2( 326, 73 )
+states/inactive/node = SubResource( 6 )
+states/inactive/position = Vector2( 151, 73 )
+transitions = [ "inactive", "active", SubResource( 7 ), "active", "idle", SubResource( 8 ), "idle", "get_picked", SubResource( 9 ), "idle", "dissolve", SubResource( 10 ) ]
+start_node = "inactive"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=12]
+
+[node name="RandomDecreaseItem" type="Area"]
+monitoring = false
+monitorable = false
+collision_layer = 512
+collision_mask = 17504
+script = ExtResource( 1 )
+animationTreeNP = NodePath("AnimationTree")
+featureId = 25
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Structure" type="Spatial" parent="."]
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+
+[node name="ItemMeshInstance" parent="Structure" instance=ExtResource( 4 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )
+material/0 = ExtResource( 5 )
+material/1 = ExtResource( 6 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+attenuation_model = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/active = ExtResource( 3 )
+anims/dissolve = ExtResource( 8 )
+anims/get_picked = ExtResource( 9 )
+anims/idle = ExtResource( 7 )
+anims/inactive = ExtResource( 2 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 11 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 12 )
+[connection signal="area_entered" from="." to="." method="OnHurtAreaEntered"]

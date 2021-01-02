@@ -1,0 +1,37 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/yellow_moistyamphibious_albedo.png-84aa706c4f7444e2189e64f347015ce7.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/moistyamphibious_ao.png-e311ed75c86bd6c6ea1b07f8e26084f1.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/moistyamphibious_specular.png-71b18b4d320a08bf9221835d058c7ca3.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/moistyamphibious_normal.png-3f7a263f71da3d2f209aa7eab91c14cf.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_texture = SubResource( 1 )
+metallic_texture = SubResource( 3 )
+roughness = 0.2
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.17
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.94
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0

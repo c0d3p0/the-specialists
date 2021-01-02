@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/eye_death.wav-6e6cb25a9a76b719e1f3f097498f16a7.sample"
+
+[deps]
+
+source_file="res://sound/eye/eye_death.wav"
+dest_files=[ "res://.import/eye_death.wav-6e6cb25a9a76b719e1f3f097498f16a7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

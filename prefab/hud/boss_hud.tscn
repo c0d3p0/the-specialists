@@ -1,0 +1,121 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://gui/theme/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://gui/font/madcat_30.tres" type="DynamicFont" id=2]
+[ext_resource path="res://source/hud/BossHUD.cs" type="Script" id=3]
+[ext_resource path="res://shader/ui_border.shader" type="Shader" id=4]
+[ext_resource path="res://gui/theme/gui_layout_style.tres" type="StyleBox" id=5]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/snowman_profile.png-35eae11639c96e57118b6ee487958ff9.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/blindcannon_profile.png-5f1ca4429683b7db5780b454be172061.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/wendigo_profile.png-5823b6be94a784bcbd69145d7341ff80.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/cybotron_profile.png-e5f433c889a01dbadc39a3e6005161ae.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/hud_border.png-4b0cb611e9b315638c2954f1d8dfa6ef.stex"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = ExtResource( 4 )
+shader_param/color_1 = Color( 0.72, 0.89, 2, 1 )
+shader_param/color_2 = Color( 2, 2, 2, 1 )
+shader_param/color_3 = Color( 0.72, 0.89, 2, 1 )
+shader_param/resolution = Vector2( 1, 1 )
+shader_param/ui_texture = SubResource( 5 )
+
+[sub_resource type="StreamTexture" id=7]
+flags = 7
+load_path = "res://.import/border_hud.png-f822c254b45e79de273545cc834a884a.stex"
+
+[node name="BossHUD" type="Control"]
+margin_left = 560.0
+margin_top = 2.0
+margin_right = 720.0
+margin_bottom = 80.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+profileTextureRectNP = NodePath("DataControl/ProfileControl/TextureRect")
+healthLabelNP = NodePath("DataControl/HealthControl/Label")
+bossPictureList = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ]
+
+[node name="BorderPanel" type="Panel" parent="."]
+material = SubResource( 6 )
+margin_right = 160.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGPanel" type="Panel" parent="."]
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 70.0
+custom_styles/panel = ExtResource( 5 )
+
+[node name="DataControl" type="Control" parent="."]
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfileControl" type="Control" parent="DataControl"]
+margin_left = 5.0
+margin_top = 1.0
+margin_right = 65.0
+margin_bottom = 61.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DataControl/ProfileControl"]
+margin_left = 4.0
+margin_top = 5.0
+margin_right = 484.0
+margin_bottom = 485.0
+rect_scale = Vector2( 0.105, 0.105 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BorderTextureRect" type="TextureRect" parent="DataControl/ProfileControl"]
+margin_right = 1024.0
+margin_bottom = 1024.0
+rect_scale = Vector2( 0.058, 0.058 )
+texture = SubResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthControl" type="Control" parent="DataControl"]
+margin_left = 70.0
+margin_right = 150.0
+margin_bottom = 62.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DataControl/HealthControl"]
+margin_top = 12.0
+margin_right = 87.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 2 )
+text = "100%"
+__meta__ = {
+"_edit_use_anchors_": false
+}

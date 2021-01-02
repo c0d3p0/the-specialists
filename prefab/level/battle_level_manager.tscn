@@ -1,0 +1,275 @@
+[gd_scene load_steps=55 format=2]
+
+[ext_resource path="res://source/level/BattleLevelBlockManager.cs" type="Script" id=1]
+[ext_resource path="res://gui/font/madcat_64.tres" type="DynamicFont" id=3]
+[ext_resource path="res://source/level/BattleLevelManager.cs" type="Script" id=4]
+[ext_resource path="res://source/level/BattleNextScene.cs" type="Script" id=5]
+[ext_resource path="res://gui/theme/secondary_theme.tres" type="Theme" id=11]
+[ext_resource path="res://source/level/BattleLevelProgress.cs" type="Script" id=12]
+[ext_resource path="res://gui/theme/gui_layout_style.tres" type="StyleBox" id=13]
+[ext_resource path="res://shader/ui_border.shader" type="Shader" id=14]
+[ext_resource path="res://gui/theme/black_screen_bg_style.tres" type="StyleBox" id=15]
+[ext_resource path="res://animation/level/battle/intro.tres" type="Animation" id=16]
+[ext_resource path="res://animation/level/battle/intro_end.tres" type="Animation" id=17]
+[ext_resource path="res://animation/level/battle/round_draw.tres" type="Animation" id=18]
+[ext_resource path="res://animation/level/battle/battle_won.tres" type="Animation" id=19]
+[ext_resource path="res://animation/level/battle/round_won.tres" type="Animation" id=20]
+[ext_resource path="res://animation/level/battle/pre_intro.tres" type="Animation" id=21]
+[ext_resource path="res://animation/level/battle/level_end.tres" type="Animation" id=22]
+[ext_resource path="res://animation/level/story/end_bgm.tres" type="Animation" id=23]
+[ext_resource path="res://animation/level/story/city_bgm.tres" type="Animation" id=24]
+[ext_resource path="res://animation/level/story/mine_bgm.tres" type="Animation" id=25]
+[ext_resource path="res://animation/level/story/snow_bgm.tres" type="Animation" id=26]
+[ext_resource path="res://animation/level/story/lab_bgm.tres" type="Animation" id=27]
+[ext_resource path="res://.import/level_failed.wav-ebf726fbf592303f59ec050ece8db304.sample" type="AudioStream" id=28]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/hud_border.png-4b0cb611e9b315638c2954f1d8dfa6ef.stex"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 14 )
+shader_param/color_1 = Color( 0.72, 0.89, 2, 1 )
+shader_param/color_2 = Color( 2, 2, 2, 1 )
+shader_param/color_3 = Color( 0.72, 0.89, 2, 1 )
+shader_param/resolution = Vector2( 1, 1 )
+shader_param/ui_texture = SubResource( 1 )
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "battle_won"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "city_bgm"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "end_bgm"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "intro"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "intro_end"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "lab_bgm"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "level_end"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "mine_bgm"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "pre_intro"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "round_draw"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "round_won"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "snow_bgm"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachine" id=31]
+states/battle_won/node = SubResource( 3 )
+states/battle_won/position = Vector2( 954, 181 )
+states/city_bgm/node = SubResource( 4 )
+states/city_bgm/position = Vector2( 547.282, 122.576 )
+states/end_bgm/node = SubResource( 5 )
+states/end_bgm/position = Vector2( 750.697, 100 )
+states/intro/node = SubResource( 6 )
+states/intro/position = Vector2( 337, 9 )
+states/intro_end/node = SubResource( 7 )
+states/intro_end/position = Vector2( 337, 100 )
+states/lab_bgm/node = SubResource( 8 )
+states/lab_bgm/position = Vector2( 547.282, 181 )
+states/level_end/node = SubResource( 9 )
+states/level_end/position = Vector2( 1158.28, 100 )
+states/mine_bgm/node = SubResource( 10 )
+states/mine_bgm/position = Vector2( 547.282, 65.5755 )
+states/pre_intro/node = SubResource( 11 )
+states/pre_intro/position = Vector2( 166.282, 9 )
+states/round_draw/node = SubResource( 12 )
+states/round_draw/position = Vector2( 954, 100 )
+states/round_won/node = SubResource( 13 )
+states/round_won/position = Vector2( 954, 9 )
+states/snow_bgm/node = SubResource( 14 )
+states/snow_bgm/position = Vector2( 547.282, 9 )
+transitions = [ "intro", "intro_end", SubResource( 15 ), "round_won", "level_end", SubResource( 16 ), "battle_won", "level_end", SubResource( 17 ), "round_draw", "level_end", SubResource( 18 ), "pre_intro", "intro", SubResource( 19 ), "intro_end", "snow_bgm", SubResource( 20 ), "intro_end", "mine_bgm", SubResource( 21 ), "intro_end", "city_bgm", SubResource( 22 ), "intro_end", "lab_bgm", SubResource( 23 ), "snow_bgm", "end_bgm", SubResource( 24 ), "mine_bgm", "end_bgm", SubResource( 25 ), "city_bgm", "end_bgm", SubResource( 26 ), "lab_bgm", "end_bgm", SubResource( 27 ), "end_bgm", "round_won", SubResource( 28 ), "end_bgm", "round_draw", SubResource( 29 ), "end_bgm", "battle_won", SubResource( 30 ) ]
+start_node = "pre_intro"
+end_node = "level_end"
+graph_offset = Vector2( 85.9117, -45.4245 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+
+[node name="BattleLevelManager" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.31498
+margin_bottom = -0.315002
+theme = ExtResource( 11 )
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+battleLevelProgressNP = NodePath("Source/BattleLevelProgress")
+levelBlockManagerNP = NodePath("Source/LevelBlockManager")
+
+[node name="IntroLabel" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 317.0
+margin_right = 1280.0
+margin_bottom = 402.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.721569, 0.890196, 1, 1 )
+text = "Round Draw"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeHUD" type="Control" parent="."]
+margin_left = 560.0
+margin_right = 720.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BorderPanel" type="Panel" parent="TimeHUD"]
+material = SubResource( 2 )
+margin_right = 160.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGPanel" type="Panel" parent="TimeHUD"]
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 70.0
+custom_styles/panel = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TimeHUD"]
+margin_top = 10.0
+margin_right = 160.0
+margin_bottom = 69.0
+text = "Hurry Up
+180.000"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeOutPanel" type="Panel" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+custom_styles/panel = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AirStrikeTimer" type="Timer" parent="."]
+wait_time = 90.0
+one_shot = true
+
+[node name="BattleTimer" type="Timer" parent="."]
+wait_time = 180.0
+one_shot = true
+
+[node name="BattleEndDelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+volume_db = -2.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/battle_won = ExtResource( 19 )
+anims/city_bgm = ExtResource( 24 )
+anims/end_bgm = ExtResource( 23 )
+anims/intro = ExtResource( 16 )
+anims/intro_end = ExtResource( 17 )
+anims/lab_bgm = ExtResource( 27 )
+anims/level_end = ExtResource( 22 )
+anims/mine_bgm = ExtResource( 25 )
+anims/pre_intro = ExtResource( 21 )
+anims/round_draw = ExtResource( 18 )
+anims/round_won = ExtResource( 20 )
+anims/snow_bgm = ExtResource( 26 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 31 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 32 )
+
+[node name="Source" type="Node" parent="."]
+
+[node name="BattleLevelProgress" type="Node" parent="Source"]
+script = ExtResource( 12 )
+introLabelNP = NodePath("../../IntroLabel")
+timeLabelNP = NodePath("../../TimeHUD/Label")
+airStrikeTimerNP = NodePath("../../AirStrikeTimer")
+battleTimerNP = NodePath("../../BattleTimer")
+battleEndTimerNP = NodePath("../../BattleEndDelayTimer")
+animationTreeNP = NodePath("../../AnimationTree")
+
+[node name="LevelBlockManager" type="Node" parent="Source"]
+script = ExtResource( 1 )
+preDefinedSoftBlockSlotList = [ Vector2( 0, 2 ), Vector2( 2, 0 ), Vector2( 0, 18 ), Vector2( 2, 20 ), Vector2( 10, 0 ), Vector2( 12, 2 ), Vector2( 10, 20 ), Vector2( 12, 18 ) ]
+forceEmptyBlockSlotList = [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 1, 0 ), Vector2( 0, 19 ), Vector2( 0, 20 ), Vector2( 1, 20 ), Vector2( 6, 10 ), Vector2( 11, 0 ), Vector2( 12, 0 ), Vector2( 12, 1 ), Vector2( 11, 20 ), Vector2( 12, 19 ), Vector2( 12, 20 ), Vector2( 5, 10 ), Vector2( 7, 10 ), Vector2( 6, 11 ), Vector2( 6, 9 ) ]
+
+[node name="BattleNextScene" type="Node" parent="Source"]
+script = ExtResource( 5 )
+[connection signal="timeout" from="AirStrikeTimer" to="Source/BattleLevelProgress" method="OnAirStrikeTimerTimeout"]
+[connection signal="timeout" from="BattleTimer" to="Source/BattleLevelProgress" method="OnBattleTimerTimeout"]
+[connection signal="timeout" from="BattleEndDelayTimer" to="Source/BattleLevelProgress" method="OnBattleEndDelayTimerTimeout"]

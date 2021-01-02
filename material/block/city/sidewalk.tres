@@ -1,0 +1,33 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 5
+load_path = "res://.import/sidewalk_albedo.png-3e6a57884c790047530da794e0cf4edf.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 5
+load_path = "res://.import/sidewalk_ao.png-ed731a0cc00aff1532997fd0bbbd769a.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 5
+load_path = "res://.import/sidewalk_normal.png-97b8769fa1570d424fd3d048d6b2d6c0.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 5
+load_path = "res://.import/sidewalk_roughness.png-47038edf4651f2cce071f8dc54cd5ebd.stex"
+
+[resource]
+albedo_texture = SubResource( 1 )
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 4.0
+normal_texture = SubResource( 3 )
+rim_enabled = true
+rim = 0.11
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.96
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 0.25, 0.25, 1 )

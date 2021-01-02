@@ -1,0 +1,479 @@
+[gd_scene load_steps=65 format=2]
+
+[ext_resource path="res://material/character/wendigo_bone.tres" type="Material" id=1]
+[ext_resource path="res://material/character/wendigo_body.tres" type="Material" id=2]
+[ext_resource path="res://material/character/specialist_green.tres" type="Material" id=3]
+[ext_resource path="res://material/character/specialist_gray.tres" type="Material" id=4]
+[ext_resource path="res://material/character/specialist_blue.tres" type="Material" id=5]
+[ext_resource path="res://material/character/snowman_snow.tres" type="Material" id=6]
+[ext_resource path="res://material/character/specialist_brown.tres" type="Material" id=7]
+[ext_resource path="res://material/character/slobhood_yellow.tres" type="Material" id=8]
+[ext_resource path="res://shader/character.shader" type="Shader" id=9]
+[ext_resource path="res://texture/noise/noise_texture.tres" type="Texture" id=10]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 0.2, 0.2 )
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/red_blindcannon_albedo.png-e0464f1e2108f466f00d7fc827ee2be5.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/blindcannon_specular.png-12106169d49c35a0e70baab02d1761a9.stex"
+
+[sub_resource type="ShaderMaterial" id=4]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource( 9 )
+shader_param/blinkSpeed = 15.0
+shader_param/blinkRange = 1.0
+shader_param/fadeInPercent = 0.0
+shader_param/dissolvePercent = 0.0
+shader_param/blinkColor = Color( 2.2, 0.05, 0.1, 0.25 )
+shader_param/fadeInColor = Color( 0, 0, 0, 1 )
+shader_param/dissolveColor = Color( 0, 0, 0, 1 )
+shader_param/dissolveEmissionColor = Color( 2.4, 1.8, 0.7, 1 )
+shader_param/blink = false
+shader_param/fadeIn = false
+shader_param/dissolve = false
+shader_param/dissolveTexture = ExtResource( 10 )
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/blindcannon_normal.png-6970ec188d1b1ddbeb1b32fc7a52f315.stex"
+
+[sub_resource type="StreamTexture" id=6]
+flags = 7
+load_path = "res://.import/blindcannon_roughness.png-d351895bcbab5af17fc55b989fc9c3b8.stex"
+
+[sub_resource type="SpatialMaterial" id=7]
+resource_local_to_scene = true
+next_pass = SubResource( 4 )
+albedo_texture = SubResource( 2 )
+metallic = 1.0
+metallic_texture = SubResource( 3 )
+roughness = 0.3
+roughness_texture = SubResource( 6 )
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = SubResource( 5 )
+rim_enabled = true
+rim = 0.19
+rim_tint = 1.0
+
+[sub_resource type="SpatialMaterial" id=8]
+resource_local_to_scene = true
+next_pass = SubResource( 4 )
+flags_unshaded = true
+albedo_color = Color( 2, 0.1, 0.1, 1 )
+
+[sub_resource type="StreamTexture" id=9]
+flags = 7
+load_path = "res://.import/red_leather_albedo.png-cb32ad9c8d9b1c2e214bec2ecb557b7e.stex"
+
+[sub_resource type="StreamTexture" id=10]
+flags = 7
+load_path = "res://.import/leather_ao.png-7715c7b268f728202017e61444635b0c.stex"
+
+[sub_resource type="StreamTexture" id=11]
+flags = 7
+load_path = "res://.import/leather_normal.png-1897f65ca4327623e815c9ab2efb9967.stex"
+
+[sub_resource type="StreamTexture" id=12]
+flags = 7
+load_path = "res://.import/leather_roughness.png-654e89c9e3ced893cf0972b98600cbd5.stex"
+
+[sub_resource type="SpatialMaterial" id=13]
+resource_local_to_scene = true
+next_pass = SubResource( 4 )
+albedo_texture = SubResource( 9 )
+roughness = 0.5
+roughness_texture = SubResource( 12 )
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 11 )
+rim_enabled = true
+rim = 0.17
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.94
+ao_texture = SubResource( 10 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 4, 4, 1 )
+
+[sub_resource type="StreamTexture" id=14]
+flags = 7
+load_path = "res://.import/boulder_albedo.png-5ce8c147d0dd1217fd6f0aa510354973.stex"
+
+[sub_resource type="StreamTexture" id=15]
+flags = 7
+load_path = "res://.import/boulder_ao.png-abb5200f1b0925405dc61b0771b4b4b6.stex"
+
+[sub_resource type="StreamTexture" id=16]
+flags = 7
+load_path = "res://.import/boulder_specular.png-e8ccd3d7af3dfad58018972f6981b3cc.stex"
+
+[sub_resource type="StreamTexture" id=17]
+flags = 7
+load_path = "res://.import/boulder_normal.png-d2dd94cef33fa5c6c8f2b2cc58411442.stex"
+
+[sub_resource type="SpatialMaterial" id=18]
+resource_local_to_scene = true
+resource_name = "Material.002"
+next_pass = SubResource( 4 )
+params_cull_mode = 2
+albedo_texture = SubResource( 14 )
+metallic_texture = SubResource( 16 )
+roughness = 0.9
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 17 )
+rim_enabled = true
+rim = 0.13
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.3
+ao_texture = SubResource( 15 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+
+[sub_resource type="StreamTexture" id=19]
+flags = 7
+load_path = "res://.import/rotting_guy_albedo.jpg-ad7e8ccfbbc7fd9223daf2e9f961f7fc.stex"
+
+[sub_resource type="StreamTexture" id=20]
+flags = 7
+load_path = "res://.import/rotting_guy_ao.jpg-a4c9b8f7e68ba314a8ac6ace3e333d18.stex"
+
+[sub_resource type="StreamTexture" id=21]
+flags = 7
+load_path = "res://.import/rotting_guy_normal.jpg-813ebb2c7abfae7152d2e40385d101a9.stex"
+
+[sub_resource type="StreamTexture" id=22]
+flags = 7
+load_path = "res://.import/rotting_guy_roughness.jpg-d8fcd715d5bb2432e4ff6617041e0a03.stex"
+
+[sub_resource type="SpatialMaterial" id=23]
+resource_local_to_scene = true
+next_pass = SubResource( 4 )
+albedo_texture = SubResource( 19 )
+roughness = 0.8
+roughness_texture = SubResource( 22 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 21 )
+rim_enabled = true
+rim = 0.18
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.95
+ao_texture = SubResource( 20 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+
+[sub_resource type="StreamTexture" id=24]
+flags = 7
+load_path = "res://.import/blue_geo_cloth_albedo.png-6d9ef6b909ec2b94a6a1f2633a613e3b.stex"
+
+[sub_resource type="StreamTexture" id=25]
+flags = 7
+load_path = "res://.import/geo_cloth_ao.png-538082771740ebdb3e7ad40f4b4f5094.stex"
+
+[sub_resource type="StreamTexture" id=26]
+flags = 7
+load_path = "res://.import/geo_cloth_normal.png-f8d43913c70c474880d87242f5e56ac9.stex"
+
+[sub_resource type="StreamTexture" id=27]
+flags = 7
+load_path = "res://.import/geo_cloth_roughness.png-ba79f8c86984aa2e9c698b5ef2f389c3.stex"
+
+[sub_resource type="SpatialMaterial" id=28]
+resource_local_to_scene = true
+next_pass = SubResource( 4 )
+albedo_texture = SubResource( 24 )
+roughness_texture = SubResource( 27 )
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 26 )
+ao_enabled = true
+ao_light_affect = 0.98
+ao_texture = SubResource( 25 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 0.35, 1.8, 1 )
+
+[sub_resource type="StreamTexture" id=29]
+flags = 7
+load_path = "res://.import/blue_geo_cloth_albedo.png-6d9ef6b909ec2b94a6a1f2633a613e3b.stex"
+
+[sub_resource type="StreamTexture" id=30]
+flags = 7
+load_path = "res://.import/geo_cloth_ao.png-538082771740ebdb3e7ad40f4b4f5094.stex"
+
+[sub_resource type="StreamTexture" id=31]
+flags = 7
+load_path = "res://.import/geo_cloth_normal.png-f8d43913c70c474880d87242f5e56ac9.stex"
+
+[sub_resource type="StreamTexture" id=32]
+flags = 7
+load_path = "res://.import/geo_cloth_roughness.png-ba79f8c86984aa2e9c698b5ef2f389c3.stex"
+
+[sub_resource type="SpatialMaterial" id=33]
+resource_local_to_scene = true
+next_pass = SubResource( 4 )
+albedo_texture = SubResource( 29 )
+roughness_texture = SubResource( 32 )
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 31 )
+ao_enabled = true
+ao_light_affect = 0.98
+ao_texture = SubResource( 30 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 10, 1, 1 )
+
+[sub_resource type="StreamTexture" id=34]
+flags = 7
+load_path = "res://.import/gray_slender_albedo.png-63262e8e71465afd9da78f8ac4ad88cb.stex"
+
+[sub_resource type="StreamTexture" id=35]
+flags = 7
+load_path = "res://.import/slender_ao.png-cb0ae0fea9c34ea8b259fcbc9e6a9154.stex"
+
+[sub_resource type="StreamTexture" id=36]
+flags = 7
+load_path = "res://.import/slender_specular.png-a5337b50070fa008c43fd329f1c27e2f.stex"
+
+[sub_resource type="StreamTexture" id=37]
+flags = 7
+load_path = "res://.import/slender_normal.png-0fb47bf41a2a7a24ea641bd04fb5ce45.stex"
+
+[sub_resource type="SpatialMaterial" id=38]
+resource_local_to_scene = true
+next_pass = SubResource( 4 )
+albedo_texture = SubResource( 34 )
+metallic_texture = SubResource( 36 )
+roughness = 0.6
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 37 )
+ao_enabled = true
+ao_light_affect = 0.2
+ao_texture = SubResource( 35 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+
+[sub_resource type="StreamTexture" id=39]
+flags = 7
+load_path = "res://.import/slender_albedo.png-266ae483cf596ebc96feb6b6e9a1522b.stex"
+
+[sub_resource type="StreamTexture" id=40]
+flags = 7
+load_path = "res://.import/slender_ao.png-cb0ae0fea9c34ea8b259fcbc9e6a9154.stex"
+
+[sub_resource type="StreamTexture" id=41]
+flags = 7
+load_path = "res://.import/slender_specular.png-a5337b50070fa008c43fd329f1c27e2f.stex"
+
+[sub_resource type="StreamTexture" id=42]
+flags = 7
+load_path = "res://.import/slender_normal.png-0fb47bf41a2a7a24ea641bd04fb5ce45.stex"
+
+[sub_resource type="SpatialMaterial" id=43]
+resource_local_to_scene = true
+next_pass = SubResource( 4 )
+albedo_texture = SubResource( 39 )
+metallic_texture = SubResource( 41 )
+roughness = 0.6
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 42 )
+ao_enabled = true
+ao_light_affect = 0.2
+ao_texture = SubResource( 40 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+
+[sub_resource type="StreamTexture" id=44]
+flags = 7
+load_path = "res://.import/green_slobhood_albedo.png-24bd2d4320f051bbfbdfa734532bc0f1.stex"
+
+[sub_resource type="StreamTexture" id=45]
+flags = 7
+load_path = "res://.import/slobhood_specular.png-481cf4598d597048026cf4009110cd83.stex"
+
+[sub_resource type="StreamTexture" id=46]
+flags = 7
+load_path = "res://.import/slobhood_normal.png-54a5bc05d803693dbc8393c7af4148cb.stex"
+
+[sub_resource type="StreamTexture" id=47]
+flags = 7
+load_path = "res://.import/slobhood_roughness.png-ce4260e71486ccca10582bb811d04286.stex"
+
+[sub_resource type="SpatialMaterial" id=48]
+resource_local_to_scene = true
+next_pass = SubResource( 4 )
+albedo_texture = SubResource( 44 )
+metallic_texture = SubResource( 45 )
+roughness = 0.7
+roughness_texture = SubResource( 47 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 46 )
+rim_enabled = true
+rim = 0.19
+rim_tint = 1.0
+
+[sub_resource type="StreamTexture" id=49]
+flags = 7
+load_path = "res://.import/red_slobhood_albedo.png-f54cd72e1e67bb628bd5ee49c25ee2c4.stex"
+
+[sub_resource type="StreamTexture" id=50]
+flags = 7
+load_path = "res://.import/slobhood_specular.png-481cf4598d597048026cf4009110cd83.stex"
+
+[sub_resource type="StreamTexture" id=51]
+flags = 7
+load_path = "res://.import/slobhood_normal.png-54a5bc05d803693dbc8393c7af4148cb.stex"
+
+[sub_resource type="StreamTexture" id=52]
+flags = 7
+load_path = "res://.import/slobhood_roughness.png-ce4260e71486ccca10582bb811d04286.stex"
+
+[sub_resource type="SpatialMaterial" id=53]
+resource_local_to_scene = true
+next_pass = SubResource( 4 )
+albedo_texture = SubResource( 49 )
+metallic_texture = SubResource( 50 )
+roughness = 0.7
+roughness_texture = SubResource( 52 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 51 )
+rim_enabled = true
+rim = 0.19
+rim_tint = 1.0
+
+[sub_resource type="PlaneMesh" id=54]
+size = Vector2( 0.2, 0.2 )
+
+[node name="MaterialPreRender3" type="Spatial"]
+
+[node name="Line1" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -2, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 7 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -1.6, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 8 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -1.2, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 13 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.8, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 18 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.4, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 23 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 28 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.4, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 33 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.8, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 38 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 1.2, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 43 )
+
+[node name="MeshInstance10" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 1.6, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 48 )
+
+[node name="MeshInstance11" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 2, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 53 )
+
+[node name="Line2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -2, 0, -2 )
+mesh = SubResource( 54 )
+material/0 = ExtResource( 8 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -1.6, 0, -2 )
+mesh = SubResource( 54 )
+material/0 = ExtResource( 6 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -1.2, 0, -2 )
+mesh = SubResource( 54 )
+material/0 = ExtResource( 5 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.8, 0, -2 )
+mesh = SubResource( 54 )
+material/0 = ExtResource( 7 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.4, 0, -2 )
+mesh = SubResource( 54 )
+material/0 = ExtResource( 4 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -2 )
+mesh = SubResource( 54 )
+material/0 = ExtResource( 4 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.4, 0, -2 )
+mesh = SubResource( 54 )
+material/0 = ExtResource( 3 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.8, 0, -2 )
+mesh = SubResource( 54 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 1.2, 0, -2 )
+mesh = SubResource( 54 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance10" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 1.6, 0, -2 )
+mesh = SubResource( 54 )
+material/0 = null
+
+[node name="MeshInstance11" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 2, 0, -2 )
+mesh = SubResource( 54 )
+material/0 = null

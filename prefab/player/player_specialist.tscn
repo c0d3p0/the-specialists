@@ -1,0 +1,326 @@
+[gd_scene load_steps=60 format=2]
+
+[ext_resource path="res://model/character/specialist.tscn" type="PackedScene" id=1]
+[ext_resource path="res://source/character/specialist/SpecialistCharacterDebug.cs" type="Script" id=2]
+[ext_resource path="res://animation/character/specialist/run.tres" type="Animation" id=3]
+[ext_resource path="res://source/character/CharacterMove.cs" type="Script" id=4]
+[ext_resource path="res://source/character/CharacterPhysics.cs" type="Script" id=5]
+[ext_resource path="res://source/player/PlayerInputInterpreter.cs" type="Script" id=6]
+[ext_resource path="res://source/player/PlayerCharacter.cs" type="Script" id=7]
+[ext_resource path="res://source/player/PlayerCharacterInitializer.cs" type="Script" id=8]
+[ext_resource path="res://source/character/specialist/SpecialistCharacterAction.cs" type="Script" id=9]
+[ext_resource path="res://source/player/PlayerCharacterStatus.cs" type="Script" id=10]
+[ext_resource path="res://animation/character/specialist/skill.tres" type="Animation" id=11]
+[ext_resource path="res://animation/character/specialist/walk.tres" type="Animation" id=12]
+[ext_resource path="res://animation/character/specialist/t_pose.tres" type="Animation" id=13]
+[ext_resource path="res://animation/character/specialist/hit.tres" type="Animation" id=14]
+[ext_resource path="res://animation/character/specialist/punch.tres" type="Animation" id=15]
+[ext_resource path="res://animation/character/specialist/die.tres" type="Animation" id=16]
+[ext_resource path="res://animation/character/specialist/idle.tres" type="Animation" id=17]
+[ext_resource path="res://animation/character/specialist/inactive.tres" type="Animation" id=18]
+[ext_resource path="res://animation/character/specialist/active.tres" type="Animation" id=19]
+[ext_resource path="res://animation/character/specialist/cheer.tres" type="Animation" id=20]
+[ext_resource path="res://animation/default/start.tres" type="Animation" id=23]
+[ext_resource path="res://.import/specialist_hit.wav-ee90101ec51301451d254998019b976d.sample" type="AudioStream" id=24]
+[ext_resource path="res://material/character/specialist_brown.tres" type="Material" id=25]
+[ext_resource path="res://material/character/specialist_magenta.tres" type="Material" id=26]
+[ext_resource path="res://material/character/specialist_blue.tres" type="Material" id=27]
+[ext_resource path="res://material/character/specialist_green.tres" type="Material" id=28]
+[ext_resource path="res://material/character/specialist_gray.tres" type="Material" id=29]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.49
+height = 0.86
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.3, 1, 0.3 )
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/disease_icon.png-0c1ee4c57070d602145195334fe9d7d7.stex"
+
+[sub_resource type="Animation" id=4]
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Specialist/BodyMeshInstance:material/0:next_pass:shader_param/blink")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Source/SpecialistCharacterAction")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "SetIgnoreHit"
+} ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "active"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "cheer"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "hit"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "inactive"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "run"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "skill"
+
+[sub_resource type="AnimationNodeTimeScale" id=13]
+
+[sub_resource type="AnimationNodeBlendTree" id=14]
+nodes/Animation/node = SubResource( 12 )
+nodes/Animation/position = Vector2( 80, 140 )
+nodes/TimeScale/node = SubResource( 13 )
+nodes/TimeScale/position = Vector2( 280, 140 )
+nodes/output/position = Vector2( 480, 140 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "start"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachine" id=31]
+states/active/node = SubResource( 5 )
+states/active/position = Vector2( 310, 190.124 )
+states/cheer/node = SubResource( 6 )
+states/cheer/position = Vector2( 139, 282.124 )
+states/die/node = SubResource( 7 )
+states/die/position = Vector2( 764.918, 46.1238 )
+states/hit/node = SubResource( 8 )
+states/hit/position = Vector2( 631, 190.124 )
+states/idle/node = SubResource( 9 )
+states/idle/position = Vector2( 470, 190.124 )
+states/inactive/node = SubResource( 10 )
+states/inactive/position = Vector2( 139, 190.124 )
+states/run/node = SubResource( 11 )
+states/run/position = Vector2( 346, 46.1238 )
+states/skill/node = SubResource( 14 )
+states/skill/position = Vector2( 470, 46.1238 )
+states/start/node = SubResource( 15 )
+states/start/position = Vector2( 139, 46.1238 )
+states/walk/node = SubResource( 16 )
+states/walk/position = Vector2( 599, 46.1238 )
+transitions = [ "idle", "run", SubResource( 17 ), "run", "idle", SubResource( 18 ), "idle", "walk", SubResource( 19 ), "walk", "idle", SubResource( 20 ), "hit", "idle", SubResource( 21 ), "idle", "hit", SubResource( 22 ), "inactive", "active", SubResource( 23 ), "active", "idle", SubResource( 24 ), "idle", "skill", SubResource( 25 ), "skill", "idle", SubResource( 26 ), "skill", "hit", SubResource( 27 ), "start", "inactive", SubResource( 28 ), "cheer", "inactive", SubResource( 29 ), "idle", "cheer", SubResource( 30 ) ]
+start_node = "start"
+end_node = "die"
+graph_offset = Vector2( 36.918, 55.6103 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+
+[node name="PlayerSpecialist" type="KinematicBody"]
+collision_mask = 28
+script = ExtResource( 7 )
+specialistCharacterActionNP = NodePath("Source/SpecialistCharacterAction")
+specialistCharacterBehaviorNP = NodePath("Source/PlayerInputInterpreter")
+specialistCharacterStatusNP = NodePath("Source/PlayerCharacterStatus")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.92, 0 )
+shape = SubResource( 1 )
+
+[node name="Body" type="Spatial" parent="."]
+
+[node name="Specialist" parent="Body" instance=ExtResource( 1 )]
+
+[node name="PushRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, 0.6 )
+collision_mask = 16
+
+[node name="LDTPosition" type="Spatial" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.18, 1.6, 0.41 )
+
+[node name="HurtArea" type="Area" parent="." groups=[
+"specialist",
+]]
+collision_layer = 32
+collision_mask = 29696
+
+[node name="CollisionShape" type="CollisionShape" parent="HurtArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 2 )
+
+[node name="DiseaseSprite3D" type="Sprite3D" parent="."]
+transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 2.1, 0 )
+visible = false
+modulate = Color( 2, 0.1, 0.05, 1 )
+billboard = 1
+texture = SubResource( 3 )
+
+[node name="DiseaseTimer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 24 )
+attenuation_model = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/active = ExtResource( 19 )
+anims/cheer = ExtResource( 20 )
+anims/die = ExtResource( 16 )
+anims/hit = ExtResource( 14 )
+anims/idle = ExtResource( 17 )
+anims/inactive = ExtResource( 18 )
+anims/punch = ExtResource( 15 )
+anims/run = ExtResource( 3 )
+anims/skill = ExtResource( 11 )
+anims/start = ExtResource( 23 )
+anims/t_pose = ExtResource( 13 )
+anims/walk = ExtResource( 12 )
+
+[node name="InvulnerableAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/invulnerable = SubResource( 4 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 31 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 32 )
+parameters/skill/TimeScale/scale = 3.0
+
+[node name="Source" type="Node" parent="."]
+
+[node name="CharacterPhysics" type="Node" parent="Source"]
+script = ExtResource( 5 )
+kinematicBodyNP = NodePath("../..")
+
+[node name="CharacterMove" type="Node" parent="Source"]
+script = ExtResource( 4 )
+moveSpeed = Vector3( 2, 0, 2 )
+
+[node name="SpecialistCharacterAction" type="Node" parent="Source"]
+script = ExtResource( 9 )
+characterNP = NodePath("../..")
+bodyNP = NodePath("../../Body")
+hurtAreaNP = NodePath("../../HurtArea")
+animationTreeNP = NodePath("../../AnimationTree")
+toMoveMap = {
+"idle": "walk",
+"run": "run",
+"walk": "walk"
+}
+toSkillMap = {
+"idle": "",
+"run": "",
+"walk": ""
+}
+toPlantDeviceMap = {
+"idle": "plant",
+"run": "plant",
+"walk": "plant"
+}
+toExecuteSkillMap = {
+"idle": "skill",
+"run": "skill",
+"walk": "skill"
+}
+toCheerMap = {
+"idle": "cheer",
+"run": "cheer",
+"walk": "cheer"
+}
+pushRayCastNP = NodePath("../../Body/PushRayCast")
+diseaseTimerNP = NodePath("../../DiseaseTimer")
+diseaseSpriteNP = NodePath("../../DiseaseSprite3D")
+laserDeviceTriggerPositionNP = NodePath("../../Body/LDTPosition")
+
+[node name="PlayerCharacterStatus" type="Node" parent="Source"]
+script = ExtResource( 10 )
+healthRange = Vector2( 0, 200 )
+speedLevelRange = Vector2( 1, 9 )
+specialistMaterialList = [ ExtResource( 25 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 26 ) ]
+visorMeshInstanceNP = NodePath("../../Body/Specialist/VisorMeshInstance")
+bodyMeshInstanceNP = NodePath("../../Body/Specialist/BodyMeshInstance")
+livesRange = Vector2( -1, 99 )
+
+[node name="PlayerInputInterpreter" type="Node" parent="Source"]
+script = ExtResource( 6 )
+
+[node name="PlayerCharacterInitializer" type="Node" parent="Source"]
+script = ExtResource( 8 )
+specialistCharacterNP = NodePath("../..")
+characterPhysicsNP = NodePath("../CharacterPhysics")
+characterMoveNP = NodePath("../CharacterMove")
+specialistCharacterActionNP = NodePath("../SpecialistCharacterAction")
+specialistCharacterStatusNP = NodePath("../PlayerCharacterStatus")
+hurtAreaNP = NodePath("../../HurtArea")
+playerInputInterpreterNP = NodePath("../PlayerInputInterpreter")
+
+[node name="SpecialistCharacterDebug" type="Node" parent="Source"]
+script = ExtResource( 2 )
+specialistCharacterNP = NodePath("../..")
+specialistCharacterActionNP = NodePath("../SpecialistCharacterAction")
+specialistCharacterStatusNP = NodePath("../PlayerCharacterStatus")
+[connection signal="area_entered" from="HurtArea" to="Source/SpecialistCharacterAction" method="OnHurtAreaEntered"]
+[connection signal="timeout" from="DiseaseTimer" to="Source/SpecialistCharacterAction" method="OnDiseaseTimeout"]
+
+[editable path="Body/Specialist"]

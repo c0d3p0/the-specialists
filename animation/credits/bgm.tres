@@ -1,0 +1,20 @@
+[gd_resource type="Animation" load_steps=2 format=2]
+
+[ext_resource path="res://.import/marcos_theme_by_loveshadow.ogg-0ccce2de2b5feb3c6092eca6a3e01f7e.oggstr" type="AudioStream" id=1]
+
+[resource]
+length = 158.0
+tracks/0/type = "audio"
+tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 2.47,
+"start_offset": 0.0,
+"stream": ExtResource( 1 )
+} ],
+"times": PoolRealArray( 0 )
+}

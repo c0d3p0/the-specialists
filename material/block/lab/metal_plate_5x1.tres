@@ -1,0 +1,40 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/metal_plate_albedo.png-5831a1115c4f8c8f92c69d9acf986f6a.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/metal_plate_ao.png-cd3354b927359fd27426d8ecdbe21c35.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/metal_plate_specular.png-66a639502a5a066f7dadf4c0a11ff3b9.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/metal_plate_normal.png-c464b431dac1c46eeec8f074980c91e5.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/metal_plate_roughness.png-c523973e1e1d3d11165638f155346ae4.stex"
+
+[resource]
+albedo_texture = SubResource( 1 )
+metallic = 0.9
+metallic_texture = SubResource( 3 )
+roughness = 0.7
+roughness_texture = SubResource( 5 )
+normal_enabled = true
+normal_scale = 3.0
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.18
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.89
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 5, 1, 1 )

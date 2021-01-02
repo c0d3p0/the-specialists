@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/rottinguy_hit.wav-f8babb7f2f2366fe8382422805d249cf.sample"
+
+[deps]
+
+source_file="res://sound/rottinguy/rottinguy_hit.wav"
+dest_files=[ "res://.import/rottinguy_hit.wav-f8babb7f2f2366fe8382422805d249cf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

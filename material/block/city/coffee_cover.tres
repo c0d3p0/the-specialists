@@ -1,0 +1,31 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/coffee_grains_albedo.png-c8d21b46e0ba2233d287df5c19a3e013.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/colorful_cloth_ao.png-2a0cc810b188054551ecd2fffc2e6087.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/coffee_grains_normal.png-20b30d51a0a1b96cba472a91c2e7b766.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/coffee_grains_roughness.png-88a267c0ee8d0a76bc11507c2a9457c9.stex"
+
+[resource]
+albedo_texture = SubResource( 1 )
+metallic_specular = 1.0
+roughness = 0.6
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 3.0
+normal_texture = SubResource( 3 )
+ao_enabled = true
+ao_light_affect = 0.98
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0

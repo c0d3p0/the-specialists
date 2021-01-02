@@ -1,0 +1,37 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/snow_bucket_albedo.png-68538ff7a669351ab9c576316f5bcc4d.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/snow_bucket_ao.png-2d50d91176d23f0385e9b2d8a9c5e2ef.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/snow_bucket_specular.png-19f5ec1b3ed17121ced83ea8fba1c27d.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/snow_bucket_normal.png-5029246d3fe313d43416071d5c574699.stex"
+
+[resource]
+resource_name = "ember"
+params_cull_mode = 2
+albedo_texture = SubResource( 1 )
+metallic = 0.8
+metallic_specular = 1.0
+metallic_texture = SubResource( 3 )
+roughness = 0.2
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.13
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0

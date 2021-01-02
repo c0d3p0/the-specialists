@@ -1,0 +1,37 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/powder_albedo.png-5eebda375d195b2d57e549e65233d866.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/powder_ao.png-a99097bd26d3ecb6514457e14929da06.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/powder_normal.png-a0c055dae1bf3b030e2e79d190cd612f.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/powder_roughness.png-b6129c8b874ceb84d5865381aab5523f.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_texture = SubResource( 1 )
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 6.0
+normal_texture = SubResource( 3 )
+rim_enabled = true
+rim = 0.16
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.92
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 2, 1, 1 )

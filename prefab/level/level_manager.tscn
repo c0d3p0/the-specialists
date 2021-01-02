@@ -1,0 +1,277 @@
+[gd_scene load_steps=59 format=2]
+
+[ext_resource path="res://source/level/LevelBlockManager.cs" type="Script" id=1]
+[ext_resource path="res://.import/stardust_ziggy_is_coming_ft_platinum_butterfly_by_kraftamt.ogg-ec65cebbb8e1648394f6d35d20769b8b.oggstr" type="AudioStream" id=2]
+[ext_resource path="res://gui/theme/black_screen_bg_style.tres" type="StyleBox" id=3]
+[ext_resource path="res://gui/font/madcat_64.tres" type="DynamicFont" id=4]
+[ext_resource path="res://gui/theme/gui_layout_style.tres" type="StyleBox" id=5]
+[ext_resource path="res://shader/ui_border.shader" type="Shader" id=6]
+[ext_resource path="res://gui/theme/secondary_theme.tres" type="Theme" id=7]
+[ext_resource path="res://source/level/LevelProgress.cs" type="Script" id=8]
+[ext_resource path="res://source/level/LevelManager.cs" type="Script" id=12]
+[ext_resource path="res://source/level/LevelNextScene.cs" type="Script" id=15]
+[ext_resource path="res://animation/level/story/snow_bgm.tres" type="Animation" id=16]
+[ext_resource path="res://animation/level/story/level_end.tres" type="Animation" id=17]
+[ext_resource path="res://animation/level/story/next_level.tres" type="Animation" id=18]
+[ext_resource path="res://animation/level/story/reload.tres" type="Animation" id=19]
+[ext_resource path="res://animation/level/story/continue.tres" type="Animation" id=20]
+[ext_resource path="res://animation/level/story/intro_end.tres" type="Animation" id=21]
+[ext_resource path="res://animation/level/story/intro.tres" type="Animation" id=22]
+[ext_resource path="res://animation/level/story/mine_bgm.tres" type="Animation" id=23]
+[ext_resource path="res://animation/level/story/pre_intro.tres" type="Animation" id=24]
+[ext_resource path="res://animation/level/story/city_bgm.tres" type="Animation" id=25]
+[ext_resource path="res://animation/level/story/boss_bgm.tres" type="Animation" id=26]
+[ext_resource path="res://animation/level/story/lab_bgm.tres" type="Animation" id=27]
+[ext_resource path="res://animation/level/story/end_bgm.tres" type="Animation" id=28]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/hud_border.png-4b0cb611e9b315638c2954f1d8dfa6ef.stex"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 6 )
+shader_param/color_1 = Color( 0.72, 0.89, 2, 1 )
+shader_param/color_2 = Color( 2, 2, 2, 1 )
+shader_param/color_3 = Color( 0.72, 0.89, 2, 1 )
+shader_param/resolution = Vector2( 1, 1 )
+shader_param/ui_texture = SubResource( 1 )
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "boss_bgm"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "city_bgm"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "continue"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "end_bgm"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "intro"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "intro_end"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "lab_bgm"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "level_end"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "mine_bgm"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "next_level"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "pre_intro"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "reload"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "snow_bgm"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachine" id=34]
+states/boss_bgm/node = SubResource( 3 )
+states/boss_bgm/position = Vector2( 557, 247.696 )
+states/city_bgm/node = SubResource( 4 )
+states/city_bgm/position = Vector2( 557, 128.696 )
+states/continue/node = SubResource( 5 )
+states/continue/position = Vector2( 935, 193.696 )
+states/end_bgm/node = SubResource( 6 )
+states/end_bgm/position = Vector2( 754.888, 128.696 )
+states/intro/node = SubResource( 7 )
+states/intro/position = Vector2( 356, 13.5755 )
+states/intro_end/node = SubResource( 8 )
+states/intro_end/position = Vector2( 356, 128.696 )
+states/lab_bgm/node = SubResource( 9 )
+states/lab_bgm/position = Vector2( 557, 187.696 )
+states/level_end/node = SubResource( 10 )
+states/level_end/position = Vector2( 1123.28, 128.696 )
+states/mine_bgm/node = SubResource( 11 )
+states/mine_bgm/position = Vector2( 557, 72 )
+states/next_level/node = SubResource( 12 )
+states/next_level/position = Vector2( 935, 72 )
+states/pre_intro/node = SubResource( 13 )
+states/pre_intro/position = Vector2( 182, 13.5755 )
+states/reload/node = SubResource( 14 )
+states/reload/position = Vector2( 935, 128.696 )
+states/snow_bgm/node = SubResource( 15 )
+states/snow_bgm/position = Vector2( 557, 13.5755 )
+transitions = [ "intro", "intro_end", SubResource( 16 ), "reload", "level_end", SubResource( 17 ), "next_level", "level_end", SubResource( 18 ), "continue", "level_end", SubResource( 19 ), "pre_intro", "intro", SubResource( 20 ), "intro_end", "mine_bgm", SubResource( 21 ), "intro_end", "city_bgm", SubResource( 22 ), "intro_end", "lab_bgm", SubResource( 23 ), "intro_end", "boss_bgm", SubResource( 24 ), "mine_bgm", "end_bgm", SubResource( 25 ), "city_bgm", "end_bgm", SubResource( 26 ), "lab_bgm", "end_bgm", SubResource( 27 ), "boss_bgm", "end_bgm", SubResource( 28 ), "end_bgm", "next_level", SubResource( 29 ), "end_bgm", "reload", SubResource( 30 ), "end_bgm", "continue", SubResource( 31 ), "intro_end", "snow_bgm", SubResource( 32 ), "snow_bgm", "end_bgm", SubResource( 33 ) ]
+start_node = "pre_intro"
+end_node = "level_end"
+graph_offset = Vector2( 81.0257, -51.1445 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=35]
+
+[node name="LevelManager" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 7 )
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+levelProgressNP = NodePath("Source/LevelProgress")
+levelBlockManagerNP = NodePath("Source/LevelBlockManager")
+levelNextSceneNP = NodePath("Source/LevelNextScene")
+
+[node name="IntroLabel" type="Label" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 278.0
+margin_right = 1280.0
+margin_bottom = 443.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.721569, 0.890196, 1, 1 )
+text = "Objective Failed"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeHUD" type="Control" parent="."]
+margin_left = 560.0
+margin_right = 720.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BorderPanel" type="Panel" parent="TimeHUD"]
+material = SubResource( 2 )
+margin_right = 160.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGPanel" type="Panel" parent="TimeHUD"]
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 70.0
+custom_styles/panel = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TimeHUD"]
+margin_top = 10.0
+margin_right = 160.0
+margin_bottom = 69.0
+text = "Time
+180.000"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeOutPanel" type="Panel" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelTimer" type="Timer" parent="."]
+wait_time = 300.0
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/boss_bgm = ExtResource( 26 )
+anims/city_bgm = ExtResource( 25 )
+anims/continue = ExtResource( 20 )
+anims/end_bgm = ExtResource( 28 )
+anims/intro = ExtResource( 22 )
+anims/intro_end = ExtResource( 21 )
+anims/lab_bgm = ExtResource( 27 )
+anims/level_end = ExtResource( 17 )
+anims/mine_bgm = ExtResource( 23 )
+anims/next_level = ExtResource( 18 )
+anims/pre_intro = ExtResource( 24 )
+anims/reload = ExtResource( 19 )
+anims/snow_bgm = ExtResource( 16 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 34 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 35 )
+
+[node name="Source" type="Node" parent="."]
+
+[node name="LevelProgress" type="Node" parent="Source"]
+script = ExtResource( 8 )
+introLabelNP = NodePath("../../IntroLabel")
+timeHUDNP = NodePath("../../TimeHUD")
+timeLabelNP = NodePath("../../TimeHUD/Label")
+levelTimerNP = NodePath("../../LevelTimer")
+animationTreeNP = NodePath("../../AnimationTree")
+
+[node name="LevelNextScene" type="Node" parent="Source"]
+script = ExtResource( 15 )
+
+[node name="LevelBlockManager" type="Node" parent="Source"]
+script = ExtResource( 1 )
+preDefinedSoftBlockSlotList = [ Vector2( 0, 2 ), Vector2( 2, 0 ), Vector2( 0, 18 ), Vector2( 2, 20 ), Vector2( 10, 0 ), Vector2( 12, 2 ), Vector2( 10, 20 ), Vector2( 12, 18 ) ]
+forceEmptyBlockSlotList = [ Vector2( 0, 0 ), Vector2( 0, 1 ), Vector2( 1, 0 ), Vector2( 0, 19 ), Vector2( 0, 20 ), Vector2( 1, 20 ), Vector2( 6, 10 ), Vector2( 11, 0 ), Vector2( 12, 0 ), Vector2( 12, 1 ), Vector2( 11, 20 ), Vector2( 12, 19 ), Vector2( 12, 20 ), Vector2( 5, 10 ), Vector2( 7, 10 ), Vector2( 6, 11 ), Vector2( 6, 9 ) ]
+[connection signal="timeout" from="LevelTimer" to="Source/LevelProgress" method="OnLevelTimerTimeout"]

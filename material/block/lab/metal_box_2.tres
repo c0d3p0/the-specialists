@@ -1,0 +1,35 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/metal_box_2_albedo.png-685c1532afae5b413ae71349431067cf.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/metal_box_2_ao.png-c28d52c0fbd52223e99427f3868be977.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/metal_box_2_normal.png-5381718e615aac948cadb3c06cd4b3c3.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/metal_box_2_roughness.png-5efe3dbd11a9d921a62fd6e322e33e75.stex"
+
+[resource]
+albedo_texture = SubResource( 1 )
+metallic = 0.78
+roughness = 0.4
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 3 )
+rim_enabled = true
+rim = 0.11
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.93
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 1.5, 1, 1 )

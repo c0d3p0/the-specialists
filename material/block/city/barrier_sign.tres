@@ -1,0 +1,28 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/barrier_sign_albedo.png-c8ba8f5f1d9bf98d8b6ffb4afd9d790a.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/barrier_sign_normal.png-d31f7429e34973770eb02de8d9e9cb03.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/barrier_sign_roughness.png-afb76a03f4cb1bb31387904b9d70bdb6.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+params_cull_mode = 2
+albedo_texture = SubResource( 1 )
+roughness = 0.7
+roughness_texture = SubResource( 3 )
+normal_enabled = true
+normal_scale = -2.0
+normal_texture = SubResource( 2 )
+uv1_scale = Vector3( 2, 0.76, 1 )
+uv1_offset = Vector3( 0, 0.12, 0 )

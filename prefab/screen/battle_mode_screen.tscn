@@ -1,0 +1,606 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://gui/font/madcat_20.tres" type="DynamicFont" id=1]
+[ext_resource path="res://gui/font/madcat_64.tres" type="DynamicFont" id=2]
+[ext_resource path="res://gui/theme/gui_layout_style.tres" type="StyleBox" id=3]
+[ext_resource path="res://gui/theme/secondary_theme.tres" type="Theme" id=4]
+[ext_resource path="res://source/screen/battle/BattleModeScreen.cs" type="Script" id=5]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/brown_specialist_profile.png-fbd20047cdd0c8cb19816e184f8073fe.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/gray_specialist_profile.png-f34f54dd6e84ea5bdec526a343616ba5.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/blue_specialist_profile.png-7b58c66f4f7368e680b6fd3a165f8e31.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/green_specialist_profile.png-69b9e3c0e8688a36136ecad28662b4bd.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/magenta_specialist_profile.png-4bb4a46de1ead6131a29a7c6944999ba.stex"
+
+[node name="BattleModeScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+configurationControlNP = NodePath("ConfigurationControl")
+resultControlNP = NodePath("ResultControl")
+specialistControlNPList = [ NodePath("FirstSpecialistControl"), NodePath("SecondSpecialistControl"), NodePath("ThirdSpecialistControl"), NodePath("FourthSpecialistControl") ]
+configurationLabelNPList = [ NodePath("ConfigurationControl/SpecialistAmountControl/SpecialistAmountLabel"), NodePath("ConfigurationControl/FirstToControl/FirstToLabel"), NodePath("ConfigurationControl/LocationControl/LocationLabel"), NodePath("ConfigurationControl/RoundTimeControl/RoundTimeLabel"), NodePath("ConfigurationControl/SkillControl/SkillLabel") ]
+resultLabelNPList = [ NodePath("ResultControl/LevelLabel"), NodePath("ResultControl/RoundTimeLabel"), NodePath("ResultControl/FirstToLabel"), NodePath("ResultControl/SkillLabel"), NodePath("ResultControl/1stPlaceLabel"), NodePath("ResultControl/2ndPlaceLabel"), NodePath("ResultControl/3rdPlaceLabel"), NodePath("ResultControl/4thPlaceLabel") ]
+specialistTextureList = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ]
+levelScenePathList = [ "battle/snow_early_morning_battle_level", "battle/snow_morning_battle_level", "battle/snow_afternoon_battle_level", "battle/snow_night_battle_level", "battle/mine_battle_level", "battle/city_early_morning_battle_level", "battle/city_morning_battle_level", "battle/city_afternoon_battle_level", "battle/city_night_battle_level", "battle/lab_battle_level" ]
+specialistAmountTextList = [ "2 Specialists", "3 Specialists", "4 Specialists" ]
+firstToTextList = [ "First To 1", "First To 2", "First To 3", "First To 4", "First To 5", "First To 6", "First To 7", "First To 8", "First To 9", "First To 10" ]
+locationTextList = [ "Snow Vil. EMT", "Snow Vil. MT", "Snow Vil. AT", "Snow Vil. NT", "Mine", "S. City EMT", "S. City MT", "S. City AT", "S. City NT", "Laboratory", "Random" ]
+roundTimeTextList = [ "3 Minutes", "4 Minutes", "5 Minutes" ]
+skillTextList = [ "No Skill", "Push L. D.", "L. D. Trigger", "Super Speed" ]
+
+[node name="TopLayoutPanel" type="Panel" parent="."]
+margin_left = 100.0
+margin_top = 40.0
+margin_right = 1180.0
+margin_bottom = 130.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LayoutBottomPanel" type="Panel" parent="."]
+margin_left = 101.0
+margin_top = 180.0
+margin_right = 1181.0
+margin_bottom = 700.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoControl" type="Control" parent="."]
+margin_left = 1.0
+margin_right = 1281.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="InfoControl"]
+margin_top = 40.0
+margin_right = 1280.0
+margin_bottom = 127.0
+custom_fonts/font = ExtResource( 2 )
+text = "Battle Mode"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HintLabel" type="Label" parent="InfoControl"]
+margin_top = 660.0
+margin_right = 1280.0
+margin_bottom = 699.0
+custom_fonts/font = ExtResource( 1 )
+text = "Press \"ESC\" to go back to \"Title Screen\"."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FirstSpecialistControl" type="Control" parent="."]
+margin_left = 120.0
+margin_top = 200.0
+margin_right = 480.0
+margin_bottom = 420.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="FirstSpecialistControl"]
+margin_left = 90.0
+margin_right = 570.0
+margin_bottom = 480.0
+rect_scale = Vector2( 0.375, 0.375 )
+
+[node name="Label" type="Label" parent="FirstSpecialistControl"]
+margin_left = 119.0
+margin_top = 185.0
+margin_right = 241.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 122, 0 )
+text = "Player 1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="FirstSpecialistControl"]
+margin_left = 60.0
+margin_top = 84.0
+margin_right = 80.0
+margin_bottom = 116.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="FirstSpecialistControl"]
+margin_left = 280.0
+margin_top = 84.0
+margin_right = 300.0
+margin_bottom = 116.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SecondSpecialistControl" type="Control" parent="."]
+margin_left = 800.0
+margin_top = 200.0
+margin_right = 1160.0
+margin_bottom = 420.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SecondSpecialistControl"]
+margin_left = 90.0
+margin_right = 570.0
+margin_bottom = 480.0
+rect_scale = Vector2( 0.375, 0.375 )
+
+[node name="Label" type="Label" parent="SecondSpecialistControl"]
+margin_left = 119.0
+margin_top = 185.0
+margin_right = 241.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 122, 0 )
+text = "Player 2"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="SecondSpecialistControl"]
+margin_left = 60.0
+margin_top = 84.0
+margin_right = 80.0
+margin_bottom = 116.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="SecondSpecialistControl"]
+margin_left = 280.0
+margin_top = 84.0
+margin_right = 300.0
+margin_bottom = 116.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ThirdSpecialistControl" type="Control" parent="."]
+margin_left = 120.0
+margin_top = 440.0
+margin_right = 480.0
+margin_bottom = 660.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="ThirdSpecialistControl"]
+margin_left = 90.0
+margin_right = 570.0
+margin_bottom = 480.0
+rect_scale = Vector2( 0.375, 0.375 )
+
+[node name="Label" type="Label" parent="ThirdSpecialistControl"]
+margin_left = 119.0
+margin_top = 185.0
+margin_right = 241.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 122, 0 )
+text = "Player 3"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="ThirdSpecialistControl"]
+margin_left = 60.0
+margin_top = 84.0
+margin_right = 80.0
+margin_bottom = 116.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="ThirdSpecialistControl"]
+margin_left = 280.0
+margin_top = 84.0
+margin_right = 300.0
+margin_bottom = 116.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FourthSpecialistControl" type="Control" parent="."]
+margin_left = 800.0
+margin_top = 440.0
+margin_right = 1160.0
+margin_bottom = 660.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="FourthSpecialistControl"]
+margin_left = 90.0
+margin_right = 570.0
+margin_bottom = 480.0
+rect_scale = Vector2( 0.375, 0.375 )
+
+[node name="Label" type="Label" parent="FourthSpecialistControl"]
+margin_left = 119.0
+margin_top = 185.0
+margin_right = 241.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 122, 0 )
+text = "Player 4"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="FourthSpecialistControl"]
+margin_left = 60.0
+margin_top = 84.0
+margin_right = 80.0
+margin_bottom = 116.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="FourthSpecialistControl"]
+margin_left = 280.0
+margin_top = 84.0
+margin_right = 300.0
+margin_bottom = 116.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfigurationControl" type="Control" parent="."]
+margin_left = 521.0
+margin_top = 280.0
+margin_right = 759.0
+margin_bottom = 480.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpecialistAmountControl" type="Control" parent="ConfigurationControl"]
+margin_right = 238.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpecialistAmountLabel" type="Label" parent="ConfigurationControl/SpecialistAmountControl"]
+margin_left = 30.0
+margin_top = 3.0
+margin_right = 204.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 122, 0 )
+text = "4 Specialists"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="ConfigurationControl/SpecialistAmountControl"]
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 36.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="ConfigurationControl/SpecialistAmountControl"]
+margin_left = 214.0
+margin_top = 4.0
+margin_right = 238.0
+margin_bottom = 36.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FirstToControl" type="Control" parent="ConfigurationControl"]
+margin_top = 40.0
+margin_right = 238.0
+margin_bottom = 80.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FirstToLabel" type="Label" parent="ConfigurationControl/FirstToControl"]
+margin_left = 30.0
+margin_top = 3.0
+margin_right = 204.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 122, 0 )
+text = "First to 10"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="ConfigurationControl/FirstToControl"]
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 36.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="ConfigurationControl/FirstToControl"]
+margin_left = 214.0
+margin_top = 4.0
+margin_right = 238.0
+margin_bottom = 36.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LocationControl" type="Control" parent="ConfigurationControl"]
+margin_top = 80.0
+margin_right = 238.0
+margin_bottom = 120.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LocationLabel" type="Label" parent="ConfigurationControl/LocationControl"]
+margin_left = 30.0
+margin_top = 3.0
+margin_right = 204.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 122, 0 )
+text = "Snow Vil. EMT"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="ConfigurationControl/LocationControl"]
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 36.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="ConfigurationControl/LocationControl"]
+margin_left = 214.0
+margin_top = 4.0
+margin_right = 238.0
+margin_bottom = 36.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoundTimeControl" type="Control" parent="ConfigurationControl"]
+margin_top = 120.0
+margin_right = 238.0
+margin_bottom = 160.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoundTimeLabel" type="Label" parent="ConfigurationControl/RoundTimeControl"]
+margin_left = 30.0
+margin_top = 3.0
+margin_right = 204.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 122, 0 )
+text = "3 Minuites"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="ConfigurationControl/RoundTimeControl"]
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 36.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="ConfigurationControl/RoundTimeControl"]
+margin_left = 214.0
+margin_top = 4.0
+margin_right = 238.0
+margin_bottom = 36.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkillControl" type="Control" parent="ConfigurationControl"]
+margin_top = 160.0
+margin_right = 238.0
+margin_bottom = 200.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkillLabel" type="Label" parent="ConfigurationControl/SkillControl"]
+margin_left = 30.0
+margin_top = 3.0
+margin_right = 204.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 122, 0 )
+text = "L. D. Push"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="ConfigurationControl/SkillControl"]
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 36.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="ConfigurationControl/SkillControl"]
+margin_left = 214.0
+margin_top = 4.0
+margin_right = 238.0
+margin_bottom = 36.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="ConfigurationControl"]
+margin_top = 240.0
+margin_right = 238.0
+margin_bottom = 272.0
+text = "Start"
+
+[node name="ResultControl" type="Control" parent="."]
+visible = false
+margin_left = 520.0
+margin_top = 210.0
+margin_right = 760.0
+margin_bottom = 570.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LevelLabel" type="Label" parent="ResultControl"]
+margin_right = 240.0
+margin_bottom = 32.0
+text = "Laboratory"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoundTimeLabel" type="Label" parent="ResultControl"]
+margin_top = 40.0
+margin_right = 240.0
+margin_bottom = 72.0
+text = "3 Minutes"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FirstToLabel" type="Label" parent="ResultControl"]
+margin_top = 80.0
+margin_right = 240.0
+margin_bottom = 112.0
+text = "First to 10"
+align = 1
+
+[node name="SkillLabel" type="Label" parent="ResultControl"]
+margin_top = 120.0
+margin_right = 240.0
+margin_bottom = 152.0
+text = "Super Speed"
+align = 1
+
+[node name="1stPlaceLabel" type="Label" parent="ResultControl"]
+margin_top = 200.0
+margin_right = 240.0
+margin_bottom = 232.0
+text = "Player 1, 10 Rounds"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="2ndPlaceLabel" type="Label" parent="ResultControl"]
+margin_top = 240.0
+margin_right = 240.0
+margin_bottom = 272.0
+text = "Player 2, 8 Rounds"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="3rdPlaceLabel" type="Label" parent="ResultControl"]
+margin_top = 280.0
+margin_right = 240.0
+margin_bottom = 312.0
+text = "Player 3, 6 Rounds"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="4thPlaceLabel" type="Label" parent="ResultControl"]
+margin_top = 320.0
+margin_right = 240.0
+margin_bottom = 352.0
+text = "Player 4, 4 Rounds"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewBattleButton" type="Button" parent="ResultControl"]
+margin_top = 400.0
+margin_right = 240.0
+margin_bottom = 432.0
+text = "New Battle"
+[connection signal="pressed" from="FirstSpecialistControl/PreviousButton" to="." method="OnSpecialistSelectButtonPressed" binds= [ 0, -1 ]]
+[connection signal="pressed" from="FirstSpecialistControl/NextButton" to="." method="OnSpecialistSelectButtonPressed" binds= [ 0, 1 ]]
+[connection signal="pressed" from="SecondSpecialistControl/PreviousButton" to="." method="OnSpecialistSelectButtonPressed" binds= [ 1, -1 ]]
+[connection signal="pressed" from="SecondSpecialistControl/NextButton" to="." method="OnSpecialistSelectButtonPressed" binds= [ 1, 1 ]]
+[connection signal="pressed" from="ThirdSpecialistControl/PreviousButton" to="." method="OnSpecialistSelectButtonPressed" binds= [ 2, -1 ]]
+[connection signal="pressed" from="ThirdSpecialistControl/NextButton" to="." method="OnSpecialistSelectButtonPressed" binds= [ 2, 1 ]]
+[connection signal="pressed" from="FourthSpecialistControl/PreviousButton" to="." method="OnSpecialistSelectButtonPressed" binds= [ 3, -1 ]]
+[connection signal="pressed" from="FourthSpecialistControl/NextButton" to="." method="OnSpecialistSelectButtonPressed" binds= [ 3, 1 ]]
+[connection signal="pressed" from="ConfigurationControl/SpecialistAmountControl/PreviousButton" to="." method="OnSpecialistAmountButtonPressed" binds= [ -1 ]]
+[connection signal="pressed" from="ConfigurationControl/SpecialistAmountControl/NextButton" to="." method="OnSpecialistAmountButtonPressed" binds= [ 1 ]]
+[connection signal="pressed" from="ConfigurationControl/FirstToControl/PreviousButton" to="." method="OnFirstToButtonPressed" binds= [ -1 ]]
+[connection signal="pressed" from="ConfigurationControl/FirstToControl/NextButton" to="." method="OnFirstToButtonPressed" binds= [ 1 ]]
+[connection signal="pressed" from="ConfigurationControl/LocationControl/PreviousButton" to="." method="OnLocationButtonPressed" binds= [ -1 ]]
+[connection signal="pressed" from="ConfigurationControl/LocationControl/NextButton" to="." method="OnLocationButtonPressed" binds= [ 1 ]]
+[connection signal="pressed" from="ConfigurationControl/RoundTimeControl/PreviousButton" to="." method="OnRounTimeButtonPressed" binds= [ -1 ]]
+[connection signal="pressed" from="ConfigurationControl/RoundTimeControl/NextButton" to="." method="OnRounTimeButtonPressed" binds= [ 1 ]]
+[connection signal="pressed" from="ConfigurationControl/SkillControl/PreviousButton" to="." method="OnSkillButtonPressed" binds= [ -1 ]]
+[connection signal="pressed" from="ConfigurationControl/SkillControl/NextButton" to="." method="OnSkillButtonPressed" binds= [ 1 ]]
+[connection signal="pressed" from="ConfigurationControl/StartButton" to="." method="OnStartButtonPressed"]
+[connection signal="pressed" from="ResultControl/NewBattleButton" to="." method="OnNewBattleButtonPressed"]

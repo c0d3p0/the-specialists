@@ -1,0 +1,167 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://gui/theme/main_theme.tres" type="Theme" id=1]
+[ext_resource path="res://gui/font/madcat_30.tres" type="DynamicFont" id=2]
+[ext_resource path="res://source/hud/SpecialistBattleHUD.cs" type="Script" id=3]
+[ext_resource path="res://shader/ui_border.shader" type="Shader" id=4]
+[ext_resource path="res://gui/theme/gui_layout_style.tres" type="StyleBox" id=5]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/brown_specialist_profile.png-fbd20047cdd0c8cb19816e184f8073fe.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/gray_specialist_profile.png-f34f54dd6e84ea5bdec526a343616ba5.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/blue_specialist_profile.png-7b58c66f4f7368e680b6fd3a165f8e31.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/green_specialist_profile.png-69b9e3c0e8688a36136ecad28662b4bd.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/magenta_specialist_profile.png-4bb4a46de1ead6131a29a7c6944999ba.stex"
+
+[sub_resource type="StreamTexture" id=6]
+flags = 4
+load_path = "res://.import/hud_border.png-4b0cb611e9b315638c2954f1d8dfa6ef.stex"
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = ExtResource( 4 )
+shader_param/color_1 = Color( 0.72, 0.89, 2, 1 )
+shader_param/color_2 = Color( 2, 2, 2, 1 )
+shader_param/color_3 = Color( 0.72, 0.89, 2, 1 )
+shader_param/resolution = Vector2( 1, 1 )
+shader_param/ui_texture = SubResource( 6 )
+
+[sub_resource type="StreamTexture" id=8]
+flags = 4
+load_path = "res://.import/brown_specialist_profile.png-fbd20047cdd0c8cb19816e184f8073fe.stex"
+
+[sub_resource type="StreamTexture" id=9]
+flags = 7
+load_path = "res://.import/border_hud.png-f822c254b45e79de273545cc834a884a.stex"
+
+[sub_resource type="StreamTexture" id=10]
+flags = 7
+load_path = "res://.import/victory_hud.png-287f724ffd4ae8190dfbd3cfa73496b5.stex"
+
+[node name="SpecialistBattleHUD" type="Control"]
+margin_left = 10.0
+margin_top = 2.0
+margin_right = 170.0
+margin_bottom = 80.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+dataControlNP = NodePath("DataControl")
+notInBattleControlNP = NodePath("NotInBattleControl")
+profileTextureRectNP = NodePath("DataControl/ProfileControl/TextureRect")
+winLabelNP = NodePath("DataControl/WinControl/Label")
+specialistTextureList = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ]
+
+[node name="BorderPanel" type="Panel" parent="."]
+material = SubResource( 7 )
+margin_right = 160.0
+margin_bottom = 78.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGPanel" type="Panel" parent="."]
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 70.0
+custom_styles/panel = ExtResource( 5 )
+
+[node name="DataControl" type="Control" parent="."]
+visible = false
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProfileControl" type="Control" parent="DataControl"]
+margin_left = 5.0
+margin_top = 1.0
+margin_right = 65.0
+margin_bottom = 61.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DataControl/ProfileControl"]
+margin_left = 4.0
+margin_top = 5.0
+margin_right = 484.0
+margin_bottom = 485.0
+rect_scale = Vector2( 0.105, 0.105 )
+texture = SubResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BorderTextureRect" type="TextureRect" parent="DataControl/ProfileControl"]
+margin_right = 1024.0
+margin_bottom = 1024.0
+rect_scale = Vector2( 0.058, 0.058 )
+texture = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinControl" type="Control" parent="DataControl"]
+margin_left = 70.0
+margin_right = 150.0
+margin_bottom = 62.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="DataControl/WinControl"]
+margin_top = 2.0
+margin_right = 1024.0
+margin_bottom = 1026.0
+rect_scale = Vector2( 0.058, 0.058 )
+texture = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="DataControl/WinControl"]
+margin_left = 50.0
+margin_top = 9.0
+margin_right = 79.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 2 )
+text = "9"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NotInBattleControl" type="Control" parent="."]
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 70.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NotInBattleControl"]
+margin_top = 11.0
+margin_right = 160.0
+margin_bottom = 43.0
+text = "Not in Battle"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

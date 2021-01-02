@@ -1,0 +1,184 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://prefab/level/skill_manager.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefab/block/lab/lab_large_border.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefab/block/lab/lab_exit_gate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefab/level/node_container.tscn" type="PackedScene" id=4]
+[ext_resource path="res://prefab/block/lab/lab_hard_block_line_2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://prefab/block/lab/metal_box_3_block.tscn" type="PackedScene" id=6]
+[ext_resource path="res://prefab/ground/metal_ground.tscn" type="PackedScene" id=7]
+[ext_resource path="res://prefab/block/lab/lab_small_border.tscn" type="PackedScene" id=8]
+[ext_resource path="res://prefab/enemy/freakhead/normal_freakhead.tscn" type="PackedScene" id=9]
+[ext_resource path="res://prefab/block/lab/lab_exit_small_border.tscn" type="PackedScene" id=10]
+[ext_resource path="res://prefab/block/lab/lab_hard_block_line_1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://prefab/enemy/slender/green_slender.tscn" type="PackedScene" id=12]
+[ext_resource path="res://prefab/hud/specialist_story_hud.tscn" type="PackedScene" id=13]
+[ext_resource path="res://prefab/level/level_manager.tscn" type="PackedScene" id=14]
+[ext_resource path="res://prefab/screen/pause_screen.tscn" type="PackedScene" id=15]
+[ext_resource path="res://prefab/player/player_specialist.tscn" type="PackedScene" id=16]
+[ext_resource path="res://prefab/level/laser_device_manager.tscn" type="PackedScene" id=17]
+[ext_resource path="res://prefab/block/lab/blue_metal_box_block.tscn" type="PackedScene" id=18]
+[ext_resource path="res://prefab/block/lab/metal_box_block.tscn" type="PackedScene" id=19]
+[ext_resource path="res://prefab/enemy/slobhood/red_slobhood.tscn" type="PackedScene" id=20]
+[ext_resource path="res://prefab/enemy/nastyfish/green_nastyfish.tscn" type="PackedScene" id=21]
+[ext_resource path="res://prefab/specialist_item/random_increase_item.tscn" type="PackedScene" id=22]
+[ext_resource path="res://prefab/specialist_item/random_skill_item.tscn" type="PackedScene" id=23]
+[ext_resource path="res://prefab/specialist_item/random_device_item.tscn" type="PackedScene" id=24]
+
+[sub_resource type="ProceduralSky" id=1]
+sky_top_color = Color( 0.501961, 0.501961, 0.501961, 1 )
+sky_horizon_color = Color( 0.25098, 0.25098, 0.25098, 1 )
+sky_energy = 0.5
+sun_color = Color( 1, 0.992157, 0.811765, 1 )
+sun_latitude = 0.0
+sun_angle_max = 20.0
+sun_energy = 0.0
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 1, 1, 0.980392, 1 )
+ambient_light_energy = 0.1
+ambient_light_sky_contribution = 0.6
+auto_exposure_enabled = true
+auto_exposure_scale = 0.2
+ss_reflections_enabled = true
+ssao_enabled = true
+glow_enabled = true
+glow_strength = 0.85
+glow_blend_mode = 0
+
+[sub_resource type="GIProbeData" id=3]
+bounds = AABB( -20, -10, -20, 40, 20, 40 )
+cell_size = 0.3125
+to_cell_xform = Transform( 3.2, 0, 0, 0, 3.2, 0, 0, 0, 3.2, 64, 32, 64 )
+dynamic_data = PoolIntArray( 0, 8, 128, 64, 128, 1, 0, 32654, 0, 0, 0, 0, 963729392, 0, 0, 1087163597, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
+dynamic_range = 4
+bias = 1.5
+normal_bias = 0.0
+propagation = 0.7
+
+[node name="Lab1LevelWE" type="WorldEnvironment"]
+environment = SubResource( 2 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="NodeContainer" parent="." instance=ExtResource( 4 )]
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.642787, 0.766044, 0, -0.766044, 0.642787, -0.839063, 134.597, 50 )
+shadow_enabled = true
+directional_shadow_normal_bias = 0.1
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.52992, 0.848049, 0, -0.848049, 0.52992, 0, 35, 21 )
+fov = 20.0
+
+[node name="GIProbe" type="GIProbe" parent="."]
+extents = Vector3( 20, 10, 20 )
+data = SubResource( 3 )
+
+[node name="SpecialistStoryHUD_1" parent="." instance=ExtResource( 13 )]
+
+[node name="SpecialistStoryHUD_2" parent="." instance=ExtResource( 13 )]
+margin_left = 910.0
+margin_right = 1270.0
+specialistId = 1
+
+[node name="LevelManager" parent="." instance=ExtResource( 14 )]
+pauseScreenNP = NodePath("../PauseScreen")
+exitGateNP = NodePath("../LabExitGate")
+specialistCharacterNPList = [ NodePath("../PlayerSpecialist_1"), NodePath("../PlayerSpecialist2_2") ]
+enemyCharacterNPList = [ NodePath("../GreenSlender_1"), NodePath("../GreenSlender_2"), NodePath("../RedSlobhood_1"), NodePath("../RedSlobhood_2"), NodePath("../NormalFreakhead_1"), NodePath("../NormalFreakhead_2"), NodePath("../GreenNastyfish_1"), NodePath("../GreenNastyfish_2") ]
+bossCharacterNPList = [  ]
+currentLevelScenePath = "level/lab/lab_1_level"
+nextLevelScenePath = "level/lab/lab_2_level"
+softBlockPrefabList = [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 6 ) ]
+itemPrefabList = [ ExtResource( 22 ), ExtResource( 24 ), ExtResource( 23 ) ]
+bgmAnimationName = "lab_bgm"
+levelName = "Laboratory&Area 1"
+levelTime = 600.0
+itemAmountList = [ 3, 1, 1 ]
+hasEnemy = true
+
+[node name="LabExitSmallBorder" parent="." instance=ExtResource( 10 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, -11, 1, 0 )
+
+[node name="LabLargeBorder_1" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -7 )
+
+[node name="LabSmallBorder" parent="." instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, 0 )
+
+[node name="LabLargeBorder_2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7 )
+
+[node name="LabExitGate" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, -5.5 )
+levelManagerNP = NodePath("../LevelManager")
+
+[node name="MetalGround" parent="." instance=ExtResource( 7 )]
+
+[node name="LabHardBlockLine1_1" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5 )
+
+[node name="LabHardBlockLine2_1" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3 )
+
+[node name="LabHardBlockLine2_2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1 )
+
+[node name="LabHardBlockLine2_3" parent="." instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0.5, 1 )
+
+[node name="LabHardBlockLine2_4" parent="." instance=ExtResource( 5 )]
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0.5, 3 )
+
+[node name="LabHardBlockLine1_2" parent="." instance=ExtResource( 11 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 5 )
+
+[node name="LaserDeviceManager" parent="." instance=ExtResource( 17 )]
+levelManagerNP = NodePath("../LevelManager")
+
+[node name="SkillManager" parent="." instance=ExtResource( 1 )]
+
+[node name="PlayerSpecialist_1" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -6 )
+laserDeviceManagerNP = NodePath("../LaserDeviceManager")
+skillManagerNP = NodePath("../SkillManager")
+
+[node name="PlayerSpecialist2_2" parent="." instance=ExtResource( 16 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -6 )
+laserDeviceManagerNP = NodePath("../LaserDeviceManager")
+skillManagerNP = NodePath("../SkillManager")
+specialistId = 1
+
+[node name="GreenSlender_1" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -4 )
+
+[node name="GreenSlender_2" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -4 )
+
+[node name="RedSlobhood_1" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2 )
+
+[node name="RedSlobhood_2" parent="." instance=ExtResource( 20 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -2 )
+
+[node name="NormalFreakhead_1" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0 )
+
+[node name="NormalFreakhead_2" parent="." instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+
+[node name="GreenNastyfish_1" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 2 )
+
+[node name="GreenNastyfish_2" parent="." instance=ExtResource( 21 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 2 )
+
+[node name="PauseScreen" parent="." instance=ExtResource( 15 )]

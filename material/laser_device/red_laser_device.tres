@@ -1,0 +1,52 @@
+[gd_resource type="SpatialMaterial" load_steps=7 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/laser_device_albedo.png-32a250c0c96d5ecb78bb209f43825d51.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/laser_device_ao.png-5abfb31ceffc0ab2a266d59e74d8ddb5.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/laser_device_emission.png-0b4e969143508bdbda5894486aa3b2bd.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/laser_device_specular.png-e20b12c201ead3decf6faa0180b00f40.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/laser_device_normal.png-bda62a859d942c16c0049d4279a1f823.stex"
+
+[sub_resource type="StreamTexture" id=6]
+flags = 7
+load_path = "res://.import/laser_device_roughness.png-6ab333ef904fb2d754c05d365384db32.stex"
+
+[resource]
+resource_name = "Cylinder001"
+params_cull_mode = 2
+albedo_color = Color( 0.862745, 0.0392157, 0.0392157, 1 )
+albedo_texture = SubResource( 1 )
+metallic = 0.8
+metallic_texture = SubResource( 4 )
+roughness = 0.3
+roughness_texture = SubResource( 6 )
+emission_enabled = true
+emission = Color( 0, 0, 0, 1 )
+emission_energy = 1.0
+emission_operator = 0
+emission_on_uv2 = false
+emission_texture = SubResource( 3 )
+normal_enabled = true
+normal_scale = 3.0
+normal_texture = SubResource( 5 )
+rim_enabled = true
+rim = 0.12
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.0
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0

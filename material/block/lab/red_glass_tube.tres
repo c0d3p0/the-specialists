@@ -1,0 +1,13 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+flags_transparent = true
+albedo_color = Color( 1, 0.101961, 0.0509804, 0.313726 )
+metallic = 0.6
+roughness = 0.0
+rim_enabled = true
+rim = 0.15
+rim_tint = 1.0
+refraction_enabled = true
+refraction_scale = 0.05
+refraction_texture_channel = 0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/junkbot_death.wav-aba6157be8199526b85423ecbead7863.sample"
+
+[deps]
+
+source_file="res://sound/junkbot/junkbot_death.wav"
+dest_files=[ "res://.import/junkbot_death.wav-aba6157be8199526b85423ecbead7863.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,263 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://model/character/freakhead.tscn" type="PackedScene" id=1]
+[ext_resource path="res://animation/character/freakhead/idle.tres" type="Animation" id=2]
+[ext_resource path="res://animation/character/freakhead/t_pose.tres" type="Animation" id=3]
+[ext_resource path="res://source/character/CharacterMove.cs" type="Script" id=4]
+[ext_resource path="res://source/character/CharacterPhysics.cs" type="Script" id=5]
+[ext_resource path="res://source/character/enemy/behavior/StalkerBackCheckerEnemyBehavior.cs" type="Script" id=6]
+[ext_resource path="res://source/character/enemy/DefaultEnemyCharacter.cs" type="Script" id=7]
+[ext_resource path="res://source/character/enemy/DefaultEnemyInitializer.cs" type="Script" id=8]
+[ext_resource path="res://source/character/enemy/DefaultEnemyAction.cs" type="Script" id=9]
+[ext_resource path="res://source/character/enemy/DefaultEnemyStatus.cs" type="Script" id=10]
+[ext_resource path="res://animation/character/freakhead/walk.tres" type="Animation" id=11]
+[ext_resource path="res://material/character/freakhead_purple.tres" type="Material" id=12]
+[ext_resource path="res://animation/character/freakhead/inactive.tres" type="Animation" id=13]
+[ext_resource path="res://animation/character/freakhead/active.tres" type="Animation" id=14]
+[ext_resource path="res://animation/character/freakhead/die.tres" type="Animation" id=15]
+[ext_resource path="res://animation/character/freakhead/hit.tres" type="Animation" id=16]
+[ext_resource path="res://animation/character/freakhead/invulnerable.tres" type="Animation" id=17]
+[ext_resource path="res://animation/default/start.tres" type="Animation" id=18]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.49
+height = 0.4
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.3, 0.5, 0.3 )
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "active"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "hit"
+
+[sub_resource type="AnimationNodeTimeScale" id=6]
+
+[sub_resource type="AnimationNodeBlendTree" id=7]
+graph_offset = Vector2( -112.553, 65.5 )
+nodes/Animation/node = SubResource( 5 )
+nodes/Animation/position = Vector2( 0, 140 )
+nodes/TimeScale/node = SubResource( 6 )
+nodes/TimeScale/position = Vector2( 200, 140 )
+nodes/output/position = Vector2( 400, 140 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "inactive"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "start"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=20]
+states/active/node = SubResource( 3 )
+states/active/position = Vector2( 141, 186.906 )
+states/die/node = SubResource( 4 )
+states/die/position = Vector2( 616, 186.906 )
+states/hit/node = SubResource( 7 )
+states/hit/position = Vector2( 404, 186.906 )
+states/idle/node = SubResource( 8 )
+states/idle/position = Vector2( 296, 107.1 )
+states/inactive/node = SubResource( 9 )
+states/inactive/position = Vector2( 141, 107.1 )
+states/start/node = SubResource( 10 )
+states/start/position = Vector2( -20.849, 107.1 )
+states/walk/node = SubResource( 11 )
+states/walk/position = Vector2( 520, 107.1 )
+transitions = [ "inactive", "active", SubResource( 12 ), "active", "idle", SubResource( 13 ), "idle", "walk", SubResource( 14 ), "walk", "idle", SubResource( 15 ), "idle", "hit", SubResource( 16 ), "walk", "hit", SubResource( 17 ), "hit", "idle", SubResource( 18 ), "start", "inactive", SubResource( 19 ) ]
+start_node = "start"
+end_node = "die"
+graph_offset = Vector2( -100.849, 50.9064 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=21]
+
+[node name="PurpleFreakhead" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 28
+script = ExtResource( 7 )
+enemyActionNP = NodePath("Source/EnemyAction")
+enemyStatusNP = NodePath("Source/EnemyStatus")
+enemyBehaviorNP = NodePath("Source/EnemyBehavior")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.69, 0 )
+shape = SubResource( 1 )
+
+[node name="Body" type="Spatial" parent="."]
+
+[node name="Freakhead" parent="Body" instance=ExtResource( 1 )]
+
+[node name="MeshInstance" parent="Body/Freakhead" index="0"]
+material/0 = ExtResource( 12 )
+
+[node name="FrontRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( 0, 0, 0.54 )
+collision_mask = 28
+
+[node name="BackRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 28
+
+[node name="LeftRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( 0.54, 0, 0 )
+collision_mask = 28
+
+[node name="RightRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( -0.54, 0, 0 )
+collision_mask = 28
+
+[node name="FStalkRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, 2 )
+collision_mask = 29
+
+[node name="LStalkRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+enabled = true
+cast_to = Vector3( 2, 0, 0 )
+collision_mask = 29
+
+[node name="RStalkRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+enabled = true
+cast_to = Vector3( -2, 0, 0 )
+collision_mask = 29
+
+[node name="BStalkFRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+enabled = true
+cast_to = Vector3( 0, 0, -2 )
+collision_mask = 29
+
+[node name="HurtArea" type="Area" parent="."]
+collision_layer = 64
+collision_mask = 17408
+
+[node name="CollisionShape" type="CollisionShape" parent="HurtArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+shape = SubResource( 2 )
+
+[node name="StrikeArea" type="Area" parent="."]
+monitoring = false
+collision_layer = 4096
+collision_mask = 32
+
+[node name="CollisionShape" type="CollisionShape" parent="StrikeArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+shape = SubResource( 2 )
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+attenuation_model = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/active = ExtResource( 14 )
+anims/die = ExtResource( 15 )
+anims/hit = ExtResource( 16 )
+anims/idle = ExtResource( 2 )
+anims/inactive = ExtResource( 13 )
+anims/start = ExtResource( 18 )
+anims/t_pose = ExtResource( 3 )
+anims/walk = ExtResource( 11 )
+
+[node name="InvulnerableAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/invulnerable = ExtResource( 17 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 20 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 21 )
+parameters/hit/TimeScale/scale = 2.0
+
+[node name="Source" type="Node" parent="."]
+
+[node name="CharacterPhysics" type="Node" parent="Source"]
+script = ExtResource( 5 )
+kinematicBodyNP = NodePath("../..")
+
+[node name="CharacterMove" type="Node" parent="Source"]
+script = ExtResource( 4 )
+moveSpeed = Vector3( 2, 0, 2 )
+acceleration = 22.0
+deacceleration = 43.0
+
+[node name="EnemyAction" type="Node" parent="Source"]
+script = ExtResource( 9 )
+characterNP = NodePath("../..")
+bodyNP = NodePath("../../Body")
+hurtAreaNP = NodePath("../../HurtArea")
+animationTreeNP = NodePath("../../AnimationTree")
+toMoveMap = {
+"idle": "walk",
+"walk": "walk"
+}
+toSkillMap = {
+
+}
+
+[node name="EnemyStatus" type="Node" parent="Source"]
+script = ExtResource( 10 )
+speedLevelRange = Vector2( 1, 1 )
+startingHealth = 150
+
+[node name="EnemyBehavior" type="Node" parent="Source"]
+script = ExtResource( 6 )
+enemyCharacterNP = NodePath("../..")
+bodyNP = NodePath("../../Body")
+rayCastListNP = [ NodePath("../../Body/FrontRayCast"), NodePath("../../Body/BackRayCast"), NodePath("../../Body/LeftRayCast"), NodePath("../../Body/RightRayCast") ]
+cooldownTimerNP = NodePath("../../CooldownTimer")
+rngCooldownRange = Vector2( 4, 8 )
+backCheckRng = 280
+stalkRayCastNPList = [ NodePath("../../Body/FStalkRayCast"), NodePath("../../Body/LStalkRayCast"), NodePath("../../Body/RStalkRayCast"), NodePath("../../Body/BStalkFRayCast") ]
+
+[node name="EnemyInitializer" type="Node" parent="Source"]
+script = ExtResource( 8 )
+enemyCharacterNP = NodePath("../..")
+characterPhysicsNP = NodePath("../CharacterPhysics")
+characterMoveNP = NodePath("../CharacterMove")
+enemyActionNP = NodePath("../EnemyAction")
+enemyStatusNP = NodePath("../EnemyStatus")
+enemyBehaviorNP = NodePath("../EnemyBehavior")
+hurtAreaNP = NodePath("../../HurtArea")
+[connection signal="area_entered" from="HurtArea" to="Source/EnemyAction" method="OnHurtAreaEntered"]
+[connection signal="area_entered" from="StrikeArea" to="Source/EnemyAction" method="OnStrikeAreaEntered"]
+
+[editable path="Body/Freakhead"]

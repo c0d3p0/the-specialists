@@ -1,0 +1,40 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/amber_albedo.png-e2808ec23e7f83430c503aff7466b3ce.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/amethyst_ao.png-310011899fee495e5597f98b3e1230d1.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/amethyst_specular.png-d78bbaaaae894ead175a8d9c89bd0084.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/amethyst_normal.png-2f2cf15d83ca94eca82fb7480ab9ba20.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+params_cull_mode = 2
+albedo_texture = SubResource( 1 )
+metallic_texture = SubResource( 3 )
+roughness = 0.2
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.21
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.99
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 4, 4, 1 )
+uv1_offset = Vector3( 0, 0.4, 0 )

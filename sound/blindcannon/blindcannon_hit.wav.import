@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/blindcannon_hit.wav-ed258eaecbe8c1d8117413ea2bcd5004.sample"
+
+[deps]
+
+source_file="res://sound/blindcannon/blindcannon_hit.wav"
+dest_files=[ "res://.import/blindcannon_hit.wav-ed258eaecbe8c1d8117413ea2bcd5004.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

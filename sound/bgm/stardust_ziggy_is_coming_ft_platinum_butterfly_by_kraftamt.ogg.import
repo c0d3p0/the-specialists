@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/stardust_ziggy_is_coming_ft_platinum_butterfly_by_kraftamt.ogg-ec65cebbb8e1648394f6d35d20769b8b.oggstr"
+
+[deps]
+
+source_file="res://sound/bgm/stardust_ziggy_is_coming_ft_platinum_butterfly_by_kraftamt.ogg"
+dest_files=[ "res://.import/stardust_ziggy_is_coming_ft_platinum_butterfly_by_kraftamt.ogg-ec65cebbb8e1648394f6d35d20769b8b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

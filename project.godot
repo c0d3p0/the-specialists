@@ -1,0 +1,215 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[  ]
+_global_script_class_icons={
+
+}
+
+[application]
+
+config/name="the-specialists"
+run/main_scene="res://scene/screen/splash_screen.tscn"
+boot_splash/image="res://texture/screen/splash.png"
+boot_splash/bg_color=Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+config/icon="res://icon.png"
+
+[autoload]
+
+WindowManager="*res://prefab/game/window_manager.tscn"
+TaskRunner="*res://prefab/game/task_runner.tscn"
+GlobalData="*res://prefab/game/global_data.tscn"
+GlobalResource="*res://prefab/game/global_resource.tscn"
+
+[display]
+
+window/size/width=1280
+window/size/height=720
+window/stretch/mode="2d"
+window/stretch/aspect="keep_width"
+
+[input]
+
+p1_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p1_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p1_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p1_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p1_plant_device={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":79,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p1_change_slot={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":74,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p1_execute_skill={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":73,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p1_pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777225,"unicode":0,"echo":false,"script":null)
+ ]
+}
+p2_up={
+"deadzone": 0.5,
+"events": [  ]
+}
+p2_down={
+"deadzone": 0.5,
+"events": [  ]
+}
+p2_left={
+"deadzone": 0.5,
+"events": [  ]
+}
+p2_right={
+"deadzone": 0.5,
+"events": [  ]
+}
+p2_plant_device={
+"deadzone": 0.5,
+"events": [  ]
+}
+p2_change_slot={
+"deadzone": 0.5,
+"events": [  ]
+}
+p2_execute_skill={
+"deadzone": 0.5,
+"events": [  ]
+}
+p2_pause={
+"deadzone": 0.5,
+"events": [  ]
+}
+p3_up={
+"deadzone": 0.5,
+"events": [  ]
+}
+p3_down={
+"deadzone": 0.5,
+"events": [  ]
+}
+p3_left={
+"deadzone": 0.5,
+"events": [  ]
+}
+p3_right={
+"deadzone": 0.5,
+"events": [  ]
+}
+p3_plant_device={
+"deadzone": 0.5,
+"events": [  ]
+}
+p3_change_slot={
+"deadzone": 0.5,
+"events": [  ]
+}
+p3_execute_skill={
+"deadzone": 0.5,
+"events": [  ]
+}
+p3_pause={
+"deadzone": 0.5,
+"events": [  ]
+}
+p4_up={
+"deadzone": 0.5,
+"events": [  ]
+}
+p4_down={
+"deadzone": 0.5,
+"events": [  ]
+}
+p4_left={
+"deadzone": 0.5,
+"events": [  ]
+}
+p4_right={
+"deadzone": 0.5,
+"events": [  ]
+}
+p4_plant_device={
+"deadzone": 0.5,
+"events": [  ]
+}
+p4_change_slot={
+"deadzone": 0.5,
+"events": [  ]
+}
+p4_execute_skill={
+"deadzone": 0.5,
+"events": [  ]
+}
+p4_pause={
+"deadzone": 0.5,
+"events": [  ]
+}
+toggle_maximize={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777247,"unicode":0,"echo":false,"script":null)
+ ]
+}
+toggle_fullscreen={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777254,"unicode":0,"echo":false,"script":null)
+ ]
+}
+toggle_borderless={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777248,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[layer_names]
+
+3d_physics/layer_1="Player"
+3d_physics/layer_2="Enemy"
+3d_physics/layer_3="Hard Block"
+3d_physics/layer_4="Soft Block"
+3d_physics/layer_5="Laser Device"
+3d_physics/layer_6="Player Hurt"
+3d_physics/layer_7="Enemy Hurt"
+3d_physics/layer_8="Hard Block Hurt"
+3d_physics/layer_9="Laser Device Hurt"
+3d_physics/layer_10="Soft Block/Item Hurt"
+3d_physics/layer_11="Laser Ray Strike"
+3d_physics/layer_12="Laser Device Trigger Strike"
+3d_physics/layer_13="Enemy Strike"
+3d_physics/layer_14="Enemy Projectile Strike"
+3d_physics/layer_15="Enemy Strike All"
+3d_physics/layer_16="Level Exit Trigger"
+3d_physics/layer_17="Laser Device Trigger Sensor"
+3d_physics/layer_18="Ignore Collision"
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"

@@ -1,0 +1,37 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/rotting_guy_albedo.jpg-ad7e8ccfbbc7fd9223daf2e9f961f7fc.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/rotting_guy_ao.jpg-a4c9b8f7e68ba314a8ac6ace3e333d18.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/rotting_guy_normal.jpg-813ebb2c7abfae7152d2e40385d101a9.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/rotting_guy_roughness.jpg-d8fcd715d5bb2432e4ff6617041e0a03.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_texture = SubResource( 1 )
+roughness = 0.8
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 3 )
+rim_enabled = true
+rim = 0.18
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.95
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/slender_death.wav-f4009013ffe3a03482b96e2de13c898d.sample"
+
+[deps]
+
+source_file="res://sound/slender/slender_death.wav"
+dest_files=[ "res://.import/slender_death.wav-f4009013ffe3a03482b96e2de13c898d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

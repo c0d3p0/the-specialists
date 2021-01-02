@@ -1,0 +1,218 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://material/character/eye_green.tres" type="Material" id=1]
+[ext_resource path="res://material/character/eye_cover.tres" type="Material" id=2]
+[ext_resource path="res://animation/character/eye/hit.tres" type="Animation" id=3]
+[ext_resource path="res://source/character/CharacterMove.cs" type="Script" id=4]
+[ext_resource path="res://source/character/CharacterPhysics.cs" type="Script" id=5]
+[ext_resource path="res://source/character/enemy/behavior/RandomWalkerEnemyBehavior.cs" type="Script" id=6]
+[ext_resource path="res://source/character/enemy/DefaultEnemyCharacter.cs" type="Script" id=7]
+[ext_resource path="res://source/character/enemy/DefaultEnemyInitializer.cs" type="Script" id=8]
+[ext_resource path="res://source/character/enemy/DefaultEnemyAction.cs" type="Script" id=9]
+[ext_resource path="res://source/character/enemy/DefaultEnemyStatus.cs" type="Script" id=10]
+[ext_resource path="res://model/character/eye.tscn" type="PackedScene" id=11]
+[ext_resource path="res://animation/character/eye/active.tres" type="Animation" id=12]
+[ext_resource path="res://animation/character/eye/idle.tres" type="Animation" id=13]
+[ext_resource path="res://animation/character/eye/move.tres" type="Animation" id=14]
+[ext_resource path="res://animation/character/eye/die.tres" type="Animation" id=15]
+[ext_resource path="res://animation/character/eye/inactive.tres" type="Animation" id=16]
+[ext_resource path="res://animation/character/eye/invulnerable.tres" type="Animation" id=17]
+[ext_resource path="res://animation/default/start.tres" type="Animation" id=18]
+
+[sub_resource type="SphereShape" id=1]
+radius = 0.49
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.35, 0.9, 0.35 )
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "active"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "hit"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "inactive"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "move"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "start"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=18]
+states/active/node = SubResource( 3 )
+states/active/position = Vector2( 141, 186.906 )
+states/die/node = SubResource( 4 )
+states/die/position = Vector2( 651, 186.906 )
+states/hit/node = SubResource( 5 )
+states/hit/position = Vector2( 420, 186.906 )
+states/idle/node = SubResource( 6 )
+states/idle/position = Vector2( 313, 107.1 )
+states/inactive/node = SubResource( 7 )
+states/inactive/position = Vector2( 141, 107.1 )
+states/move/node = SubResource( 8 )
+states/move/position = Vector2( 539, 107.1 )
+states/start/node = SubResource( 9 )
+states/start/position = Vector2( -22.849, 107.1 )
+transitions = [ "inactive", "active", SubResource( 10 ), "active", "idle", SubResource( 11 ), "move", "idle", SubResource( 12 ), "idle", "move", SubResource( 13 ), "idle", "hit", SubResource( 14 ), "move", "hit", SubResource( 15 ), "hit", "idle", SubResource( 16 ), "start", "inactive", SubResource( 17 ) ]
+start_node = "start"
+end_node = "die"
+graph_offset = Vector2( -100.849, 50.9064 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=19]
+
+[node name="GreenEye" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0 )
+collision_layer = 2
+collision_mask = 28
+script = ExtResource( 7 )
+enemyActionNP = NodePath("Source/EnemyAction")
+enemyStatusNP = NodePath("Source/EnemyStatus")
+enemyBehaviorNP = NodePath("Source/EnemyBehavior")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Body" type="Spatial" parent="."]
+
+[node name="Eye" type="Spatial" parent="Body"]
+
+[node name="EyeMeshInstance" parent="Body/Eye" instance=ExtResource( 11 )]
+transform = Transform( 46, 0, 0, 0, 46, 0, 0, 0, 46, 0, 0, 0 )
+material/0 = ExtResource( 1 )
+material/1 = ExtResource( 2 )
+
+[node name="FrontRayCast" type="RayCast" parent="Body"]
+cast_to = Vector3( 0, 0, 0.54 )
+collision_mask = 28
+
+[node name="BackRayCast" type="RayCast" parent="Body"]
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 28
+
+[node name="LeftRayCast" type="RayCast" parent="Body"]
+cast_to = Vector3( 0.54, 0, 0 )
+collision_mask = 28
+
+[node name="RightRayCast" type="RayCast" parent="Body"]
+cast_to = Vector3( -0.54, 0, 0 )
+collision_mask = 28
+
+[node name="HurtArea" type="Area" parent="."]
+monitoring = false
+collision_layer = 64
+collision_mask = 17408
+
+[node name="CollisionShape" type="CollisionShape" parent="HurtArea"]
+shape = SubResource( 2 )
+
+[node name="StrikeArea" type="Area" parent="."]
+monitoring = false
+collision_layer = 4096
+collision_mask = 32
+
+[node name="CollisionShape" type="CollisionShape" parent="StrikeArea"]
+shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+attenuation_model = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/active = ExtResource( 12 )
+anims/die = ExtResource( 15 )
+anims/hit = ExtResource( 3 )
+anims/idle = ExtResource( 13 )
+anims/inactive = ExtResource( 16 )
+anims/move = ExtResource( 14 )
+anims/start = ExtResource( 18 )
+
+[node name="InvulnerableAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/invulnerable = ExtResource( 17 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 18 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 19 )
+
+[node name="Source" type="Node" parent="."]
+
+[node name="CharacterPhysics" type="Node" parent="Source"]
+script = ExtResource( 5 )
+kinematicBodyNP = NodePath("../..")
+lockYAxis = true
+lockYPosition = 1.5
+
+[node name="CharacterMove" type="Node" parent="Source"]
+script = ExtResource( 4 )
+moveSpeed = Vector3( 2, 0, 2 )
+acceleration = 35.0
+
+[node name="EnemyAction" type="Node" parent="Source"]
+script = ExtResource( 9 )
+characterNP = NodePath("../..")
+bodyNP = NodePath("../../Body")
+hurtAreaNP = NodePath("../../HurtArea")
+animationTreeNP = NodePath("../../AnimationTree")
+toMoveMap = {
+"idle": "move",
+"move": "move"
+}
+toSkillMap = {
+
+}
+
+[node name="EnemyStatus" type="Node" parent="Source"]
+script = ExtResource( 10 )
+speedLevelRange = Vector2( 1, 1 )
+startingHealth = 260
+
+[node name="EnemyBehavior" type="Node" parent="Source"]
+script = ExtResource( 6 )
+enemyCharacterNP = NodePath("../..")
+bodyNP = NodePath("../../Body")
+rayCastListNP = [ NodePath("../../Body/FrontRayCast"), NodePath("../../Body/BackRayCast"), NodePath("../../Body/LeftRayCast"), NodePath("../../Body/RightRayCast") ]
+blockMoveRange = Vector2( 2, 6 )
+
+[node name="EnemyInitializer" type="Node" parent="Source"]
+script = ExtResource( 8 )
+enemyCharacterNP = NodePath("../..")
+characterPhysicsNP = NodePath("../CharacterPhysics")
+characterMoveNP = NodePath("../CharacterMove")
+enemyActionNP = NodePath("../EnemyAction")
+enemyStatusNP = NodePath("../EnemyStatus")
+enemyBehaviorNP = NodePath("../EnemyBehavior")
+hurtAreaNP = NodePath("../../HurtArea")
+[connection signal="area_entered" from="HurtArea" to="Source/EnemyAction" method="OnHurtAreaEntered"]
+[connection signal="area_entered" from="StrikeArea" to="Source/EnemyAction" method="OnStrikeAreaEntered"]

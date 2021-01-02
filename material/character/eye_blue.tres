@@ -1,0 +1,40 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/blue_eye_albedo.png-6f65536d5d17657b5ee588902acd52ee.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/eye_ao.png-d3c55f09a946cbae7fabbc7525cbe06a.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/eye_specular.png-0ce87fcc64f575d4699f074e6c03706e.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/eye_normal.png-1212623653c38416ff96c865f299ef81.stex"
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Material.009"
+next_pass = ExtResource( 1 )
+flags_transparent = true
+params_depth_draw_mode = 1
+albedo_texture = SubResource( 1 )
+metallic_texture = SubResource( 3 )
+roughness = 0.3
+normal_enabled = true
+normal_scale = 3.0
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.21
+rim_tint = 0.7
+ao_enabled = true
+ao_light_affect = 0.97
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0

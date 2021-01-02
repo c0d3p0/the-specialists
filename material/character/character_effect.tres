@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://shader/character.shader" type="Shader" id=1]
+[ext_resource path="res://texture/noise/noise_texture.tres" type="Texture" id=2]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 1
+shader = ExtResource( 1 )
+shader_param/blinkSpeed = 15.0
+shader_param/blinkRange = 1.0
+shader_param/fadeInPercent = 0.0
+shader_param/dissolvePercent = 0.0
+shader_param/blinkColor = Color( 2.2, 0.05, 0.1, 0.25 )
+shader_param/fadeInColor = Color( 0, 0, 0, 1 )
+shader_param/dissolveColor = Color( 0, 0, 0, 1 )
+shader_param/dissolveEmissionColor = Color( 2.4, 1.8, 0.7, 1 )
+shader_param/blink = false
+shader_param/fadeIn = false
+shader_param/dissolve = false
+shader_param/dissolveTexture = ExtResource( 2 )

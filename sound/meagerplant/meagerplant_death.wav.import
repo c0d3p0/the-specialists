@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/meagerplant_death.wav-4dea1790926531d5a31e5adea6e58fdb.sample"
+
+[deps]
+
+source_file="res://sound/meagerplant/meagerplant_death.wav"
+dest_files=[ "res://.import/meagerplant_death.wav-4dea1790926531d5a31e5adea6e58fdb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

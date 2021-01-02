@@ -1,0 +1,33 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/cement_albedo.png-b301dd531b3afad7a62e22a68ceff211.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/cement_ao.png-93efad1e90c70b872a583ed21c38b999.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/cement_specular.png-b04299eaf6b125e099d160ebec94daba.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/cement_normal.png-269a026dd3462ef9209914b34a2ab065.stex"
+
+[resource]
+albedo_texture = SubResource( 1 )
+metallic_texture = SubResource( 3 )
+normal_enabled = true
+normal_scale = 6.0
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.09
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.76
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 2, 2, 1 )

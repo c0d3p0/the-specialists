@@ -1,0 +1,32 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/oat_grains_albedo.png-a016f1924f6ab015a05f87df218cf7fa.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/oat_grains_ao.png-580a3a138c70f60c40437b4fcf08e8a5.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/oat_grains_normal.png-3728302a6a0b92b55e31af53cf81cda7.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/oat_grains_roughness.png-3e955bcb77b103831275a50056cdbde3.stex"
+
+[resource]
+albedo_texture = SubResource( 1 )
+metallic_specular = 1.0
+roughness = 0.61
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 1.4
+normal_texture = SubResource( 3 )
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 2, 2, 1 )

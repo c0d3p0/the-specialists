@@ -1,0 +1,34 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/blue_geo_cloth_albedo.png-6d9ef6b909ec2b94a6a1f2633a613e3b.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/geo_cloth_ao.png-538082771740ebdb3e7ad40f4b4f5094.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/geo_cloth_normal.png-f8d43913c70c474880d87242f5e56ac9.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/geo_cloth_roughness.png-ba79f8c86984aa2e9c698b5ef2f389c3.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_texture = SubResource( 1 )
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 3 )
+ao_enabled = true
+ao_light_affect = 0.98
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 0.35, 1.8, 1 )

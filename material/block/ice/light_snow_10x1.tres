@@ -1,0 +1,47 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/light_snow_albedo.png-2390996d360a20c081d260a1c61f928b.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/light_snow_ao.png-647d8d2a713e5e53ebcfce9ac3803802.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/light_snow_displacement.png-9125cf3171acdf0acd73325cbadd80d9.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/light_snow_normal.png-671550d7e0d08dbb93eb4115384087c1.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/light_snow_roughness.png-11ba8bef6d1982e881474a0fd0d2f228.stex"
+
+[resource]
+albedo_color = Color( 0.901961, 0.901961, 0.901961, 1 )
+albedo_texture = SubResource( 1 )
+metallic_specular = 1.0
+roughness_texture = SubResource( 5 )
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.06
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.5
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+depth_enabled = true
+depth_scale = -0.05
+depth_deep_parallax = true
+depth_min_layers = 4
+depth_max_layers = 4
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = SubResource( 3 )
+uv1_scale = Vector3( 10, 1, 1 )

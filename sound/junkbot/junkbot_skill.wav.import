@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/junkbot_skill.wav-e2e270dc6bbd4d36934e26b8bc6738c6.sample"
+
+[deps]
+
+source_file="res://sound/junkbot/junkbot_skill.wav"
+dest_files=[ "res://.import/junkbot_skill.wav-e2e270dc6bbd4d36934e26b8bc6738c6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

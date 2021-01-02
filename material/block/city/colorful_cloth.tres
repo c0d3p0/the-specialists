@@ -1,0 +1,30 @@
+[gd_resource type="SpatialMaterial" load_steps=5 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/colorful_cloth_albedo.png-c1332c9905336e0c6a9efba59feb44a8.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/colorful_cloth_ao.png-2a0cc810b188054551ecd2fffc2e6087.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/colorful_cloth_normal.png-7d7fb488652ed90bf54fe897371a267e.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/colorful_cloth_roughness.png-f67fa7851bb4339be10ad9ee8264f854.stex"
+
+[resource]
+albedo_texture = SubResource( 1 )
+roughness = 0.9
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 3 )
+ao_enabled = true
+ao_light_affect = 0.96
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0

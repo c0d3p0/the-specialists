@@ -1,0 +1,34 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/red_blindcannon_albedo.png-e0464f1e2108f466f00d7fc827ee2be5.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/blindcannon_specular.png-12106169d49c35a0e70baab02d1761a9.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/blindcannon_normal.png-6970ec188d1b1ddbeb1b32fc7a52f315.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/blindcannon_roughness.png-d351895bcbab5af17fc55b989fc9c3b8.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_texture = SubResource( 1 )
+metallic = 1.0
+metallic_texture = SubResource( 2 )
+roughness = 0.3
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = SubResource( 3 )
+rim_enabled = true
+rim = 0.19
+rim_tint = 1.0

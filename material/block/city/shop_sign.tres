@@ -1,0 +1,11 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/shop_sign.png-76f78af5dae25f76ef10bd2872e96d8c.stex"
+
+[resource]
+albedo_texture = SubResource( 1 )
+metallic = 0.7
+metallic_specular = 0.8
+roughness = 0.3

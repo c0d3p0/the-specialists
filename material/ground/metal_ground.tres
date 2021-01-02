@@ -1,0 +1,57 @@
+[gd_resource type="SpatialMaterial" load_steps=9 format=2]
+
+[ext_resource path="res://shader/albedo_blink.shader" type="Shader" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/metal_floor_albedo.png-8157c551a64f24fb042ed38e5f9f09a1.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/metal_floor_ao.png-c04a14b0cd60f62eac6ac9d4e0a91a16.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/metal_floor_specular.png-36e02928d120fcb97525a82303006f0a.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/metal_floor_emission.png-baee67fc1745ed01b8e58bd55821d864.stex"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 1 )
+shader_param/speed = 3.0
+shader_param/range = 1.0
+shader_param/blinkColor = Color( 3, 1.6, 0.1, 1 )
+shader_param/blink = true
+shader_param/uv1_scale = Vector3( 4, 3, 1 )
+shader_param/uv1_offset = null
+shader_param/blinkTexture = SubResource( 4 )
+
+[sub_resource type="StreamTexture" id=6]
+flags = 7
+load_path = "res://.import/metal_floor_normal.png-7a07df4e28ff44c2b20fc9f89729c8dd.stex"
+
+[sub_resource type="StreamTexture" id=7]
+flags = 7
+load_path = "res://.import/metal_floor_roughness.png-54bdf311fa61d8f02597b002db3319b4.stex"
+
+[resource]
+next_pass = SubResource( 5 )
+albedo_color = Color( 0.72549, 0.764706, 1, 1 )
+albedo_texture = SubResource( 1 )
+metallic = 0.8
+metallic_texture = SubResource( 3 )
+roughness_texture = SubResource( 7 )
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 6 )
+rim_enabled = true
+rim = 0.2
+rim_tint = 0.7
+ao_enabled = true
+ao_light_affect = 0.97
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 4, 3, 1 )

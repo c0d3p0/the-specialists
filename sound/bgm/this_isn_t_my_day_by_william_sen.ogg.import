@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/this_isn_t_my_day_by_william_sen.ogg-2a9c417d50c0b89c82328fb655faf0e7.oggstr"
+
+[deps]
+
+source_file="res://sound/bgm/this_isn_t_my_day_by_william_sen.ogg"
+dest_files=[ "res://.import/this_isn_t_my_day_by_william_sen.ogg-2a9c417d50c0b89c82328fb655faf0e7.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

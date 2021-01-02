@@ -1,0 +1,46 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/road_ground_albedo.jpg-1385e796c23a71ffb8aee0dabc1195ec.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/road_ground_ao.jpg-d86f737826d73949798650424c3a9e66.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/road_ground_displacement.jpg-7c41a28129c60d58f34e56a326749074.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/road_ground_specular.jpg-ce352a1931b5237bbdc600a4c78e8201.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/road_ground_normal.jpg-f987d579cdfaaf82d5f0366e16a52207.stex"
+
+[resource]
+albedo_texture = SubResource( 1 )
+metallic_texture = SubResource( 4 )
+roughness = 0.9
+normal_enabled = true
+normal_scale = 4.0
+normal_texture = SubResource( 5 )
+rim_enabled = true
+rim = 0.14
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+depth_enabled = true
+depth_scale = -0.05
+depth_deep_parallax = true
+depth_min_layers = 4
+depth_max_layers = 8
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = SubResource( 3 )
+uv1_scale = Vector3( 40, 30, 1 )

@@ -1,0 +1,208 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://gui/font/madcat_20.tres" type="DynamicFont" id=1]
+[ext_resource path="res://gui/font/madcat_64.tres" type="DynamicFont" id=2]
+[ext_resource path="res://gui/theme/gui_layout_style.tres" type="StyleBox" id=3]
+[ext_resource path="res://gui/theme/secondary_theme.tres" type="Theme" id=4]
+[ext_resource path="res://source/screen/option/OptionScreen.cs" type="Script" id=5]
+[ext_resource path="res://prefab/screen/input_mapping_screen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://prefab/screen/1p_ranking_screen.tscn" type="PackedScene" id=7]
+[ext_resource path="res://prefab/screen/2p_ranking_screen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://prefab/screen/last_gameplay_screen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://source/screen/option/OptionNewScreen.cs" type="Script" id=10]
+
+[node name="OptionsScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+optionNewScreenNP = NodePath("Source/OptionNewScreen")
+screenControlNP = NodePath("ScreenControl")
+optionLabelNP = NodePath("ScreenControl/OptionControl/OptionLabel")
+optionNPList = [ NodePath("ScreenControl/InputMappingControl"), NodePath("ScreenControl/LastGameplayScreen"), NodePath("ScreenControl/1PRankingScreen"), NodePath("ScreenControl/2PRankingScreen"), NodePath("ScreenControl/CreditsControl") ]
+subScreenNPMap = {
+"input_mapping": NodePath("InputMappingScreen")
+}
+optionTitleList = [ "Input Mapping", "Last Gameplay", "1P Rankings", "2P Rankings", "Credits" ]
+newScreenMethodMap = {
+"credits": "LoadCreditScreen"
+}
+
+[node name="ScreenControl" type="Control" parent="."]
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TopLayoutPanel" type="Panel" parent="ScreenControl"]
+margin_left = 100.0
+margin_top = 40.0
+margin_right = 1180.0
+margin_bottom = 130.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MidLayoutPanel" type="Panel" parent="ScreenControl"]
+margin_left = 100.0
+margin_top = 180.0
+margin_right = 1180.0
+margin_bottom = 220.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LayoutBottomPanel" type="Panel" parent="ScreenControl"]
+margin_left = 101.0
+margin_top = 270.0
+margin_right = 1181.0
+margin_bottom = 700.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoControl" type="Control" parent="ScreenControl"]
+margin_left = 1.0
+margin_right = 1281.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="ScreenControl/InfoControl"]
+margin_top = 40.0
+margin_right = 1280.0
+margin_bottom = 127.0
+custom_fonts/font = ExtResource( 2 )
+text = "Options"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HintLabel" type="Label" parent="ScreenControl/InfoControl"]
+margin_top = 660.0
+margin_right = 1280.0
+margin_bottom = 699.0
+custom_fonts/font = ExtResource( 1 )
+text = "Press \"ESC\" to go back to \"Title Screen\"."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionControl" type="Control" parent="ScreenControl"]
+margin_left = 521.0
+margin_top = 180.0
+margin_right = 759.0
+margin_bottom = 220.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionLabel" type="Label" parent="ScreenControl/OptionControl"]
+margin_left = 30.0
+margin_top = 3.0
+margin_right = 204.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 122, 0 )
+text = "Input Mapping"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="ScreenControl/OptionControl"]
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 36.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="ScreenControl/OptionControl"]
+margin_left = 214.0
+margin_top = 4.0
+margin_right = 238.0
+margin_bottom = 36.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputMappingControl" type="Control" parent="ScreenControl"]
+visible = false
+margin_top = 270.0
+margin_right = 1280.0
+margin_bottom = 700.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputMappingButton" type="Button" parent="ScreenControl/InputMappingControl"]
+margin_left = 535.0
+margin_top = 199.0
+margin_right = 745.0
+margin_bottom = 231.0
+text = "Configure Inputs"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LastGameplayScreen" parent="ScreenControl" instance=ExtResource( 9 )]
+visible = false
+margin_top = 270.0
+margin_right = 1240.0
+margin_bottom = 660.0
+
+[node name="1PRankingScreen" parent="ScreenControl" instance=ExtResource( 7 )]
+visible = false
+margin_top = 270.0
+margin_right = 1240.0
+margin_bottom = 660.0
+
+[node name="2PRankingScreen" parent="ScreenControl" instance=ExtResource( 8 )]
+visible = false
+margin_top = 270.0
+margin_right = 1240.0
+margin_bottom = 660.0
+
+[node name="CreditsControl" type="Control" parent="ScreenControl"]
+margin_top = 270.0
+margin_right = 1280.0
+margin_bottom = 700.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsButton" type="Button" parent="ScreenControl/CreditsControl"]
+margin_left = 554.0
+margin_top = 160.0
+margin_right = 726.0
+margin_bottom = 192.0
+text = "Show Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InputMappingScreen" parent="." instance=ExtResource( 6 )]
+
+[node name="Source" type="Node" parent="."]
+
+[node name="OptionNewScreen" type="Node" parent="Source"]
+script = ExtResource( 10 )
+[connection signal="pressed" from="ScreenControl/OptionControl/PreviousButton" to="." method="OnOptionChangeButtonPressed" binds= [ -1 ]]
+[connection signal="pressed" from="ScreenControl/OptionControl/NextButton" to="." method="OnOptionChangeButtonPressed" binds= [ 1 ]]
+[connection signal="pressed" from="ScreenControl/InputMappingControl/InputMappingButton" to="." method="OnSubScreenButtonPressed" binds= [ "input_mapping" ]]
+[connection signal="pressed" from="ScreenControl/CreditsControl/CreditsButton" to="." method="OnNewScreenButtonPressed" binds= [ "credits" ]]

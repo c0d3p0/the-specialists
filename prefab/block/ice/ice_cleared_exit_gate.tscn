@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://prefab/block/ice/ice_pillar_block.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefab/block/ice/snow_bucket.tscn" type="PackedScene" id=2]
+[ext_resource path="res://material/block/ice/light_snow_1x10.tres" type="Material" id=5]
+[ext_resource path="res://material/block/ice/light_snow_10x1.tres" type="Material" id=6]
+[ext_resource path="res://model/object/wood_exit_gate_fence.tscn" type="PackedScene" id=7]
+
+[node name="IceClearedExitGate" type="Spatial"]
+
+[node name="TopWoodExitGateFenceMI" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5 )
+material/0 = ExtResource( 6 )
+material/1 = ExtResource( 5 )
+
+[node name="BottomWoodExitGateFenceMI2" parent="." instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5 )
+material/0 = ExtResource( 6 )
+material/1 = ExtResource( 5 )
+
+[node name="IcePillarBlock_1" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1.5 )
+
+[node name="IcePillarBlock_2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1.5 )
+
+[node name="SnowBucketBlock_1" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, 0.5 )
+
+[node name="SnowBucketBlock_2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.5, -0.5 )

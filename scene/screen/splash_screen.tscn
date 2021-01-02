@@ -1,0 +1,80 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://source/screen/load/MaterialPreLoader.cs" type="Script" id=1]
+[ext_resource path="res://source/screen/load/LoadScreen.cs" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/godot logo.png-6e6cf238a1ee20913383b2948ba09958.stex"
+
+[sub_resource type="Animation" id=3]
+length = 2.0
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("LogoTextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="SplashScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
+margin_right = 1280.0
+margin_bottom = 720.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LogoTextureRect" type="TextureRect" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 320.0
+margin_top = 230.0
+margin_right = 960.0
+margin_bottom = 489.0
+texture = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RenderTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "splash"
+anims/splash = SubResource( 3 )
+
+[node name="MaterialContainer" type="Spatial" parent="."]
+
+[node name="Camera" type="Camera" parent="MaterialContainer"]
+
+[node name="Source" type="Node" parent="."]
+
+[node name="MaterialPreLoader" type="Node" parent="Source"]
+script = ExtResource( 1 )
+nextNodeNP = NodePath("../LoadScreen")
+materialRenderContainerNP = NodePath("../../MaterialContainer")
+renderTimerNP = NodePath("../../RenderTimer")
+materialRenderScenePathList = [ "res://prefab/screen/material_pre_render.tscn", "res://prefab/screen/material_pre_render_2.tscn", "res://prefab/screen/material_pre_render_3.tscn", "res://prefab/screen/material_pre_render_4.tscn" ]
+
+[node name="LoadScreen" type="Node" parent="Source"]
+script = ExtResource( 3 )
+process = false

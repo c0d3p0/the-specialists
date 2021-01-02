@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/junkbot_hit.wav-cdf96fee2b28bcf21ad7d89f3fc539ce.sample"
+
+[deps]
+
+source_file="res://sound/junkbot/junkbot_hit.wav"
+dest_files=[ "res://.import/junkbot_hit.wav-cdf96fee2b28bcf21ad7d89f3fc539ce.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

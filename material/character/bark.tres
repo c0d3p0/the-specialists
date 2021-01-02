@@ -1,0 +1,38 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/bark_albedo.png-8c2b90a647e62b1f2f15d3b9edad8742.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/bark_ao.png-8b2e13a0fd15230f73ca6771bb34de07.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/bark_normal.png-c2354175eff22e9e49862375be8e9f3e.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/bark_roughness.png-cffe619b30bd0a48fe97d93142205601.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_color = Color( 0.8, 0.8, 0.8, 1 )
+albedo_texture = SubResource( 1 )
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 3.0
+normal_texture = SubResource( 3 )
+rim_enabled = true
+rim = 0.19
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.96
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 8, 4, 1 )

@@ -1,0 +1,39 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/cybotron_camera.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/cybotron_albedo.png-6601d8cfe64cc98b1d323db5306879d5.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/cybotron_ao.png-1822e13775d07088376f80fd3de83fe5.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/cybotron_specular.png-06209efc5b9caafb23951324f2ff74e5.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/cybotron_normal.png-e3d9e32ce3fec60732771741c2fbbfff.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+params_cull_mode = 2
+albedo_texture = SubResource( 1 )
+metallic = 0.8
+metallic_texture = SubResource( 3 )
+roughness = 0.3
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.17
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.98
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0

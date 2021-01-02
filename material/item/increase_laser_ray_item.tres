@@ -1,0 +1,15 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/laser_ray_albedo.png-0fdad4b50bcfc0628ecf2c3de7c97591.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+flags_unshaded = true
+params_cull_mode = 2
+albedo_color = Color( 1.7, 0.35, 2.8, 1 )
+albedo_texture = SubResource( 1 )

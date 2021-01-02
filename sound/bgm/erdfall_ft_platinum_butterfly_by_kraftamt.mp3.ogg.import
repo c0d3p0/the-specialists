@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/erdfall_ft_platinum_butterfly_by_kraftamt.mp3.ogg-d916d6cff89b4326935d594e944dacfd.oggstr"
+
+[deps]
+
+source_file="res://sound/bgm/erdfall_ft_platinum_butterfly_by_kraftamt.mp3.ogg"
+dest_files=[ "res://.import/erdfall_ft_platinum_butterfly_by_kraftamt.mp3.ogg-d916d6cff89b4326935d594e944dacfd.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

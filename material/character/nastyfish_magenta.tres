@@ -1,0 +1,33 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/magenta_nastyfish_albedo.png-e4387e82e4bb48dbbe024a6b60eb02be.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/nastyfish_specular.png-d9385dd0982506e75ad5843444b0d393.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/nastyfish_normal.png-10357af46301cee2a5f1c85a8f8d3a0d.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/nastyfish_roughness.png-f81945599b7f97c59a1edbcdf8ff4f83.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_texture = SubResource( 1 )
+metallic_texture = SubResource( 2 )
+roughness = 0.7
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 1.5
+normal_texture = SubResource( 3 )
+rim_enabled = true
+rim = 0.21
+rim_tint = 1.0

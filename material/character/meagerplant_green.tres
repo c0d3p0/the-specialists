@@ -1,0 +1,43 @@
+[gd_resource type="SpatialMaterial" load_steps=7 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/meagerplant_albedo.png-3be85862dc71a0c8f94469c6a83a77c4.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/meagerplant_emission.png-25968f833f97b7f71508e2a392a3ed5d.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/meagerplant_specular.png-d73063021e5a7d2eeef8a0e54b2f06ed.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/meagerplant_normal.png-9e838617d882edb9ceea27e842912320.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/meagerplant_roughness.png-b6acbf332f01228b13d50bff6b96dede.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_texture = SubResource( 1 )
+metallic_texture = SubResource( 3 )
+roughness = 0.6
+roughness_texture = SubResource( 5 )
+emission_enabled = true
+emission = Color( 2, 0, 1.56, 1 )
+emission_energy = 1.0
+emission_operator = 1
+emission_on_uv2 = false
+emission_texture = SubResource( 2 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.19
+rim_tint = 1.0

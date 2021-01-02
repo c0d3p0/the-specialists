@@ -1,0 +1,39 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/boulder_albedo.png-5ce8c147d0dd1217fd6f0aa510354973.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/boulder_ao.png-abb5200f1b0925405dc61b0771b4b4b6.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/boulder_specular.png-e8ccd3d7af3dfad58018972f6981b3cc.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/boulder_normal.png-d2dd94cef33fa5c6c8f2b2cc58411442.stex"
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Material.002"
+next_pass = ExtResource( 1 )
+params_cull_mode = 2
+albedo_texture = SubResource( 1 )
+metallic_texture = SubResource( 3 )
+roughness = 0.9
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.13
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.3
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0

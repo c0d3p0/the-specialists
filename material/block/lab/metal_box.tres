@@ -1,0 +1,44 @@
+[gd_resource type="SpatialMaterial" load_steps=7 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/metal_box_albedo.png-3f69e7eb676bc12835e76fe6c3e0c265.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/metal_box_ao.png-c87d19d7ce4a61736b7c8a2a7f3659a2.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/metal_box_specular.png-da5beae7ba2e539ce9feb46ffa0f4a05.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/metal_box_normal.png-0a20cc79f3b1f9b46682f85ca996e33f.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/metal_box_roughness.png-ebf2f44ea57240dde8757e8386147c13.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_texture = SubResource( 1 )
+metallic = 0.88
+metallic_texture = SubResource( 3 )
+roughness = 0.91
+roughness_texture = SubResource( 5 )
+normal_enabled = true
+normal_scale = 3.0
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.16
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.96
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 3, 2, 1 )

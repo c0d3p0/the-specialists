@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://material/block/ice/light_snow.tres" type="Material" id=1]
+[ext_resource path="res://source/level/LevelBlock.cs" type="Script" id=2]
+[ext_resource path="res://model/shape/tube_thick.tscn" type="PackedScene" id=3]
+
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.5, 1, 0.5 )
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.5, 0.5, 0.5 )
+
+[node name="SnowTubeBlock" type="StaticBody"]
+collision_layer = 4
+collision_mask = 31
+script = ExtResource( 2 )
+hurtAreaNP = NodePath("HurtArea")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+shape = SubResource( 1 )
+
+[node name="TubeThickMeshInstance" parent="." instance=ExtResource( 3 )]
+material/0 = ExtResource( 1 )
+
+[node name="HurtArea" type="Area" parent="."]
+monitorable = false
+collision_layer = 128
+collision_mask = 31744
+[connection signal="area_entered" from="HurtArea" to="." method="OnHurtAreaEntered"]
+
+[node name="CollisionShape" type="CollisionShape" parent="HurtArea"]
+shape = SubResource( 2 )

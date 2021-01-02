@@ -1,0 +1,46 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=2]
+
+[ext_resource path="res://shader/vertex_displacement.shader" type="Shader" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/amethyst_albedo.png-d53d6940b2d87d253e143b5c58f42b0a.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/amethyst_ao.png-310011899fee495e5597f98b3e1230d1.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/amethyst_displacement.png-9366d64f59d720d032ab71b399b65320.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/amethyst_ao.png-310011899fee495e5597f98b3e1230d1.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/amethyst_normal.png-2f2cf15d83ca94eca82fb7480ab9ba20.stex"
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/albedo = Color( 1, 1, 1, 0.55 )
+shader_param/specular = 0.2
+shader_param/metallic = 0.0
+shader_param/roughness = 0.2
+shader_param/point_size = 1.0
+shader_param/normal_scale = 1.5
+shader_param/rim = 0.3
+shader_param/rim_tint = 1.0
+shader_param/ao_light_affect = 0.7
+shader_param/metallic_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/roughness_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/ao_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/displacement = Vector3( 0, 0.3, 0 )
+shader_param/texture_albedo = SubResource( 1 )
+shader_param/texture_metallic = SubResource( 4 )
+shader_param/texture_normal = SubResource( 5 )
+shader_param/texture_ambient_occlusion = SubResource( 2 )
+shader_param/texture_displacement = SubResource( 3 )

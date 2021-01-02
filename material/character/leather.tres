@@ -1,0 +1,38 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/leather_albedo.png-cfdea99266533d7bc93394c922e21210.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/leather_ao.png-7715c7b268f728202017e61444635b0c.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/leather_normal.png-1897f65ca4327623e815c9ab2efb9967.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/leather_roughness.png-654e89c9e3ced893cf0972b98600cbd5.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_texture = SubResource( 1 )
+roughness = 0.5
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = SubResource( 3 )
+rim_enabled = true
+rim = 0.17
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.94
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+uv1_scale = Vector3( 5, 1, 1 )

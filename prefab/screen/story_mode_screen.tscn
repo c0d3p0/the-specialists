@@ -1,0 +1,271 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://gui/font/madcat_20.tres" type="DynamicFont" id=1]
+[ext_resource path="res://gui/font/madcat_64.tres" type="DynamicFont" id=2]
+[ext_resource path="res://gui/theme/gui_layout_style.tres" type="StyleBox" id=3]
+[ext_resource path="res://gui/theme/secondary_theme.tres" type="Theme" id=4]
+[ext_resource path="res://source/screen/story/StoryModeScreen.cs" type="Script" id=5]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/brown_specialist_profile.png-fbd20047cdd0c8cb19816e184f8073fe.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+load_path = "res://.import/gray_specialist_profile.png-f34f54dd6e84ea5bdec526a343616ba5.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+load_path = "res://.import/blue_specialist_profile.png-7b58c66f4f7368e680b6fd3a165f8e31.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+load_path = "res://.import/green_specialist_profile.png-69b9e3c0e8688a36136ecad28662b4bd.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 4
+load_path = "res://.import/magenta_specialist_profile.png-4bb4a46de1ead6131a29a7c6944999ba.stex"
+
+[node name="StoryModeScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 4 )
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+specialistAmountLabelNP = NodePath("ConfigurationControl/SpecialistAmountControl/SpecialistAmountLabel")
+locationLabelNP = NodePath("ConfigurationControl/LocationLabel")
+specialistAmountActionControlNP = NodePath("ConfigurationControl/SpecialistAmountControl/SpecialistAmountActionControl")
+specialistControlNPList = [ NodePath("FirstSpecialistControl"), NodePath("SecondSpecialistControl") ]
+specialistTextureList = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ) ]
+locationScenePathList = [ "level/ice/snow_1_level", "level/mine/mine_1_level", "level/city/city_1_level", "level/lab/lab_1_level" ]
+locationNameList = [ "Snow Village", "Mine", "Small City", "Laboratory" ]
+specialistAmountTextList = [ "1 Specialist", "2 Specialists" ]
+
+[node name="TopLayoutPanel" type="Panel" parent="."]
+margin_left = 100.0
+margin_top = 40.0
+margin_right = 1180.0
+margin_bottom = 130.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LayoutBottomPanel" type="Panel" parent="."]
+margin_left = 101.0
+margin_top = 180.0
+margin_right = 1181.0
+margin_bottom = 700.0
+mouse_filter = 2
+custom_styles/panel = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfoControl" type="Control" parent="."]
+margin_left = 1.0
+margin_right = 1281.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TitleLabel" type="Label" parent="InfoControl"]
+margin_top = 40.0
+margin_right = 1280.0
+margin_bottom = 127.0
+custom_fonts/font = ExtResource( 2 )
+text = "Story Mode"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HintLabel" type="Label" parent="InfoControl"]
+margin_top = 660.0
+margin_right = 1280.0
+margin_bottom = 699.0
+custom_fonts/font = ExtResource( 1 )
+text = "Press \"ESC\" to go back to \"Title Screen\"."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfigurationControl" type="Control" parent="."]
+margin_left = 521.0
+margin_top = 330.0
+margin_right = 759.0
+margin_bottom = 490.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpecialistAmountControl" type="Control" parent="ConfigurationControl"]
+margin_right = 238.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpecialistAmountLabel" type="Label" parent="ConfigurationControl/SpecialistAmountControl"]
+margin_left = 30.0
+margin_top = 3.0
+margin_right = 204.0
+margin_bottom = 38.0
+rect_min_size = Vector2( 122, 0 )
+text = "2 Specialists"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpecialistAmountActionControl" type="Control" parent="ConfigurationControl/SpecialistAmountControl"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="ConfigurationControl/SpecialistAmountControl/SpecialistAmountActionControl"]
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 36.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="ConfigurationControl/SpecialistAmountControl/SpecialistAmountActionControl"]
+margin_left = 214.0
+margin_top = 4.0
+margin_right = 238.0
+margin_bottom = 36.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LocationLabel" type="Label" parent="ConfigurationControl"]
+margin_top = 40.0
+margin_right = 238.0
+margin_bottom = 72.0
+text = "Snow Village"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="ConfigurationControl"]
+margin_top = 120.0
+margin_right = 238.0
+margin_bottom = 152.0
+text = "Start"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FirstSpecialistControl" type="Control" parent="."]
+margin_left = 120.0
+margin_top = 290.0
+margin_right = 480.0
+margin_bottom = 510.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="FirstSpecialistControl"]
+margin_left = 90.0
+margin_right = 570.0
+margin_bottom = 480.0
+rect_scale = Vector2( 0.375, 0.375 )
+
+[node name="Label" type="Label" parent="FirstSpecialistControl"]
+margin_left = 119.0
+margin_top = 185.0
+margin_right = 241.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 122, 0 )
+text = "Player 1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="FirstSpecialistControl"]
+margin_left = 60.0
+margin_top = 84.0
+margin_right = 80.0
+margin_bottom = 116.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="FirstSpecialistControl"]
+margin_left = 280.0
+margin_top = 84.0
+margin_right = 300.0
+margin_bottom = 116.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SecondSpecialistControl" type="Control" parent="."]
+margin_left = 800.0
+margin_top = 290.0
+margin_right = 1160.0
+margin_bottom = 510.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="SecondSpecialistControl"]
+margin_left = 90.0
+margin_right = 570.0
+margin_bottom = 480.0
+rect_scale = Vector2( 0.375, 0.375 )
+
+[node name="Label" type="Label" parent="SecondSpecialistControl"]
+margin_left = 119.0
+margin_top = 185.0
+margin_right = 241.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 122, 0 )
+text = "Player 2"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PreviousButton" type="Button" parent="SecondSpecialistControl"]
+margin_left = 60.0
+margin_top = 84.0
+margin_right = 80.0
+margin_bottom = 116.0
+text = "<"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NextButton" type="Button" parent="SecondSpecialistControl"]
+margin_left = 280.0
+margin_top = 84.0
+margin_right = 300.0
+margin_bottom = 116.0
+text = ">"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ConfigurationControl/SpecialistAmountControl/SpecialistAmountActionControl/PreviousButton" to="." method="OnSpecialistAmountButtonPressed" binds= [ -1 ]]
+[connection signal="pressed" from="ConfigurationControl/SpecialistAmountControl/SpecialistAmountActionControl/NextButton" to="." method="OnSpecialistAmountButtonPressed" binds= [ 1 ]]
+[connection signal="pressed" from="ConfigurationControl/StartButton" to="." method="OnStartButtonPressed"]
+[connection signal="pressed" from="FirstSpecialistControl/PreviousButton" to="." method="OnSpecialistSelectButtonPressed" binds= [ 0, -1 ]]
+[connection signal="pressed" from="FirstSpecialistControl/NextButton" to="." method="OnSpecialistSelectButtonPressed" binds= [ 0, 1 ]]
+[connection signal="pressed" from="SecondSpecialistControl/PreviousButton" to="." method="OnSpecialistSelectButtonPressed" binds= [ 1, -1 ]]
+[connection signal="pressed" from="SecondSpecialistControl/NextButton" to="." method="OnSpecialistSelectButtonPressed" binds= [ 1, 1 ]]

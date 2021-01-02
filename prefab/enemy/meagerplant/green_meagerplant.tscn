@@ -1,0 +1,272 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://source/character/CharacterPhysics.cs" type="Script" id=1]
+[ext_resource path="res://source/character/CharacterMove.cs" type="Script" id=2]
+[ext_resource path="res://source/character/enemy/behavior/TurnerEnemyBehavior.cs" type="Script" id=3]
+[ext_resource path="res://source/character/enemy/DefaultEnemyCharacter.cs" type="Script" id=4]
+[ext_resource path="res://source/character/enemy/DefaultEnemyStatus.cs" type="Script" id=5]
+[ext_resource path="res://source/character/enemy/DefaultEnemyInitializer.cs" type="Script" id=6]
+[ext_resource path="res://source/character/enemy/DefaultEnemyAction.cs" type="Script" id=7]
+[ext_resource path="res://animation/character/meagerplant/idle.tres" type="Animation" id=8]
+[ext_resource path="res://material/character/meagerplant_green.tres" type="Material" id=9]
+[ext_resource path="res://model/character/meagerplant.tscn" type="PackedScene" id=10]
+[ext_resource path="res://animation/character/meagerplant/die.tres" type="Animation" id=11]
+[ext_resource path="res://animation/character/meagerplant/hit.tres" type="Animation" id=12]
+[ext_resource path="res://animation/character/meagerplant/active.tres" type="Animation" id=13]
+[ext_resource path="res://animation/character/meagerplant/walk.tres" type="Animation" id=14]
+[ext_resource path="res://animation/character/meagerplant/t_pose.tres" type="Animation" id=15]
+[ext_resource path="res://animation/character/meagerplant/inactive.tres" type="Animation" id=16]
+[ext_resource path="res://animation/default/start.tres" type="Animation" id=17]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.49
+
+[sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.15, 1, 0.15 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "invulnerable"
+length = 6.0
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Meagerplant/MeshInstance:material/0:next_pass:shader_param/blink")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath("Source/EnemyAction")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "SetIgnoreHit"
+} ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=4]
+animation = "active"
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "die"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "hit"
+
+[sub_resource type="AnimationNodeTimeScale" id=7]
+
+[sub_resource type="AnimationNodeBlendTree" id=8]
+graph_offset = Vector2( -348.425, 43.5 )
+nodes/Animation/node = SubResource( 6 )
+nodes/Animation/position = Vector2( -60, 160 )
+nodes/TimeScale/node = SubResource( 7 )
+nodes/TimeScale/position = Vector2( 120, 160 )
+nodes/output/position = Vector2( 300, 160 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "inactive"
+
+[sub_resource type="AnimationNodeAnimation" id=11]
+animation = "start"
+
+[sub_resource type="AnimationNodeAnimation" id=12]
+animation = "walk"
+
+[sub_resource type="AnimationNodeTimeScale" id=13]
+
+[sub_resource type="AnimationNodeBlendTree" id=14]
+nodes/Animation/node = SubResource( 12 )
+nodes/Animation/position = Vector2( 60, 100 )
+nodes/TimeScale/node = SubResource( 13 )
+nodes/TimeScale/position = Vector2( 260, 100 )
+nodes/output/position = Vector2( 460, 100 )
+node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=23]
+states/active/node = SubResource( 4 )
+states/active/position = Vector2( 89.151, 192.906 )
+states/die/node = SubResource( 5 )
+states/die/position = Vector2( 595.151, 192.906 )
+states/hit/node = SubResource( 8 )
+states/hit/position = Vector2( 368.151, 192.906 )
+states/idle/node = SubResource( 9 )
+states/idle/position = Vector2( 255.151, 110.906 )
+states/inactive/node = SubResource( 10 )
+states/inactive/position = Vector2( 89.151, 110.906 )
+states/start/node = SubResource( 11 )
+states/start/position = Vector2( -69.4475, 110.906 )
+states/walk/node = SubResource( 14 )
+states/walk/position = Vector2( 475.151, 110.906 )
+transitions = [ "inactive", "active", SubResource( 15 ), "active", "idle", SubResource( 16 ), "idle", "walk", SubResource( 17 ), "walk", "idle", SubResource( 18 ), "idle", "hit", SubResource( 19 ), "walk", "hit", SubResource( 20 ), "hit", "idle", SubResource( 21 ), "start", "inactive", SubResource( 22 ) ]
+start_node = "start"
+end_node = "die"
+graph_offset = Vector2( -203.447, 50.9064 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
+
+[node name="GreenMeagerplant" type="KinematicBody"]
+collision_layer = 2
+collision_mask = 28
+script = ExtResource( 4 )
+enemyActionNP = NodePath("Source/EnemyAction")
+enemyStatusNP = NodePath("Source/EnemyStatus")
+enemyBehaviorNP = NodePath("Source/EnemyBehavior")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.99, 0 )
+shape = SubResource( 1 )
+
+[node name="Body" type="Spatial" parent="."]
+
+[node name="Meagerplant" parent="Body" instance=ExtResource( 10 )]
+
+[node name="MeshInstance" parent="Body/Meagerplant" index="0"]
+material/0 = ExtResource( 9 )
+
+[node name="FrontRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( 0, 0, 0.54 )
+collision_mask = 28
+
+[node name="BackRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( 0, 0, -1 )
+collision_mask = 28
+
+[node name="LeftRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( 0.54, 0, 0 )
+collision_mask = 28
+
+[node name="RightRayCast" type="RayCast" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+cast_to = Vector3( -0.54, 0, 0 )
+collision_mask = 28
+
+[node name="HurtArea" type="Area" parent="."]
+collision_layer = 64
+collision_mask = 17408
+
+[node name="CollisionShape" type="CollisionShape" parent="HurtArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 2 )
+
+[node name="StrikeArea" type="Area" parent="."]
+monitoring = false
+collision_layer = 4096
+collision_mask = 32
+
+[node name="CollisionShape" type="CollisionShape" parent="StrikeArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+attenuation_model = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/active = ExtResource( 13 )
+anims/die = ExtResource( 11 )
+anims/hit = ExtResource( 12 )
+anims/idle = ExtResource( 8 )
+anims/inactive = ExtResource( 16 )
+anims/start = ExtResource( 17 )
+anims/t_pose = ExtResource( 15 )
+anims/walk = ExtResource( 14 )
+
+[node name="InvulnerableAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/invulnerable = SubResource( 3 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 23 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 24 )
+parameters/hit/TimeScale/scale = 1.4
+parameters/walk/TimeScale/scale = 1.5
+
+[node name="Source" type="Node" parent="."]
+
+[node name="CharacterPhysics" type="Node" parent="Source"]
+script = ExtResource( 1 )
+kinematicBodyNP = NodePath("../..")
+
+[node name="CharacterMove" type="Node" parent="Source"]
+script = ExtResource( 2 )
+moveSpeed = Vector3( 2.64, 0, 2.64 )
+acceleration = 34.0
+deacceleration = 52.0
+
+[node name="EnemyAction" type="Node" parent="Source"]
+script = ExtResource( 7 )
+characterNP = NodePath("../..")
+bodyNP = NodePath("../../Body")
+hurtAreaNP = NodePath("../../HurtArea")
+animationTreeNP = NodePath("../../AnimationTree")
+toMoveMap = {
+"idle": "walk",
+"walk": "walk"
+}
+toSkillMap = {
+
+}
+
+[node name="EnemyStatus" type="Node" parent="Source"]
+script = ExtResource( 5 )
+speedLevelRange = Vector2( 1, 1 )
+
+[node name="EnemyBehavior" type="Node" parent="Source"]
+script = ExtResource( 3 )
+enemyCharacterNP = NodePath("../..")
+bodyNP = NodePath("../../Body")
+rayCastListNP = [ NodePath("../../Body/FrontRayCast"), NodePath("../../Body/BackRayCast"), NodePath("../../Body/LeftRayCast"), NodePath("../../Body/RightRayCast") ]
+
+[node name="EnemyInitializer" type="Node" parent="Source"]
+script = ExtResource( 6 )
+enemyCharacterNP = NodePath("../..")
+characterPhysicsNP = NodePath("../CharacterPhysics")
+characterMoveNP = NodePath("../CharacterMove")
+enemyActionNP = NodePath("../EnemyAction")
+enemyStatusNP = NodePath("../EnemyStatus")
+enemyBehaviorNP = NodePath("../EnemyBehavior")
+hurtAreaNP = NodePath("../../HurtArea")
+[connection signal="area_entered" from="HurtArea" to="Source/EnemyAction" method="OnHurtAreaEntered"]
+[connection signal="area_entered" from="StrikeArea" to="Source/EnemyAction" method="OnStrikeAreaEntered"]
+
+[editable path="Body/Meagerplant"]

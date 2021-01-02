@@ -1,0 +1,145 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://material/block/city/black_metal_sb.tres" type="Material" id=1]
+[ext_resource path="res://material/block/city/blue_cone.tres" type="Material" id=2]
+[ext_resource path="res://material/block/city/barrier_sign.tres" type="Material" id=3]
+[ext_resource path="res://material/block/city/cone_base.tres" type="Material" id=4]
+[ext_resource path="res://material/block/ice/ice_sb.tres" type="Material" id=5]
+[ext_resource path="res://material/block/city/red_cone.tres" type="Material" id=6]
+[ext_resource path="res://material/block/ice/light_snow_sb.tres" type="Material" id=7]
+[ext_resource path="res://material/block/city/cone_stripes.tres" type="Material" id=8]
+[ext_resource path="res://material/block/city/orange_rubber.tres" type="Material" id=9]
+[ext_resource path="res://material/block/ice/snow_cover.tres" type="Material" id=10]
+[ext_resource path="res://material/block/lab/grey_metal_sb.tres" type="Material" id=11]
+[ext_resource path="res://material/block/lab/metal_box_3.tres" type="Material" id=12]
+[ext_resource path="res://material/block/lab/metal_box.tres" type="Material" id=13]
+[ext_resource path="res://material/block/lab/blue_metal_box.tres" type="Material" id=14]
+[ext_resource path="res://material/block/mine/sapphire_plane_cover.tres" type="Material" id=15]
+[ext_resource path="res://material/block/mine/log_crate_sb.tres" type="Material" id=16]
+[ext_resource path="res://material/block/mine/wood_crate_sb.tres" type="Material" id=17]
+[ext_resource path="res://material/block/mine/sapphire_disk_cover.tres" type="Material" id=18]
+[ext_resource path="res://material/block/mine/powder.tres" type="Material" id=19]
+[ext_resource path="res://material/block/mine/amethyst_plane_cover.tres" type="Material" id=20]
+[ext_resource path="res://material/block/mine/amethyst_disk_cover.tres" type="Material" id=21]
+[ext_resource path="res://material/block/mine/boulder.tres" type="Material" id=22]
+
+[sub_resource type="PlaneMesh" id=1]
+size = Vector2( 0.2, 0.2 )
+
+[node name="MaterialPreRender" type="Spatial"]
+
+[node name="Line1" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -2, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 3 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -1.6, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 1 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -1.2, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.8, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 4 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.4, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 8 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 9 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.4, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 6 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.8, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 5 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 1.2, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 7 )
+
+[node name="MeshInstance10" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 1.6, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 10 )
+
+[node name="MeshInstance11" type="MeshInstance" parent="Line1"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 2, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 14 )
+
+[node name="Line2" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -2, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 11 )
+
+[node name="MeshInstance2" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -1.6, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 13 )
+
+[node name="MeshInstance3" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -1.2, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 12 )
+
+[node name="MeshInstance4" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.8, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 21 )
+
+[node name="MeshInstance5" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, -0.4, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 20 )
+
+[node name="MeshInstance6" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 22 )
+
+[node name="MeshInstance7" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.4, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 16 )
+
+[node name="MeshInstance8" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0.8, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 19 )
+
+[node name="MeshInstance9" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 1.2, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 18 )
+
+[node name="MeshInstance10" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 1.6, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 15 )
+
+[node name="MeshInstance11" type="MeshInstance" parent="Line2"]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 2, 0, -2 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 17 )

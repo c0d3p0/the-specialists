@@ -1,0 +1,167 @@
+[gd_scene load_steps=31 format=2]
+
+[ext_resource path="res://animation/projectile/default/move.tres" type="Animation" id=1]
+[ext_resource path="res://material/laser_device/laser_ray_thick.tres" type="Material" id=2]
+[ext_resource path="res://material/laser_device/laser_ray.tres" type="Material" id=3]
+[ext_resource path="res://source/character/CharacterMove.cs" type="Script" id=4]
+[ext_resource path="res://source/character/CharacterPhysics.cs" type="Script" id=5]
+[ext_resource path="res://source/character/projectile/DefaultProjectileBehavior.cs" type="Script" id=6]
+[ext_resource path="res://source/character/projectile/DefaultProjectile.cs" type="Script" id=7]
+[ext_resource path="res://source/character/projectile/DefaultProjectileInitializer.cs" type="Script" id=8]
+[ext_resource path="res://source/character/projectile/ProjectileAction.cs" type="Script" id=9]
+[ext_resource path="res://animation/projectile/default/active.tres" type="Animation" id=10]
+[ext_resource path="res://animation/projectile/default/disappear.tres" type="Animation" id=11]
+[ext_resource path="res://animation/projectile/default/inactive.tres" type="Animation" id=12]
+[ext_resource path="res://animation/default/start.tres" type="Animation" id=13]
+[ext_resource path="res://.import/laser_projectile_move.wav-5921591bf8b9020a78477d81f962f79f.sample" type="AudioStream" id=14]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.1, 0.1, 0.1 )
+
+[sub_resource type="SphereMesh" id=2]
+radius = 0.08
+height = 0.16
+
+[sub_resource type="SphereMesh" id=3]
+radius = 0.05
+height = 0.1
+
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.3, 1, 0.3 )
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "active"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "disappear"
+
+[sub_resource type="AnimationNodeAnimation" id=7]
+animation = "inactive"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "move"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "start"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=15]
+states/active/node = SubResource( 5 )
+states/active/position = Vector2( 215, 107.1 )
+states/disappear/node = SubResource( 6 )
+states/disappear/position = Vector2( 215, 215.1 )
+states/inactive/node = SubResource( 7 )
+states/inactive/position = Vector2( 41, 107.1 )
+states/move/node = SubResource( 8 )
+states/move/position = Vector2( 383.151, 107.1 )
+states/start/node = SubResource( 9 )
+states/start/position = Vector2( 41, 215.1 )
+transitions = [ "inactive", "active", SubResource( 10 ), "active", "move", SubResource( 11 ), "move", "disappear", SubResource( 12 ), "disappear", "inactive", SubResource( 13 ), "start", "inactive", SubResource( 14 ) ]
+start_node = "start"
+graph_offset = Vector2( -252.441, 50.9064 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=16]
+
+[node name="LaserDeviceTrigger" type="KinematicBody"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 7 )
+projectileActionNP = NodePath("Source/ProjectileAction")
+projectileBehaviorNP = NodePath("Source/ProjectileBehavior")
+projectileType = "L"
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0, 0 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Body" type="Spatial" parent="."]
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Body"]
+mesh = SubResource( 2 )
+material/0 = ExtResource( 2 )
+
+[node name="InnerMeshInstance" type="MeshInstance" parent="Body"]
+mesh = SubResource( 3 )
+material/0 = ExtResource( 3 )
+
+[node name="StrikeArea" type="Area" parent="."]
+monitoring = false
+monitorable = false
+collision_layer = 2048
+collision_mask = 256
+
+[node name="CollisionShape" type="CollisionShape" parent="StrikeArea"]
+shape = SubResource( 4 )
+
+[node name="VisibilityNotifier" type="VisibilityNotifier" parent="."]
+aabb = AABB( -0.1, -0.1, -0.1, 0.2, 0.2, 0.2 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 14 )
+attenuation_model = 3
+unit_db = -14.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/active = ExtResource( 10 )
+anims/disappear = ExtResource( 11 )
+anims/inactive = ExtResource( 12 )
+anims/move = ExtResource( 1 )
+anims/start = ExtResource( 13 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 15 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 16 )
+
+[node name="Source" type="Node" parent="."]
+
+[node name="CharacterPhysics" type="Node" parent="Source"]
+script = ExtResource( 5 )
+kinematicBodyNP = NodePath("../..")
+
+[node name="CharacterMove" type="Node" parent="Source"]
+script = ExtResource( 4 )
+moveSpeed = Vector3( 9.5, 0, 9.5 )
+acceleration = 60.0
+deacceleration = 42.0
+
+[node name="ProjectileAction" type="Node" parent="Source"]
+script = ExtResource( 9 )
+projectileNP = NodePath("../..")
+animationTreeNP = NodePath("../../AnimationTree")
+toMoveMap = {
+"active": "move",
+"move": "move"
+}
+damageGiven = 0
+
+[node name="ProjectileBehavior" type="Node" parent="Source"]
+script = ExtResource( 6 )
+
+[node name="ProjectileInitializer" type="Node" parent="Source"]
+script = ExtResource( 8 )
+projectileNP = NodePath("../..")
+characterPhysicsNP = NodePath("../CharacterPhysics")
+characterMoveNP = NodePath("../CharacterMove")
+projectileActionNP = NodePath("../ProjectileAction")
+projectileBehaviorNP = NodePath("../ProjectileBehavior")
+[connection signal="area_entered" from="StrikeArea" to="Source/ProjectileAction" method="OnStrikeAreaEntered"]
+[connection signal="camera_exited" from="VisibilityNotifier" to="Source/ProjectileAction" method="OnCameraExited"]

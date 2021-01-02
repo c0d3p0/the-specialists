@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=2]
+
+[ext_resource path="res://shader/albedo_blink.shader" type="Shader" id=1]
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=2]
+
+[sub_resource type="StreamTexture" id=1]
+resource_local_to_scene = true
+flags = 7
+load_path = "res://.import/cybotron_emission.png-2e70f42c29121cefd3197d091b128fb5.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 2 )
+shader = ExtResource( 1 )
+shader_param/speed = 4.0
+shader_param/range = 1.0
+shader_param/blinkColor = Color( 2.2, 2.2, 2.2, 1 )
+shader_param/blink = true
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = null
+shader_param/blinkTexture = SubResource( 1 )

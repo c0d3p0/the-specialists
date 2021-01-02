@@ -1,0 +1,14 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Rex.Skin"
+next_pass = ExtResource( 1 )
+params_cull_mode = 2
+metallic = 0.45
+roughness = 0.2
+rim_enabled = true
+rim = 0.09
+rim_tint = 1.0

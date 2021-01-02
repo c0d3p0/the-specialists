@@ -1,0 +1,9 @@
+[gd_resource type="SpatialMaterial" load_steps=2 format=2]
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/blue_gray_grid_test.png-29269b0447059a42857a29d74ee4cf70.stex"
+
+[resource]
+albedo_texture = SubResource( 2 )
+uv1_scale = Vector3( 3, 2, 1 )

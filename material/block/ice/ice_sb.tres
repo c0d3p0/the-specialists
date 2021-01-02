@@ -1,0 +1,50 @@
+[gd_resource type="SpatialMaterial" load_steps=7 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/ice_albedo.png-9014c175713fcfb0b7c16e583995d323.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/ice_ao.png-9e482bc8e0d8b20d780f5c944c9801f8.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/ice_displacement.png-26246ea22f5c69e9e4db54085ce316c2.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/ice_normal.png-59ade9af0cfda62dbf7d6e0cb05a79de.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/ice_roughness.png-0ce6ab984f52ca4afd674fdc1d004304.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_texture = SubResource( 1 )
+roughness = 0.3
+roughness_texture = SubResource( 5 )
+normal_enabled = true
+normal_scale = 1.0
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.1
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.5
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+depth_enabled = true
+depth_scale = -0.05
+depth_deep_parallax = true
+depth_min_layers = 2
+depth_max_layers = 2
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = SubResource( 3 )
+uv1_scale = Vector3( 3, 3, 1 )

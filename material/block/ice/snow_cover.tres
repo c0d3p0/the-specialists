@@ -1,0 +1,46 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=2]
+
+[ext_resource path="res://shader/vertex_displacement.shader" type="Shader" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/light_snow_albedo.png-2390996d360a20c081d260a1c61f928b.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/light_snow_ao.png-647d8d2a713e5e53ebcfce9ac3803802.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/light_snow_displacement.png-9125cf3171acdf0acd73325cbadd80d9.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/light_snow_normal.png-671550d7e0d08dbb93eb4115384087c1.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/light_snow_roughness.png-11ba8bef6d1982e881474a0fd0d2f228.stex"
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/specular = 1.0
+shader_param/metallic = 0.0
+shader_param/roughness = 1.0
+shader_param/point_size = 1.0
+shader_param/normal_scale = 6.0
+shader_param/rim = 0.06
+shader_param/rim_tint = 1.0
+shader_param/ao_light_affect = 0.5
+shader_param/metallic_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/roughness_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/ao_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/displacement = Vector3( 0, 0, 0.15 )
+shader_param/texture_albedo = SubResource( 1 )
+shader_param/texture_roughness = SubResource( 5 )
+shader_param/texture_normal = SubResource( 4 )
+shader_param/texture_ambient_occlusion = SubResource( 2 )
+shader_param/texture_displacement = SubResource( 3 )

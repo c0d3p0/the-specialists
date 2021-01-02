@@ -1,0 +1,527 @@
+[gd_scene load_steps=56 format=2]
+
+[ext_resource path="res://gui/theme/secondary_theme.tres" type="Theme" id=1]
+[ext_resource path="res://gui/theme/black_screen_bg_style.tres" type="StyleBox" id=2]
+[ext_resource path="res://gui/font/madcat_80.tres" type="DynamicFont" id=3]
+[ext_resource path="res://gui/font/madcat_40.tres" type="DynamicFont" id=4]
+[ext_resource path="res://gui/font/madcat_18.tres" type="DynamicFont" id=5]
+[ext_resource path="res://animation/credits/game_title.tres" type="Animation" id=6]
+[ext_resource path="res://animation/credits/show_text_item.tres" type="Animation" id=7]
+[ext_resource path="res://.import/marcos_theme_by_loveshadow.ogg-0ccce2de2b5feb3c6092eca6a3e01f7e.oggstr" type="AudioStream" id=8]
+[ext_resource path="res://animation/credits/section_start.tres" type="Animation" id=9]
+[ext_resource path="res://animation/credits/change_section.tres" type="Animation" id=10]
+[ext_resource path="res://animation/credits/show_picture_item.tres" type="Animation" id=11]
+[ext_resource path="res://animation/credits/section_end.tres" type="Animation" id=12]
+[ext_resource path="res://source/screen/credits/CreditsScreen.cs" type="Script" id=13]
+[ext_resource path="res://animation/credits/loop_section.tres" type="Animation" id=14]
+[ext_resource path="res://animation/credits/thank_you.tres" type="Animation" id=15]
+[ext_resource path="res://animation/credits/show_line_item.tres" type="Animation" id=16]
+[ext_resource path="res://animation/credits/bgm.tres" type="Animation" id=17]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/specialist_cc.png-6d4008e91b37267714d1cec56d5592a5.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/stonepaunch_cc.png-a40892d69a8a1f767af74ba792751f32.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/meagerplant_cc.png-5d9feaff31d944df4ebab7998cb13e8e.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/slender_cc.png-a899259a6fb4f4dadcf3fc8cce115818.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/slobhood_cc.png-cfc3ee4e434d128d8638f567dbd018b3.stex"
+
+[sub_resource type="StreamTexture" id=6]
+flags = 7
+load_path = "res://.import/freakhead_cc.png-942427e527624479227ca633450952f1.stex"
+
+[sub_resource type="StreamTexture" id=7]
+flags = 7
+load_path = "res://.import/moistyamphibious_cc.png-a80ad995f952b38d2052288261726189.stex"
+
+[sub_resource type="StreamTexture" id=8]
+flags = 7
+load_path = "res://.import/eye_cc.png-7a7f77da7ff525a5c32c18525c2cd7a0.stex"
+
+[sub_resource type="StreamTexture" id=9]
+flags = 7
+load_path = "res://.import/nastyfish_cc.png-c38b09d1b681aa5fd2e8ae2e39aa85f1.stex"
+
+[sub_resource type="StreamTexture" id=10]
+flags = 7
+load_path = "res://.import/rottinguy_cc.png-2cfb1aa513a88b2c2d1844c5b82e1f2d.stex"
+
+[sub_resource type="StreamTexture" id=11]
+flags = 7
+load_path = "res://.import/junkbot_cc.png-c14f55d4cc17aee1447c21df8fae45f9.stex"
+
+[sub_resource type="StreamTexture" id=12]
+flags = 7
+load_path = "res://.import/snowman_cc.png-8b05fde7896b19c5509d85f4d253f4a8.stex"
+
+[sub_resource type="StreamTexture" id=13]
+flags = 7
+load_path = "res://.import/blindcannon_cc.png-3094d9fdb237d3835523df28823db1c4.stex"
+
+[sub_resource type="StreamTexture" id=14]
+flags = 7
+load_path = "res://.import/wendigo_cc.png-569f4b9ddfcc6b8f5bbea739d49fb2a1.stex"
+
+[sub_resource type="StreamTexture" id=15]
+flags = 7
+load_path = "res://.import/cybotron_cc.png-b7dedf52636310c7fc021d9dd968fe5a.stex"
+
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "change_section"
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "game_title"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "loop_section"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "section_end"
+
+[sub_resource type="AnimationNodeAnimation" id=20]
+animation = "section_start"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "show_line_item"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "show_picture_item"
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "show_text_item"
+
+[sub_resource type="AnimationNodeAnimation" id=24]
+animation = "thank_you"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=37]
+states/change_section/node = SubResource( 16 )
+states/change_section/position = Vector2( 376, 77 )
+states/game_title/node = SubResource( 17 )
+states/game_title/position = Vector2( 129, 77 )
+states/loop_section/node = SubResource( 18 )
+states/loop_section/position = Vector2( 376, 165.471 )
+states/section_end/node = SubResource( 19 )
+states/section_end/position = Vector2( 613, 165.471 )
+states/section_start/node = SubResource( 20 )
+states/section_start/position = Vector2( 129, 165.471 )
+states/show_line_item/node = SubResource( 21 )
+states/show_line_item/position = Vector2( 613, 247.471 )
+states/show_picture_item/node = SubResource( 22 )
+states/show_picture_item/position = Vector2( 129, 247.471 )
+states/show_text_item/node = SubResource( 23 )
+states/show_text_item/position = Vector2( 376, 247.471 )
+states/thank_you/node = SubResource( 24 )
+states/thank_you/position = Vector2( 613, 77 )
+transitions = [ "game_title", "change_section", SubResource( 25 ), "change_section", "section_start", SubResource( 26 ), "section_end", "change_section", SubResource( 27 ), "change_section", "thank_you", SubResource( 28 ), "section_start", "loop_section", SubResource( 29 ), "loop_section", "section_end", SubResource( 30 ), "loop_section", "show_picture_item", SubResource( 31 ), "loop_section", "show_text_item", SubResource( 32 ), "loop_section", "show_line_item", SubResource( 33 ), "show_picture_item", "loop_section", SubResource( 34 ), "show_text_item", "loop_section", SubResource( 35 ), "show_line_item", "loop_section", SubResource( 36 ) ]
+start_node = "game_title"
+graph_offset = Vector2( 26.1107, 26.9912 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=38]
+
+[node name="CreditsScreen" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+sectionLabelNP = NodePath("MainControl/SectionLabel")
+pictureControlNP = NodePath("MainControl/PictureControl")
+textInfoLabelNPList = [ NodePath("MainControl/TextControl/FirstLabel"), NodePath("MainControl/TextControl/SecondLabel"), NodePath("MainControl/TextControl/ThirdLabel") ]
+textContentLabelNPList = [ NodePath("MainControl/TextControl/FirstCreatorLabel"), NodePath("MainControl/TextControl/SecondCreatorLabel2"), NodePath("MainControl/TextControl/ThirdCreatorLabel3") ]
+lineLabelNP = NodePath("MainControl/LineTextControl/Label")
+animationTreeNP = NodePath("AnimationTree")
+sectionMap = {
+0: "Cast of Characters",
+1: "3D Models",
+2: "3D Animations",
+3: "Voice Actors",
+4: "Background Music",
+5: "Game Project",
+6: "Special Thanks"
+}
+sectionTypeMap = {
+0: "picture",
+1: "text",
+2: "text",
+3: "text",
+4: "text",
+5: "text",
+6: "line"
+}
+itemPictureList = [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ]
+itemInfoMap = {
+15: "Specialist",
+16: "Laser Device",
+17: "Stonepaunch",
+18: "Meagerplant",
+19: "Slender",
+20: "Slobhood",
+21: "Freakhead",
+22: "Moistyamphibious",
+23: "Eye",
+24: "Nastyfish",
+25: "Rottinguy",
+26: "Junkbot",
+27: "Snowman",
+28: "Blindcannon",
+29: "Wendigo",
+30: "Cybotron",
+31: "All Characters¬3D Animations",
+32: "Specialist",
+33: "Stonepaunch",
+34: "Meagerplant",
+35: "Slender",
+36: "Slobhood",
+37: "Freakhead",
+38: "Moistyamphibious",
+39: "Eye",
+40: "Nastyfish",
+41: "Rottinguy",
+42: "Junkbot",
+43: "Snowman",
+44: "Blindcannon",
+45: "Wendigo",
+46: "Cybotron",
+47: "Title Screen",
+48: "Dialogue Screen",
+49: "Snow Village",
+50: "Mine",
+51: "Small City",
+52: "Laboratory",
+53: "Boss",
+54: "Last Dialogue Screen",
+55: "Credits Screen",
+56: "Game Developer¬and Producer",
+57: "License",
+58: "Available At"
+}
+itemContentMap = {
+0: "Specialist",
+1: "Stonepaunch (Ice, Gem)",
+2: "Meagerplant (Purple, Green)",
+3: "Slender (Gray, Green)",
+4: "Slobhood (Green, Yellow, Red)",
+5: "Freakhead (Purple, Green, Normal)",
+6: "Moistyamphibious (Green, Yellow)",
+7: "Eye (Blue, Green, Colorful)",
+8: "Nastyfish (Magenta, Green)",
+9: "Rottinguy",
+10: "Junkbot",
+11: "Snowman",
+12: "Blindcannon",
+13: "Wendigo",
+14: "Cybotron",
+15: "Mixamo (https://www.mixamo.com)",
+16: "Gonzalo Sánchez (https://sketchfab.com/gonz45c)¬Licensed under a Creative Commons International (4.0) license.¬https://creativecommons.org/licenses/by/4.0/",
+17: "skynet (https://www.blendswap.com/profile/9970)",
+18: "J.B.Howard (https://sketchfab.com/J.B.Howard)¬Licensed under a Creative Commons International (4.0) license.¬https://creativecommons.org/licenses/by/4.0/",
+19: "koumis (https://blendswap.com/profile/5939)",
+20: "byigleass (https://sketchfab.com/byigleass)¬Licensed under a Creative Commons International (4.0) license.¬https://creativecommons.org/licenses/by/4.0/",
+21: "zilbeerman (https://sketchfab.com/zilbeerman)¬Licensed under a Creative Commons International (4.0) license.¬https://creativecommons.org/licenses/by/4.0/",
+22: "PJWorks3d (https://sketchfab.com/pjmartinez712)¬Licensed under a Creative Commons International (4.0) license.¬https://creativecommons.org/licenses/by/4.0/",
+23: "cosmicgatto (https://blendswap.com/profile/1172422)",
+24: "Matt Wilson (https://sketchfab.com/edcmwils)¬Licensed under a Creative Commons International (4.0) license.¬https://creativecommons.org/licenses/by/4.0/",
+25: "Ludashov Anton (https://sketchfab.com/ToxaGrom)¬Licensed under a Creative Commons International (4.0) license.¬https://creativecommons.org/licenses/by/4.0/",
+26: "Infamous_Dr_Steve (https://sketchfab.com/Infamous_Dr_Steve)¬Licensed under a Creative Commons International (4.0) license.¬https://creativecommons.org/licenses/by/4.0/",
+27: "Tomas Anglim (https://sketchfab.com/tomas.anglim.811)¬Licensed under a Creative Commons International (4.0) license.¬https://creativecommons.org/licenses/by/4.0/",
+28: "Christian Schröder (https://sketchfab.com/zlater)¬Licensed under a Creative Commons International (4.0) license.¬https://creativecommons.org/licenses/by/4.0/",
+29: "DannyAg (https://sketchfab.com/DannyAg)¬Licensed under a Creative Commons International (4.0) license.¬https://creativecommons.org/licenses/by/4.0/",
+30: "ImprecisionScrewdriver (https://www.blendswap.com/profile/1114654)",
+31: "Mixamo (https://www.mixamo.com)",
+32: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+33: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+34: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+35: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+36: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+37: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+38: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+39: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+40: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+41: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+42: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+43: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+44: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+45: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+46: "Little Robot Sound Factory¬(https://opengameart.org/users/little-robot-sound-factory)",
+47: "Erdfall (Ft. Platinum Butterfly) by Kraftamt © copyright 2020¬http://dig.ccmixter.org/files/Karstenholymoly/61277¬Licensed under a Creative Commons Attribution Noncommercial (3.0) license.¬https://creativecommons.org/licenses/by-nc/3.0/",
+48: "Machine by Psykick © copyright 2015¬http://dig.ccmixter.org/files/Psykick/51943¬Licensed under a Creative Commons Attribution Noncommercial (3.0) license.¬https://creativecommons.org/licenses/by-nc/3.0/",
+49: "Good And Evil Is Evil by septahelix © copyright 2020¬http://dig.ccmixter.org/files/septahelix/61280¬Licensed under a Creative Commons Noncommercial Sampling Plus license.¬https://creativecommons.org/licenses/nc-sampling+/1.0/",
+50: "This Isn't My Day by William Sen © copyright 2008¬http://dig.ccmixter.org/files/Evrim_Sen/15366¬Licensed under a Creative Commons Attribution Noncommercial (3.0) license.¬https://creativecommons.org/licenses/by-nc/3.0/",
+51: "Trance Dance by Psykick © copyright 2012¬http://dig.ccmixter.org/files/Psykick/40201¬Licensed under a Creative Commons Attribution (3.0) license.¬https://creativecommons.org/licenses/by/3.0/",
+52: "Stardust (Ziggy is coming) (Ft. Platinum Butterfly) by Kraftamt © copyright 2020¬http://dig.ccmixter.org/files/Karstenholymoly/62493¬Licensed under a Creative Commons Attribution Noncommercial (3.0) license.¬https://creativecommons.org/licenses/by-nc/3.0/",
+53: "The ARP Code (Ft. Wired Ant) by Kraftamt © copyright 2013¬http://dig.ccmixter.org/files/Karstenholymoly/43814¬Licensed under a Creative Commons Attribution Noncommercial (3.0) license.¬https://creativecommons.org/licenses/by-nc/3.0/",
+54: "The Thunderstorm (Ft. morgantj) by Kraftamt © copyright 2013¬http://dig.ccmixter.org/files/Karstenholymoly/41792¬Licensed under a Creative Commons Attribution Noncommercial (3.0) license.¬https://creativecommons.org/licenses/by-nc/3.0/",
+55: "Marcos Theme by Loveshadow © copyright 2015¬http://dig.ccmixter.org/files/Loveshadow/52221¬Licensed under a Creative Commons Attribution Noncommercial (3.0) license.¬https://creativecommons.org/licenses/by-nc/3.0/",
+56: "Ednilson Pereira Oliveira",
+57: "GPL 3.0 (Open Source)",
+58: "github.com/c0d3p0",
+59: "https://godotengine.org¬https://www.mixamo.com¬https://www.blendswap.com¬https://sketchfab.com¬https://www.3dassets.one¬https://freesound.org/¬http://dig.ccmixter.org¬¬and all free content creators for allowing projects like this to be a reality."
+}
+itemAmountMap = {
+0: 15,
+1: 16,
+2: 1,
+3: 15,
+4: 9,
+5: 3,
+6: 1
+}
+
+[node name="Panel" type="Panel" parent="."]
+pause_mode = 1
+margin_right = 1280.0
+margin_bottom = 720.0
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainControl" type="Control" parent="."]
+pause_mode = 1
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="TitleLabel" type="Label" parent="MainControl"]
+pause_mode = 1
+margin_top = 40.0
+margin_right = 1280.0
+margin_bottom = 144.0
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.721569, 0.890196, 1, 1 )
+text = "The Specialists"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SectionLabel" type="Label" parent="MainControl"]
+pause_mode = 1
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 180.0
+margin_right = 1280.0
+margin_bottom = 236.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.721569, 0.890196, 1, 1 )
+text = "Mock Section"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PictureControl" type="Control" parent="MainControl"]
+pause_mode = 1
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 280.0
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="MainControl/PictureControl"]
+pause_mode = 1
+margin_left = 190.0
+margin_top = 40.0
+margin_right = 1090.0
+margin_bottom = 340.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MainControl/PictureControl"]
+pause_mode = 1
+margin_top = 390.0
+margin_right = 1280.0
+margin_bottom = 422.0
+text = "Mock Character"
+align = 1
+
+[node name="TextControl" type="Control" parent="MainControl"]
+pause_mode = 1
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 310.0
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FirstLabel" type="Label" parent="MainControl/TextControl"]
+pause_mode = 1
+margin_left = 30.0
+margin_right = 310.0
+margin_bottom = 113.0
+custom_fonts/font = ExtResource( 5 )
+text = "Dialogue Screen"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SecondLabel" type="Label" parent="MainControl/TextControl"]
+pause_mode = 1
+margin_left = 30.0
+margin_top = 120.0
+margin_right = 310.0
+margin_bottom = 233.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ThirdLabel" type="Label" parent="MainControl/TextControl"]
+pause_mode = 1
+margin_left = 30.0
+margin_top = 240.0
+margin_right = 310.0
+margin_bottom = 353.0
+custom_fonts/font = ExtResource( 5 )
+align = 1
+
+[node name="FirstCreatorLabel" type="Label" parent="MainControl/TextControl"]
+pause_mode = 1
+margin_left = 342.0
+margin_right = 1250.0
+margin_bottom = 113.0
+custom_fonts/font = ExtResource( 5 )
+text = "Stardust (Ziggy is coming) (Ft. Platinum Butterfly) by Kraftamt © copyright 2020
+http://dig.ccmixter.org/files/Karstenholymoly/62493
+Licensed under a Creative Commons Attribution Noncommercial (3.0) license.
+https://creativecommons.org/licenses/by-nc/3.0/"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SecondCreatorLabel2" type="Label" parent="MainControl/TextControl"]
+pause_mode = 1
+margin_left = 342.0
+margin_top = 120.0
+margin_right = 1250.0
+margin_bottom = 233.0
+custom_fonts/font = ExtResource( 5 )
+text = "Stardust (Ziggy is coming) (Ft. Platinum Butterfly) by Kraftamt © copyright 2020
+http://dig.ccmixter.org/files/Karstenholymoly/62493
+Licensed under a Creative Commons Attribution Noncommercial (3.0) license.
+https://creativecommons.org/licenses/by-nc/3.0/"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ThirdCreatorLabel3" type="Label" parent="MainControl/TextControl"]
+pause_mode = 1
+margin_left = 342.0
+margin_top = 240.0
+margin_right = 1250.0
+margin_bottom = 353.0
+custom_fonts/font = ExtResource( 5 )
+text = "Stardust (Ziggy is coming) (Ft. Platinum Butterfly) by Kraftamt © copyright 2020
+http://dig.ccmixter.org/files/Karstenholymoly/62493
+Licensed under a Creative Commons Attribution Noncommercial (3.0) license.
+https://creativecommons.org/licenses/by-nc/3.0/"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineTextControl" type="Control" parent="MainControl"]
+pause_mode = 1
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 310.0
+margin_right = 1280.0
+margin_bottom = 720.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MainControl/LineTextControl"]
+pause_mode = 1
+margin_right = 1280.0
+margin_bottom = 410.0
+custom_fonts/font = ExtResource( 5 )
+text = "Thank you for playing."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 1
+stream = ExtResource( 8 )
+volume_db = -4.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 1
+anims/change_section = ExtResource( 10 )
+anims/game_title = ExtResource( 6 )
+anims/loop_section = ExtResource( 14 )
+anims/section_end = ExtResource( 12 )
+anims/section_start = ExtResource( 9 )
+anims/show_line_item = ExtResource( 16 )
+anims/show_picture_item = ExtResource( 11 )
+anims/show_text_item = ExtResource( 7 )
+anims/thank_you = ExtResource( 15 )
+
+[node name="BGMAnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 1
+anims/bgm = ExtResource( 17 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+pause_mode = 1
+tree_root = SubResource( 37 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 38 )

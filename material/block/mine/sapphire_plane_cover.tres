@@ -1,0 +1,45 @@
+[gd_resource type="ShaderMaterial" load_steps=7 format=2]
+
+[ext_resource path="res://shader/vertex_displacement.shader" type="Shader" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/sapphie_albedo.png-679f8a723bb4963853edd822f11f46b4.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/sapphie_ao.png-399323a3128fa45651809c9b3edb17d8.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/sapphie_displacement.png-fd0d65f97b4700ecc5e8d16adcc62777.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/sapphie_normal.png-d51a0a11ce1eeb12c02bbbabe084a757.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/albedo = Color( 1, 1, 1, 0.55 )
+shader_param/specular = 0.5
+shader_param/metallic = 0.0
+shader_param/roughness = 0.2
+shader_param/point_size = 1.0
+shader_param/normal_scale = 1.0
+shader_param/rim = 0.4
+shader_param/rim_tint = 1.0
+shader_param/ao_light_affect = 0.4
+shader_param/metallic_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/roughness_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/ao_texture_channel = Plane( 1, 0, 0, 0 )
+shader_param/uv1_scale = Vector3( 1, 1, 1 )
+shader_param/uv1_offset = Vector3( 0, 0, 0 )
+shader_param/displacement = Vector3( 0, 0.3, 0 )
+shader_param/texture_albedo = SubResource( 1 )
+shader_param/texture_roughness = SubResource( 5 )
+shader_param/texture_normal = SubResource( 4 )
+shader_param/texture_ambient_occlusion = SubResource( 2 )
+shader_param/texture_displacement = SubResource( 3 )

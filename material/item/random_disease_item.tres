@@ -1,0 +1,15 @@
+[gd_resource type="SpatialMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/danger_albedo.png-d9b6a7e2bb0bf62a45e1f7a30b7d772a.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+flags_unshaded = true
+params_cull_mode = 2
+albedo_color = Color( 2.3, 0.2, 0.15, 1 )
+albedo_texture = SubResource( 1 )

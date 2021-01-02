@@ -1,0 +1,763 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://source/level/LevelBlock.cs" type="Script" id=1]
+[ext_resource path="res://material/block/city/black_metal.tres" type="Material" id=5]
+[ext_resource path="res://material/block/city/aluminum_metal.tres" type="Material" id=6]
+
+[sub_resource type="ConcavePolygonShape" id=1]
+data = PoolVector3Array( -10.4975, 0.9975, 0.4975, -9.4977, 0.9975, 0.4975, -10.4975, 0, 0.4975, -9.4977, 0.9975, 0.4975, -9.4977, 0, 0.4975, -10.4975, 0, 0.4975, 10.4975, 0.9975, -0.4975, 9.4977, 0.9975, -0.4975, 10.4975, 0, -0.4975, 9.4977, 0.9975, -0.4975, 9.4977, 0, -0.4975, 10.4975, 0, -0.4975, -9.4977, 0.9975, 0.4975, -8.498, 0.9975, 0.4975, -9.4977, 0, 0.4975, -8.498, 0.9975, 0.4975, -8.498, 0, 0.4975, -9.4977, 0, 0.4975, 9.4977, 0.9975, -0.4975, 8.498, 0.9975, -0.4975, 9.4977, 0, -0.4975, 8.498, 0.9975, -0.4975, 8.498, 0, -0.4975, 9.4977, 0, -0.4975, -8.498, 0.9975, 0.4975, -7.4982, 0.9975, 0.4975, -8.498, 0, 0.4975, -7.4982, 0.9975, 0.4975, -7.4982, 0, 0.4975, -8.498, 0, 0.4975, 8.498, 0.9975, -0.4975, 7.4982, 0.9975, -0.4975, 8.498, 0, -0.4975, 7.4982, 0.9975, -0.4975, 7.4982, 0, -0.4975, 8.498, 0, -0.4975, -7.4982, 0.9975, 0.4975, -6.4985, 0.9975, 0.4975, -7.4982, 0, 0.4975, -6.4985, 0.9975, 0.4975, -6.4985, 0, 0.4975, -7.4982, 0, 0.4975, 7.4982, 0.9975, -0.4975, 6.4985, 0.9975, -0.4975, 7.4982, 0, -0.4975, 6.4985, 0.9975, -0.4975, 6.4985, 0, -0.4975, 7.4982, 0, -0.4975, -6.4985, 0.9975, 0.4975, -5.4987, 0.9975, 0.4975, -6.4985, 0, 0.4975, -5.4987, 0.9975, 0.4975, -5.4987, 0, 0.4975, -6.4985, 0, 0.4975, 6.4985, 0.9975, -0.4975, 5.4987, 0.9975, -0.4975, 6.4985, 0, -0.4975, 5.4987, 0.9975, -0.4975, 5.4987, 0, -0.4975, 6.4985, 0, -0.4975, -5.4987, 0.9975, 0.4975, -4.4989, 0.9975, 0.4975, -5.4987, 0, 0.4975, -4.4989, 0.9975, 0.4975, -4.4989, 0, 0.4975, -5.4987, 0, 0.4975, 5.4987, 0.9975, -0.4975, 4.4989, 0.9975, -0.4975, 5.4987, 0, -0.4975, 4.4989, 0.9975, -0.4975, 4.4989, 0, -0.4975, 5.4987, 0, -0.4975, -4.4989, 0.9975, 0.4975, -3.4992, 0.9975, 0.4975, -4.4989, 0, 0.4975, -3.4992, 0.9975, 0.4975, -3.4992, 0, 0.4975, -4.4989, 0, 0.4975, 4.4989, 0.9975, -0.4975, 3.4992, 0.9975, -0.4975, 4.4989, 0, -0.4975, 3.4992, 0.9975, -0.4975, 3.4992, 0, -0.4975, 4.4989, 0, -0.4975, -3.4992, 0.9975, 0.4975, -2.4994, 0.9975, 0.4975, -3.4992, 0, 0.4975, -2.4994, 0.9975, 0.4975, -2.4994, 0, 0.4975, -3.4992, 0, 0.4975, 3.4992, 0.9975, -0.4975, 2.4994, 0.9975, -0.4975, 3.4992, 0, -0.4975, 2.4994, 0.9975, -0.4975, 2.4994, 0, -0.4975, 3.4992, 0, -0.4975, -2.4994, 0.9975, 0.4975, -1.4996, 0.9975, 0.4975, -2.4994, 0, 0.4975, -1.4996, 0.9975, 0.4975, -1.4996, 0, 0.4975, -2.4994, 0, 0.4975, 2.4994, 0.9975, -0.4975, 1.4996, 0.9975, -0.4975, 2.4994, 0, -0.4975, 1.4996, 0.9975, -0.4975, 1.4996, 0, -0.4975, 2.4994, 0, -0.4975, -1.4996, 0.9975, 0.4975, -0.4999, 0.9975, 0.4975, -1.4996, 0, 0.4975, -0.4999, 0.9975, 0.4975, -0.4999, 0, 0.4975, -1.4996, 0, 0.4975, 1.4996, 0.9975, -0.4975, 0.4999, 0.9975, -0.4975, 1.4996, 0, -0.4975, 0.4999, 0.9975, -0.4975, 0.4999, 0, -0.4975, 1.4996, 0, -0.4975, -0.4999, 0.9975, 0.4975, 0.4999, 0.9975, 0.4975, -0.4999, 0, 0.4975, 0.4999, 0.9975, 0.4975, 0.4999, 0, 0.4975, -0.4999, 0, 0.4975, 0.4999, 0.9975, -0.4975, -0.4999, 0.9975, -0.4975, 0.4999, 0, -0.4975, -0.4999, 0.9975, -0.4975, -0.4999, 0, -0.4975, 0.4999, 0, -0.4975, 0.4999, 0.9975, 0.4975, 1.4996, 0.9975, 0.4975, 0.4999, 0, 0.4975, 1.4996, 0.9975, 0.4975, 1.4996, 0, 0.4975, 0.4999, 0, 0.4975, -0.4999, 0.9975, -0.4975, -1.4996, 0.9975, -0.4975, -0.4999, 0, -0.4975, -1.4996, 0.9975, -0.4975, -1.4996, 0, -0.4975, -0.4999, 0, -0.4975, 1.4996, 0.9975, 0.4975, 2.4994, 0.9975, 0.4975, 1.4996, 0, 0.4975, 2.4994, 0.9975, 0.4975, 2.4994, 0, 0.4975, 1.4996, 0, 0.4975, -1.4996, 0.9975, -0.4975, -2.4994, 0.9975, -0.4975, -1.4996, 0, -0.4975, -2.4994, 0.9975, -0.4975, -2.4994, 0, -0.4975, -1.4996, 0, -0.4975, 2.4994, 0.9975, 0.4975, 3.4992, 0.9975, 0.4975, 2.4994, 0, 0.4975, 3.4992, 0.9975, 0.4975, 3.4992, 0, 0.4975, 2.4994, 0, 0.4975, -2.4994, 0.9975, -0.4975, -3.4992, 0.9975, -0.4975, -2.4994, 0, -0.4975, -3.4992, 0.9975, -0.4975, -3.4992, 0, -0.4975, -2.4994, 0, -0.4975, 3.4992, 0.9975, 0.4975, 4.4989, 0.9975, 0.4975, 3.4992, 0, 0.4975, 4.4989, 0.9975, 0.4975, 4.4989, 0, 0.4975, 3.4992, 0, 0.4975, -3.4992, 0.9975, -0.4975, -4.4989, 0.9975, -0.4975, -3.4992, 0, -0.4975, -4.4989, 0.9975, -0.4975, -4.4989, 0, -0.4975, -3.4992, 0, -0.4975, 4.4989, 0.9975, 0.4975, 5.4987, 0.9975, 0.4975, 4.4989, 0, 0.4975, 5.4987, 0.9975, 0.4975, 5.4987, 0, 0.4975, 4.4989, 0, 0.4975, -4.4989, 0.9975, -0.4975, -5.4987, 0.9975, -0.4975, -4.4989, 0, -0.4975, -5.4987, 0.9975, -0.4975, -5.4987, 0, -0.4975, -4.4989, 0, -0.4975, 5.4987, 0.9975, 0.4975, 6.4985, 0.9975, 0.4975, 5.4987, 0, 0.4975, 6.4985, 0.9975, 0.4975, 6.4985, 0, 0.4975, 5.4987, 0, 0.4975, -5.4987, 0.9975, -0.4975, -6.4985, 0.9975, -0.4975, -5.4987, 0, -0.4975, -6.4985, 0.9975, -0.4975, -6.4985, 0, -0.4975, -5.4987, 0, -0.4975, 6.4985, 0.9975, 0.4975, 7.4982, 0.9975, 0.4975, 6.4985, 0, 0.4975, 7.4982, 0.9975, 0.4975, 7.4982, 0, 0.4975, 6.4985, 0, 0.4975, -6.4985, 0.9975, -0.4975, -7.4982, 0.9975, -0.4975, -6.4985, 0, -0.4975, -7.4982, 0.9975, -0.4975, -7.4982, 0, -0.4975, -6.4985, 0, -0.4975, 7.4982, 0.9975, 0.4975, 8.498, 0.9975, 0.4975, 7.4982, 0, 0.4975, 8.498, 0.9975, 0.4975, 8.498, 0, 0.4975, 7.4982, 0, 0.4975, -7.4982, 0.9975, -0.4975, -8.498, 0.9975, -0.4975, -7.4982, 0, -0.4975, -8.498, 0.9975, -0.4975, -8.498, 0, -0.4975, -7.4982, 0, -0.4975, 8.498, 0.9975, 0.4975, 9.4977, 0.9975, 0.4975, 8.498, 0, 0.4975, 9.4977, 0.9975, 0.4975, 9.4977, 0, 0.4975, 8.498, 0, 0.4975, -8.498, 0.9975, -0.4975, -9.4977, 0.9975, -0.4975, -8.498, 0, -0.4975, -9.4977, 0.9975, -0.4975, -9.4977, 0, -0.4975, -8.498, 0, -0.4975, 9.4977, 0.9975, 0.4975, 10.4975, 0.9975, 0.4975, 9.4977, 0, 0.4975, 10.4975, 0.9975, 0.4975, 10.4975, 0, 0.4975, 9.4977, 0, 0.4975, -9.4977, 0.9975, -0.4975, -10.4975, 0.9975, -0.4975, -9.4977, 0, -0.4975, -10.4975, 0.9975, -0.4975, -10.4975, 0, -0.4975, -9.4977, 0, -0.4975, -10.4975, 0, 0.4975, -9.4977, 0, 0.4975, -10.4975, -0.9975, 0.4975, -9.4977, 0, 0.4975, -9.4977, -0.9975, 0.4975, -10.4975, -0.9975, 0.4975, 10.4975, 0, -0.4975, 9.4977, 0, -0.4975, 10.4975, -0.9975, -0.4975, 9.4977, 0, -0.4975, 9.4977, -0.9975, -0.4975, 10.4975, -0.9975, -0.4975, -9.4977, 0, 0.4975, -8.498, 0, 0.4975, -9.4977, -0.9975, 0.4975, -8.498, 0, 0.4975, -8.498, -0.9975, 0.4975, -9.4977, -0.9975, 0.4975, 9.4977, 0, -0.4975, 8.498, 0, -0.4975, 9.4977, -0.9975, -0.4975, 8.498, 0, -0.4975, 8.498, -0.9975, -0.4975, 9.4977, -0.9975, -0.4975, -8.498, 0, 0.4975, -7.4982, 0, 0.4975, -8.498, -0.9975, 0.4975, -7.4982, 0, 0.4975, -7.4982, -0.9975, 0.4975, -8.498, -0.9975, 0.4975, 8.498, 0, -0.4975, 7.4982, 0, -0.4975, 8.498, -0.9975, -0.4975, 7.4982, 0, -0.4975, 7.4982, -0.9975, -0.4975, 8.498, -0.9975, -0.4975, -7.4982, 0, 0.4975, -6.4985, 0, 0.4975, -7.4982, -0.9975, 0.4975, -6.4985, 0, 0.4975, -6.4985, -0.9975, 0.4975, -7.4982, -0.9975, 0.4975, 7.4982, 0, -0.4975, 6.4985, 0, -0.4975, 7.4982, -0.9975, -0.4975, 6.4985, 0, -0.4975, 6.4985, -0.9975, -0.4975, 7.4982, -0.9975, -0.4975, -6.4985, 0, 0.4975, -5.4987, 0, 0.4975, -6.4985, -0.9975, 0.4975, -5.4987, 0, 0.4975, -5.4987, -0.9975, 0.4975, -6.4985, -0.9975, 0.4975, 6.4985, 0, -0.4975, 5.4987, 0, -0.4975, 6.4985, -0.9975, -0.4975, 5.4987, 0, -0.4975, 5.4987, -0.9975, -0.4975, 6.4985, -0.9975, -0.4975, -5.4987, 0, 0.4975, -4.4989, 0, 0.4975, -5.4987, -0.9975, 0.4975, -4.4989, 0, 0.4975, -4.4989, -0.9975, 0.4975, -5.4987, -0.9975, 0.4975, 5.4987, 0, -0.4975, 4.4989, 0, -0.4975, 5.4987, -0.9975, -0.4975, 4.4989, 0, -0.4975, 4.4989, -0.9975, -0.4975, 5.4987, -0.9975, -0.4975, -4.4989, 0, 0.4975, -3.4992, 0, 0.4975, -4.4989, -0.9975, 0.4975, -3.4992, 0, 0.4975, -3.4992, -0.9975, 0.4975, -4.4989, -0.9975, 0.4975, 4.4989, 0, -0.4975, 3.4992, 0, -0.4975, 4.4989, -0.9975, -0.4975, 3.4992, 0, -0.4975, 3.4992, -0.9975, -0.4975, 4.4989, -0.9975, -0.4975, -3.4992, 0, 0.4975, -2.4994, 0, 0.4975, -3.4992, -0.9975, 0.4975, -2.4994, 0, 0.4975, -2.4994, -0.9975, 0.4975, -3.4992, -0.9975, 0.4975, 3.4992, 0, -0.4975, 2.4994, 0, -0.4975, 3.4992, -0.9975, -0.4975, 2.4994, 0, -0.4975, 2.4994, -0.9975, -0.4975, 3.4992, -0.9975, -0.4975, -2.4994, 0, 0.4975, -1.4996, 0, 0.4975, -2.4994, -0.9975, 0.4975, -1.4996, 0, 0.4975, -1.4996, -0.9975, 0.4975, -2.4994, -0.9975, 0.4975, 2.4994, 0, -0.4975, 1.4996, 0, -0.4975, 2.4994, -0.9975, -0.4975, 1.4996, 0, -0.4975, 1.4996, -0.9975, -0.4975, 2.4994, -0.9975, -0.4975, -1.4996, 0, 0.4975, -0.4999, 0, 0.4975, -1.4996, -0.9975, 0.4975, -0.4999, 0, 0.4975, -0.4999, -0.9975, 0.4975, -1.4996, -0.9975, 0.4975, 1.4996, 0, -0.4975, 0.4999, 0, -0.4975, 1.4996, -0.9975, -0.4975, 0.4999, 0, -0.4975, 0.4999, -0.9975, -0.4975, 1.4996, -0.9975, -0.4975, -0.4999, 0, 0.4975, 0.4999, 0, 0.4975, -0.4999, -0.9975, 0.4975, 0.4999, 0, 0.4975, 0.4999, -0.9975, 0.4975, -0.4999, -0.9975, 0.4975, 0.4999, 0, -0.4975, -0.4999, 0, -0.4975, 0.4999, -0.9975, -0.4975, -0.4999, 0, -0.4975, -0.4999, -0.9975, -0.4975, 0.4999, -0.9975, -0.4975, 0.4999, 0, 0.4975, 1.4996, 0, 0.4975, 0.4999, -0.9975, 0.4975, 1.4996, 0, 0.4975, 1.4996, -0.9975, 0.4975, 0.4999, -0.9975, 0.4975, -0.4999, 0, -0.4975, -1.4996, 0, -0.4975, -0.4999, -0.9975, -0.4975, -1.4996, 0, -0.4975, -1.4996, -0.9975, -0.4975, -0.4999, -0.9975, -0.4975, 1.4996, 0, 0.4975, 2.4994, 0, 0.4975, 1.4996, -0.9975, 0.4975, 2.4994, 0, 0.4975, 2.4994, -0.9975, 0.4975, 1.4996, -0.9975, 0.4975, -1.4996, 0, -0.4975, -2.4994, 0, -0.4975, -1.4996, -0.9975, -0.4975, -2.4994, 0, -0.4975, -2.4994, -0.9975, -0.4975, -1.4996, -0.9975, -0.4975, 2.4994, 0, 0.4975, 3.4992, 0, 0.4975, 2.4994, -0.9975, 0.4975, 3.4992, 0, 0.4975, 3.4992, -0.9975, 0.4975, 2.4994, -0.9975, 0.4975, -2.4994, 0, -0.4975, -3.4992, 0, -0.4975, -2.4994, -0.9975, -0.4975, -3.4992, 0, -0.4975, -3.4992, -0.9975, -0.4975, -2.4994, -0.9975, -0.4975, 3.4992, 0, 0.4975, 4.4989, 0, 0.4975, 3.4992, -0.9975, 0.4975, 4.4989, 0, 0.4975, 4.4989, -0.9975, 0.4975, 3.4992, -0.9975, 0.4975, -3.4992, 0, -0.4975, -4.4989, 0, -0.4975, -3.4992, -0.9975, -0.4975, -4.4989, 0, -0.4975, -4.4989, -0.9975, -0.4975, -3.4992, -0.9975, -0.4975, 4.4989, 0, 0.4975, 5.4987, 0, 0.4975, 4.4989, -0.9975, 0.4975, 5.4987, 0, 0.4975, 5.4987, -0.9975, 0.4975, 4.4989, -0.9975, 0.4975, -4.4989, 0, -0.4975, -5.4987, 0, -0.4975, -4.4989, -0.9975, -0.4975, -5.4987, 0, -0.4975, -5.4987, -0.9975, -0.4975, -4.4989, -0.9975, -0.4975, 5.4987, 0, 0.4975, 6.4985, 0, 0.4975, 5.4987, -0.9975, 0.4975, 6.4985, 0, 0.4975, 6.4985, -0.9975, 0.4975, 5.4987, -0.9975, 0.4975, -5.4987, 0, -0.4975, -6.4985, 0, -0.4975, -5.4987, -0.9975, -0.4975, -6.4985, 0, -0.4975, -6.4985, -0.9975, -0.4975, -5.4987, -0.9975, -0.4975, 6.4985, 0, 0.4975, 7.4982, 0, 0.4975, 6.4985, -0.9975, 0.4975, 7.4982, 0, 0.4975, 7.4982, -0.9975, 0.4975, 6.4985, -0.9975, 0.4975, -6.4985, 0, -0.4975, -7.4982, 0, -0.4975, -6.4985, -0.9975, -0.4975, -7.4982, 0, -0.4975, -7.4982, -0.9975, -0.4975, -6.4985, -0.9975, -0.4975, 7.4982, 0, 0.4975, 8.498, 0, 0.4975, 7.4982, -0.9975, 0.4975, 8.498, 0, 0.4975, 8.498, -0.9975, 0.4975, 7.4982, -0.9975, 0.4975, -7.4982, 0, -0.4975, -8.498, 0, -0.4975, -7.4982, -0.9975, -0.4975, -8.498, 0, -0.4975, -8.498, -0.9975, -0.4975, -7.4982, -0.9975, -0.4975, 8.498, 0, 0.4975, 9.4977, 0, 0.4975, 8.498, -0.9975, 0.4975, 9.4977, 0, 0.4975, 9.4977, -0.9975, 0.4975, 8.498, -0.9975, 0.4975, -8.498, 0, -0.4975, -9.4977, 0, -0.4975, -8.498, -0.9975, -0.4975, -9.4977, 0, -0.4975, -9.4977, -0.9975, -0.4975, -8.498, -0.9975, -0.4975, 9.4977, 0, 0.4975, 10.4975, 0, 0.4975, 9.4977, -0.9975, 0.4975, 10.4975, 0, 0.4975, 10.4975, -0.9975, 0.4975, 9.4977, -0.9975, 0.4975, -9.4977, 0, -0.4975, -10.4975, 0, -0.4975, -9.4977, -0.9975, -0.4975, -10.4975, 0, -0.4975, -10.4975, -0.9975, -0.4975, -9.4977, -0.9975, -0.4975, 10.4975, 0.9975, 0.4975, 10.4975, 0.9975, -0.4975, 10.4975, 0, 0.4975, 10.4975, 0.9975, -0.4975, 10.4975, 0, -0.4975, 10.4975, 0, 0.4975, -10.4975, 0.9975, -0.4975, -10.4975, 0.9975, 0.4975, -10.4975, 0, -0.4975, -10.4975, 0.9975, 0.4975, -10.4975, 0, 0.4975, -10.4975, 0, -0.4975, 10.4975, 0, 0.4975, 10.4975, 0, -0.4975, 10.4975, -0.9975, 0.4975, 10.4975, 0, -0.4975, 10.4975, -0.9975, -0.4975, 10.4975, -0.9975, 0.4975, -10.4975, 0, -0.4975, -10.4975, 0, 0.4975, -10.4975, -0.9975, -0.4975, -10.4975, 0, 0.4975, -10.4975, -0.9975, 0.4975, -10.4975, -0.9975, -0.4975, 10.4975, 0.9975, 0.4975, 9.4977, 0.9975, 0.4975, 10.4975, 0.9975, -0.4975, 9.4977, 0.9975, 0.4975, 9.4977, 0.9975, -0.4975, 10.4975, 0.9975, -0.4975, -10.4975, -0.9975, 0.4975, -9.4977, -0.9975, 0.4975, -10.4975, -0.9975, -0.4975, -9.4977, -0.9975, 0.4975, -9.4977, -0.9975, -0.4975, -10.4975, -0.9975, -0.4975, 9.4977, 0.9975, 0.4975, 8.498, 0.9975, 0.4975, 9.4977, 0.9975, -0.4975, 8.498, 0.9975, 0.4975, 8.498, 0.9975, -0.4975, 9.4977, 0.9975, -0.4975, -9.4977, -0.9975, 0.4975, -8.498, -0.9975, 0.4975, -9.4977, -0.9975, -0.4975, -8.498, -0.9975, 0.4975, -8.498, -0.9975, -0.4975, -9.4977, -0.9975, -0.4975, 8.498, 0.9975, 0.4975, 7.4982, 0.9975, 0.4975, 8.498, 0.9975, -0.4975, 7.4982, 0.9975, 0.4975, 7.4982, 0.9975, -0.4975, 8.498, 0.9975, -0.4975, -8.498, -0.9975, 0.4975, -7.4982, -0.9975, 0.4975, -8.498, -0.9975, -0.4975, -7.4982, -0.9975, 0.4975, -7.4982, -0.9975, -0.4975, -8.498, -0.9975, -0.4975, 7.4982, 0.9975, 0.4975, 6.4985, 0.9975, 0.4975, 7.4982, 0.9975, -0.4975, 6.4985, 0.9975, 0.4975, 6.4985, 0.9975, -0.4975, 7.4982, 0.9975, -0.4975, -7.4982, -0.9975, 0.4975, -6.4985, -0.9975, 0.4975, -7.4982, -0.9975, -0.4975, -6.4985, -0.9975, 0.4975, -6.4985, -0.9975, -0.4975, -7.4982, -0.9975, -0.4975, 6.4985, 0.9975, 0.4975, 5.4987, 0.9975, 0.4975, 6.4985, 0.9975, -0.4975, 5.4987, 0.9975, 0.4975, 5.4987, 0.9975, -0.4975, 6.4985, 0.9975, -0.4975, -6.4985, -0.9975, 0.4975, -5.4987, -0.9975, 0.4975, -6.4985, -0.9975, -0.4975, -5.4987, -0.9975, 0.4975, -5.4987, -0.9975, -0.4975, -6.4985, -0.9975, -0.4975, 5.4987, 0.9975, 0.4975, 4.4989, 0.9975, 0.4975, 5.4987, 0.9975, -0.4975, 4.4989, 0.9975, 0.4975, 4.4989, 0.9975, -0.4975, 5.4987, 0.9975, -0.4975, -5.4987, -0.9975, 0.4975, -4.4989, -0.9975, 0.4975, -5.4987, -0.9975, -0.4975, -4.4989, -0.9975, 0.4975, -4.4989, -0.9975, -0.4975, -5.4987, -0.9975, -0.4975, 4.4989, 0.9975, 0.4975, 3.4992, 0.9975, 0.4975, 4.4989, 0.9975, -0.4975, 3.4992, 0.9975, 0.4975, 3.4992, 0.9975, -0.4975, 4.4989, 0.9975, -0.4975, -4.4989, -0.9975, 0.4975, -3.4992, -0.9975, 0.4975, -4.4989, -0.9975, -0.4975, -3.4992, -0.9975, 0.4975, -3.4992, -0.9975, -0.4975, -4.4989, -0.9975, -0.4975, 3.4992, 0.9975, 0.4975, 2.4994, 0.9975, 0.4975, 3.4992, 0.9975, -0.4975, 2.4994, 0.9975, 0.4975, 2.4994, 0.9975, -0.4975, 3.4992, 0.9975, -0.4975, -3.4992, -0.9975, 0.4975, -2.4994, -0.9975, 0.4975, -3.4992, -0.9975, -0.4975, -2.4994, -0.9975, 0.4975, -2.4994, -0.9975, -0.4975, -3.4992, -0.9975, -0.4975, 2.4994, 0.9975, 0.4975, 1.4996, 0.9975, 0.4975, 2.4994, 0.9975, -0.4975, 1.4996, 0.9975, 0.4975, 1.4996, 0.9975, -0.4975, 2.4994, 0.9975, -0.4975, -2.4994, -0.9975, 0.4975, -1.4996, -0.9975, 0.4975, -2.4994, -0.9975, -0.4975, -1.4996, -0.9975, 0.4975, -1.4996, -0.9975, -0.4975, -2.4994, -0.9975, -0.4975, 1.4996, 0.9975, 0.4975, 0.4999, 0.9975, 0.4975, 1.4996, 0.9975, -0.4975, 0.4999, 0.9975, 0.4975, 0.4999, 0.9975, -0.4975, 1.4996, 0.9975, -0.4975, -1.4996, -0.9975, 0.4975, -0.4999, -0.9975, 0.4975, -1.4996, -0.9975, -0.4975, -0.4999, -0.9975, 0.4975, -0.4999, -0.9975, -0.4975, -1.4996, -0.9975, -0.4975, 0.4999, 0.9975, 0.4975, -0.4999, 0.9975, 0.4975, 0.4999, 0.9975, -0.4975, -0.4999, 0.9975, 0.4975, -0.4999, 0.9975, -0.4975, 0.4999, 0.9975, -0.4975, -0.4999, -0.9975, 0.4975, 0.4999, -0.9975, 0.4975, -0.4999, -0.9975, -0.4975, 0.4999, -0.9975, 0.4975, 0.4999, -0.9975, -0.4975, -0.4999, -0.9975, -0.4975, -0.4999, 0.9975, 0.4975, -1.4996, 0.9975, 0.4975, -0.4999, 0.9975, -0.4975, -1.4996, 0.9975, 0.4975, -1.4996, 0.9975, -0.4975, -0.4999, 0.9975, -0.4975, 0.4999, -0.9975, 0.4975, 1.4996, -0.9975, 0.4975, 0.4999, -0.9975, -0.4975, 1.4996, -0.9975, 0.4975, 1.4996, -0.9975, -0.4975, 0.4999, -0.9975, -0.4975, -1.4996, 0.9975, 0.4975, -2.4994, 0.9975, 0.4975, -1.4996, 0.9975, -0.4975, -2.4994, 0.9975, 0.4975, -2.4994, 0.9975, -0.4975, -1.4996, 0.9975, -0.4975, 1.4996, -0.9975, 0.4975, 2.4994, -0.9975, 0.4975, 1.4996, -0.9975, -0.4975, 2.4994, -0.9975, 0.4975, 2.4994, -0.9975, -0.4975, 1.4996, -0.9975, -0.4975, -2.4994, 0.9975, 0.4975, -3.4992, 0.9975, 0.4975, -2.4994, 0.9975, -0.4975, -3.4992, 0.9975, 0.4975, -3.4992, 0.9975, -0.4975, -2.4994, 0.9975, -0.4975, 2.4994, -0.9975, 0.4975, 3.4992, -0.9975, 0.4975, 2.4994, -0.9975, -0.4975, 3.4992, -0.9975, 0.4975, 3.4992, -0.9975, -0.4975, 2.4994, -0.9975, -0.4975, -3.4992, 0.9975, 0.4975, -4.4989, 0.9975, 0.4975, -3.4992, 0.9975, -0.4975, -4.4989, 0.9975, 0.4975, -4.4989, 0.9975, -0.4975, -3.4992, 0.9975, -0.4975, 3.4992, -0.9975, 0.4975, 4.4989, -0.9975, 0.4975, 3.4992, -0.9975, -0.4975, 4.4989, -0.9975, 0.4975, 4.4989, -0.9975, -0.4975, 3.4992, -0.9975, -0.4975, -4.4989, 0.9975, 0.4975, -5.4987, 0.9975, 0.4975, -4.4989, 0.9975, -0.4975, -5.4987, 0.9975, 0.4975, -5.4987, 0.9975, -0.4975, -4.4989, 0.9975, -0.4975, 4.4989, -0.9975, 0.4975, 5.4987, -0.9975, 0.4975, 4.4989, -0.9975, -0.4975, 5.4987, -0.9975, 0.4975, 5.4987, -0.9975, -0.4975, 4.4989, -0.9975, -0.4975, -5.4987, 0.9975, 0.4975, -6.4985, 0.9975, 0.4975, -5.4987, 0.9975, -0.4975, -6.4985, 0.9975, 0.4975, -6.4985, 0.9975, -0.4975, -5.4987, 0.9975, -0.4975, 5.4987, -0.9975, 0.4975, 6.4985, -0.9975, 0.4975, 5.4987, -0.9975, -0.4975, 6.4985, -0.9975, 0.4975, 6.4985, -0.9975, -0.4975, 5.4987, -0.9975, -0.4975, -6.4985, 0.9975, 0.4975, -7.4982, 0.9975, 0.4975, -6.4985, 0.9975, -0.4975, -7.4982, 0.9975, 0.4975, -7.4982, 0.9975, -0.4975, -6.4985, 0.9975, -0.4975, 6.4985, -0.9975, 0.4975, 7.4982, -0.9975, 0.4975, 6.4985, -0.9975, -0.4975, 7.4982, -0.9975, 0.4975, 7.4982, -0.9975, -0.4975, 6.4985, -0.9975, -0.4975, -7.4982, 0.9975, 0.4975, -8.498, 0.9975, 0.4975, -7.4982, 0.9975, -0.4975, -8.498, 0.9975, 0.4975, -8.498, 0.9975, -0.4975, -7.4982, 0.9975, -0.4975, 7.4982, -0.9975, 0.4975, 8.498, -0.9975, 0.4975, 7.4982, -0.9975, -0.4975, 8.498, -0.9975, 0.4975, 8.498, -0.9975, -0.4975, 7.4982, -0.9975, -0.4975, -8.498, 0.9975, 0.4975, -9.4977, 0.9975, 0.4975, -8.498, 0.9975, -0.4975, -9.4977, 0.9975, 0.4975, -9.4977, 0.9975, -0.4975, -8.498, 0.9975, -0.4975, 8.498, -0.9975, 0.4975, 9.4977, -0.9975, 0.4975, 8.498, -0.9975, -0.4975, 9.4977, -0.9975, 0.4975, 9.4977, -0.9975, -0.4975, 8.498, -0.9975, -0.4975, -9.4977, 0.9975, 0.4975, -10.4975, 0.9975, 0.4975, -9.4977, 0.9975, -0.4975, -10.4975, 0.9975, 0.4975, -10.4975, 0.9975, -0.4975, -9.4977, 0.9975, -0.4975, 9.4977, -0.9975, 0.4975, 10.4975, -0.9975, 0.4975, 9.4977, -0.9975, -0.4975, 10.4975, -0.9975, 0.4975, 10.4975, -0.9975, -0.4975, 9.4977, -0.9975, -0.4975 )
+
+[sub_resource type="CubeMesh" id=2]
+size = Vector3( 21.3, 0.06, 0.06 )
+
+[sub_resource type="CubeMesh" id=3]
+size = Vector3( 0.08, 2, 0.08 )
+
+[sub_resource type="CylinderMesh" id=4]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 1.8
+radial_segments = 6
+
+[sub_resource type="CylinderMesh" id=7]
+material = ExtResource( 6 )
+top_radius = 0.001
+bottom_radius = 0.05
+height = 0.1
+radial_segments = 6
+
+[sub_resource type="BoxShape" id=6]
+extents = Vector3( 0.5, 0.5, 0.5 )
+
+[node name="CityLargeBorder" type="StaticBody"]
+collision_layer = 4
+collision_mask = 31
+script = ExtResource( 1 )
+hurtAreaNP = NodePath("HurtArea")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
+
+[node name="Fence" type="Spatial" parent="."]
+
+[node name="HBarTopMI" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 5 )
+
+[node name="HBarMidMI" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 5 )
+
+[node name="HBarBottomMI" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0 )
+mesh = SubResource( 2 )
+material/0 = ExtResource( 5 )
+
+[node name="VBBarMI_1" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.58, 0.05, 0 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 5 )
+
+[node name="VBBarMI_2" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.58, 0.05, 0 )
+mesh = SubResource( 3 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_1" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_2" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_3" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_4" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.3, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_5" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_6" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.7, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_7" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_8" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_9" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_10" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_11" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_12" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_13" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_14" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_15" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_16" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_17" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_18" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_19" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_20" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_21" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_22" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_23" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_24" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_25" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_26" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_27" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_28" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_29" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_30" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_31" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_32" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_33" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_34" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_35" type="MeshInstance" parent="Fence"]
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_36" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_37" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_38" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_39" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_40" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_41" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_42" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_43" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_44" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_45" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_46" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_47" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_48" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_49" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_50" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_51" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_52" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_53" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_54" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_55" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_56" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_57" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_58" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_59" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_60" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_61" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_62" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_63" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_64" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_65" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_66" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_67" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.6, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_68" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="VBarMI_69" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = ExtResource( 5 )
+
+[node name="BallTopMI_1" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_2" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.9, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_3" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_4" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.3, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_5" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_6" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.7, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_7" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_8" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_9" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.8, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_10" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_11" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_12" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.9, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_13" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_14" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_15" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_16" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_17" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.4, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_18" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_19" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.8, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_20" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.5, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_21" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_22" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.9, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_23" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_24" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_25" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_26" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_27" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_28" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_29" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_30" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_31" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_32" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_33" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_34" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_35" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_36" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_37" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_38" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_39" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_40" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_41" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_42" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_43" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_44" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_45" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_46" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.3, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_47" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.6, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_48" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_49" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_50" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_51" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_52" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_53" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_54" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_55" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_56" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_57" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.6, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_58" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_59" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_60" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_61" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_62" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.1, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_63" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_64" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8.7, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_65" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_66" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.3, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_67" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.6, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_68" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.9, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="BallTopMI_69" type="MeshInstance" parent="Fence"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10.2, 0.94, 0 )
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="HurtArea" type="Area" parent="."]
+collision_layer = 128
+collision_mask = 31744
+
+[node name="CollisionShape" type="CollisionShape" parent="HurtArea"]
+shape = SubResource( 6 )
+[connection signal="area_entered" from="HurtArea" to="." method="OnHurtAreaEntered"]

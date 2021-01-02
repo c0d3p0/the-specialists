@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/machine_by_psykick.ogg-1bae3dcc47e0ec99cf4286cdaa24fb4e.oggstr"
+
+[deps]
+
+source_file="res://sound/bgm/machine_by_psykick.ogg"
+dest_files=[ "res://.import/machine_by_psykick.ogg-1bae3dcc47e0ec99cf4286cdaa24fb4e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

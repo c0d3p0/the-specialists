@@ -1,0 +1,45 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/gravel_ground_albedo.png-adaca6eaaf4c59b1f63d9daadd1afa19.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/gravel_ground_ao.png-955beea742a7efb269c8154d272e3f6f.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/gravel_ground_displacement.png-40604b17e39e76fcbf853a78bf96cbfe.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/gravel_ground_normal.png-34fe33611a7fb8f729c6796cbd2b9ed3.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/gravel_ground_roughness.png-e3ff89ab3aef5539bdcbeff8a798215f.stex"
+
+[resource]
+albedo_texture = SubResource( 1 )
+roughness_texture = SubResource( 5 )
+normal_enabled = true
+normal_scale = -2.0
+normal_texture = SubResource( 4 )
+rim_enabled = true
+rim = 0.16
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+depth_enabled = true
+depth_scale = -0.05
+depth_deep_parallax = true
+depth_min_layers = 2
+depth_max_layers = 4
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = SubResource( 3 )
+uv1_scale = Vector3( 48, 36, 1 )

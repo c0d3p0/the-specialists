@@ -1,0 +1,65 @@
+[gd_resource type="SpatialMaterial" load_steps=9 format=2]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/ruby_albedo.png-c835e62d15f86240916840113c5ce860.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/ruby_ao.png-721310a768e6907edc567a70e4057d6f.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/ruby_displacement.png-79a4874f48ca629206f693b48f8f31e6.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/ruby_albedo.png-c835e62d15f86240916840113c5ce860.stex"
+
+[sub_resource type="StreamTexture" id=5]
+flags = 7
+load_path = "res://.import/ruby_mask.png-907e132052d6a9fff41acc494267584d.stex"
+
+[sub_resource type="StreamTexture" id=6]
+flags = 7
+load_path = "res://.import/ruby_normal.png-db144df76b0b7326477c9f96155ddcae.stex"
+
+[sub_resource type="StreamTexture" id=7]
+flags = 7
+load_path = "res://.import/ruby_normal.png-db144df76b0b7326477c9f96155ddcae.stex"
+
+[sub_resource type="StreamTexture" id=8]
+flags = 7
+load_path = "res://.import/ruby_roughness.png-a84bde3eb336c9424f39ad8248017d54.stex"
+
+[resource]
+albedo_color = Color( 1, 1, 1, 0.784314 )
+albedo_texture = SubResource( 1 )
+roughness = 0.6
+roughness_texture = SubResource( 8 )
+normal_enabled = true
+normal_scale = -2.0
+normal_texture = SubResource( 7 )
+rim_enabled = true
+rim = 0.13
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.7
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0
+depth_enabled = true
+depth_scale = 0.05
+depth_deep_parallax = true
+depth_min_layers = 2
+depth_max_layers = 4
+depth_flip_tangent = false
+depth_flip_binormal = false
+depth_texture = SubResource( 3 )
+detail_enabled = true
+detail_mask = SubResource( 5 )
+detail_blend_mode = 0
+detail_uv_layer = 0
+detail_albedo = SubResource( 4 )
+detail_normal = SubResource( 6 )
+uv1_offset = Vector3( 0.5, 0, 0 )

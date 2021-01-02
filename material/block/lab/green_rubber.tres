@@ -1,0 +1,10 @@
+[gd_resource type="SpatialMaterial" format=2]
+
+[resource]
+resource_name = "OrangePlastic"
+params_cull_mode = 2
+albedo_color = Color( 0.133333, 0.52549, 0.0235294, 1 )
+roughness = 0.2
+rim_enabled = true
+rim = 0.18
+rim_tint = 1.0

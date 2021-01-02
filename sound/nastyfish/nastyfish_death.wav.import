@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nastyfish_death.wav-dbdfa85a36821b9b82ba78e8a6ebf2d5.sample"
+
+[deps]
+
+source_file="res://sound/nastyfish/nastyfish_death.wav"
+dest_files=[ "res://.import/nastyfish_death.wav-dbdfa85a36821b9b82ba78e8a6ebf2d5.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

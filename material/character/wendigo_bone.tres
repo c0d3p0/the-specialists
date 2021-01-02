@@ -1,0 +1,37 @@
+[gd_resource type="SpatialMaterial" load_steps=6 format=2]
+
+[ext_resource path="res://material/character/character_effect.tres" type="Material" id=1]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 7
+load_path = "res://.import/wendigo_bone_albedo.png-6c7033c330475afe9600c28e210b8bae.stex"
+
+[sub_resource type="StreamTexture" id=2]
+flags = 7
+load_path = "res://.import/wendigo_bone_ao.png-a2855a332e8f1a9976cda0d03315a1b5.stex"
+
+[sub_resource type="StreamTexture" id=3]
+flags = 7
+load_path = "res://.import/wendigo_bone_normal.png-2812c67bf60b2b34ba4a985e8b170ba8.stex"
+
+[sub_resource type="StreamTexture" id=4]
+flags = 7
+load_path = "res://.import/wendigo_bone_roughness.png-6a0956317505b2bb36fc3d8b8536a12b.stex"
+
+[resource]
+resource_local_to_scene = true
+next_pass = ExtResource( 1 )
+albedo_texture = SubResource( 1 )
+roughness = 0.5
+roughness_texture = SubResource( 4 )
+normal_enabled = true
+normal_scale = 1.2
+normal_texture = SubResource( 3 )
+rim_enabled = true
+rim = 0.12
+rim_tint = 1.0
+ao_enabled = true
+ao_light_affect = 0.94
+ao_texture = SubResource( 2 )
+ao_on_uv2 = false
+ao_texture_channel = 0

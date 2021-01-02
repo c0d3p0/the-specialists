@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/the_thunderstorm_ft_morgantj_by_kraftamt.ogg-659f7aa0481aa8fd0d20abbd61759697.oggstr"
+
+[deps]
+
+source_file="res://sound/bgm/the_thunderstorm_ft_morgantj_by_kraftamt.ogg"
+dest_files=[ "res://.import/the_thunderstorm_ft_morgantj_by_kraftamt.ogg-659f7aa0481aa8fd0d20abbd61759697.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
