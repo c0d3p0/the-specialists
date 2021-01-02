@@ -1,5 +1,5 @@
 # the-specialists
-The Specialists is a Strategic, Acion, Maze open source game similar to the bomberman series developed using the Godot Engine 3.2.3.
+The Specialists is a Strategic, Action, Maze open source game similar to the bomberman series developed using the Godot Engine 3.2.3.
 <br/>
 
 A crazy scientist starts to create and release biological weapons everywhere. To deal with this situation, a special unit is activated. A team of specialists from this unit is assigned to clean some areas while the intelligence department is investigating and trying to find the scientist identity and the laboratory he is using to create all those things, so an operation can be planned to stop him.
