@@ -24,6 +24,7 @@
 [ext_resource path="res://material/character/red_cells.tres" type="Material" id=22]
 [ext_resource path="res://.import/wendigo_death.wav-b238630784838c1d4cf1823eb1686aac.sample" type="AudioStream" id=23]
 [ext_resource path="res://.import/cell_rotating.wav-dd3488ac6043a8f805d80d06924367de.sample" type="AudioStream" id=24]
+[ext_resource path="res://animation/character/wendigo/invulnerable.tres" type="Animation" id=25]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.49
@@ -43,35 +44,6 @@ extents = Vector3( 0.25, 0.8, 0.25 )
 extents = Vector3( 0.25, 0.8, 0.25 )
 
 [sub_resource type="Animation" id=6]
-length = 6.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Wendigo/BodyMeshInstance:material/0:next_pass:shader_param/blink")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 6.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("Source/EnemyAction")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 6.2 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ false ],
-"method": "SetIgnoreHit"
-} ]
-}
-
-[sub_resource type="Animation" id=7]
 length = 6.6
 step = 0.05
 tracks/0/type = "value"
@@ -205,47 +177,49 @@ tracks/5/keys = {
 "times": PoolRealArray( 0.3, 0.7, 1.1, 1.5, 1.9, 2.3, 2.7, 3.1, 3.5, 3.9, 4.3, 4.7, 5.1, 5.5, 5.9 )
 }
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "active"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "die"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "hit"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "inactive"
 
-[sub_resource type="AnimationNodeAnimation" id=13]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "run"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "skill"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "start"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=21]
 switch_mode = 2
 auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
@@ -254,34 +228,32 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=25]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=27]
-states/active/node = SubResource( 8 )
+[sub_resource type="AnimationNodeStateMachine" id=26]
+states/active/node = SubResource( 7 )
 states/active/position = Vector2( 141, 186.906 )
-states/die/node = SubResource( 9 )
+states/die/node = SubResource( 8 )
 states/die/position = Vector2( 661, 186.906 )
-states/hit/node = SubResource( 10 )
+states/hit/node = SubResource( 9 )
 states/hit/position = Vector2( 412, 186.906 )
-states/idle/node = SubResource( 11 )
+states/idle/node = SubResource( 10 )
 states/idle/position = Vector2( 298, 107.1 )
-states/inactive/node = SubResource( 12 )
+states/inactive/node = SubResource( 11 )
 states/inactive/position = Vector2( 141, 107.1 )
-states/run/node = SubResource( 13 )
+states/run/node = SubResource( 12 )
 states/run/position = Vector2( 524.151, 107.1 )
-states/skill/node = SubResource( 14 )
+states/skill/node = SubResource( 13 )
 states/skill/position = Vector2( 412, 13.8519 )
-states/start/node = SubResource( 15 )
+states/start/node = SubResource( 14 )
 states/start/position = Vector2( 141, 13.8519 )
-transitions = [ "inactive", "active", SubResource( 16 ), "active", "idle", SubResource( 17 ), "idle", "hit", SubResource( 18 ), "hit", "idle", SubResource( 19 ), "idle", "skill", SubResource( 20 ), "skill", "idle", SubResource( 21 ), "run", "skill", SubResource( 22 ), "run", "hit", SubResource( 23 ), "run", "idle", SubResource( 24 ), "idle", "run", SubResource( 25 ), "start", "inactive", SubResource( 26 ) ]
+transitions = [ "inactive", "active", SubResource( 15 ), "active", "idle", SubResource( 16 ), "idle", "hit", SubResource( 17 ), "hit", "idle", SubResource( 18 ), "idle", "skill", SubResource( 19 ), "skill", "idle", SubResource( 20 ), "run", "skill", SubResource( 21 ), "run", "hit", SubResource( 22 ), "run", "idle", SubResource( 23 ), "idle", "run", SubResource( 24 ), "start", "inactive", SubResource( 25 ) ]
 start_node = "start"
 end_node = "die"
 graph_offset = Vector2( -42.849, -8.81779 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=28]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
 
 [node name="Wendigo" type="KinematicBody"]
 collision_layer = 2
@@ -421,16 +393,16 @@ anims/start = ExtResource( 19 )
 anims/t_pose = ExtResource( 12 )
 
 [node name="InvulnerableAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/invulnerable = SubResource( 6 )
+anims/invulnerable = ExtResource( 25 )
 
 [node name="SkillAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/cells = SubResource( 7 )
+anims/cells = SubResource( 6 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 27 )
+tree_root = SubResource( 26 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 28 )
+parameters/playback = SubResource( 27 )
 
 [node name="Source" type="Node" parent="."]
 

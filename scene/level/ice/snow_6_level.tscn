@@ -42,7 +42,7 @@ background_sky = SubResource( 1 )
 ambient_light_color = Color( 1, 1, 0.980392, 1 )
 ambient_light_energy = 0.1
 ambient_light_sky_contribution = 0.6
-auto_exposure_enabled = true
+tonemap_exposure = 2.0
 auto_exposure_scale = 0.6
 ss_reflections_enabled = true
 ssao_enabled = true
@@ -68,9 +68,13 @@ environment = SubResource( 2 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.5, -0.296198, 0.813797, 0, 0.939692, 0.34202, -0.866025, -0.17101, 0.469846, -0.839063, 134.597, 50 )
-light_color = Color( 0.803922, 0.533333, 0.0666667, 1 )
+light_color = Color( 0.905882, 0.588235, 0.137255, 1 )
+light_energy = 1.5
 shadow_enabled = true
 directional_shadow_normal_bias = 0.1
+__meta__ = {
+"_editor_description_": ""
+}
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 0.52992, 0.848049, 0, -0.848049, 0.52992, 0, 35, 21 )
@@ -122,11 +126,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, 0 )
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 1, 7 )
 
 [node name="IceExitGate" parent="." instance=ExtResource( 7 )]
-transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 13, 1, 5.5 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, 5.5 )
 levelManagerNP = NodePath("../LevelManager")
 
 [node name="IceClearedExitGate" parent="." instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, 5.5 )
+transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 13, 1, 5.5 )
 
 [node name="SnowGround" parent="." instance=ExtResource( 5 )]
 

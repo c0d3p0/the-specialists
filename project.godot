@@ -209,6 +209,7 @@ toggle_borderless={
 3d_physics/layer_16="Level Exit Trigger"
 3d_physics/layer_17="Laser Device Trigger Sensor"
 3d_physics/layer_18="Ignore Collision"
+3d_physics/layer_19="Specialist Trigger"
 
 [rendering]
 

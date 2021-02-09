@@ -31,10 +31,10 @@ public class DefaultEnemyCharacter : KinematicBody
 	{
 		optional.Call(this.GetMethodSet(), enemySkill.CanExecuteSkill());
 	}
-
-	public void SetIgnoreHit(bool active)
+	
+	public void SetIgnoreTransition(bool active)
 	{
-		enemyAction.IgnoreHit = active;
+		enemyAction.IgnoreTransition = active;
 	}
 
 	public void FixBodyDirection(Vector3 direction)

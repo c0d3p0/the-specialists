@@ -16,7 +16,7 @@ tracks/0/keys = {
 "values": [ true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, true, false ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("HurtArea/CollisionShape:disabled")
+tracks/1/path = NodePath("HurtArea/CollisionShape:translation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -24,6 +24,6 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0, 7 ),
 "transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
+"update": 0,
+"values": [ Vector3( 0, -1000, 0 ), Vector3( 0, 0.5, 0 ) ]
 }

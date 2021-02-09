@@ -52,9 +52,9 @@ public class SpecialistCharacter : KinematicBody
 		specialistCharacterAction.Cheer();
 	}
 
-	public void SetIgnoreHit(bool active)
+	public void SetIgnoreTransition(bool active)
 	{
-		specialistCharacterAction.IgnoreHit = active;
+		specialistCharacterAction.IgnoreTransition = active;
 	}
 
 	public void FixBodyDirection(Vector3 direction)

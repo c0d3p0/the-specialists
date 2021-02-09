@@ -435,3 +435,17 @@ tracks/55/keys = {
 "method": "SetProcessBehavior"
 } ]
 }
+tracks/56/type = "method"
+tracks/56/path = NodePath("Source/EnemyAction")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/keys = {
+"times": PoolRealArray( 1.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "SetIgnoreTransition"
+} ]
+}

@@ -124,6 +124,7 @@ enemyBehaviorNP = NodePath("Source/EnemyBehavior")
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.69, 0 )
 shape = SubResource( 1 )
+disabled = true
 
 [node name="Body" type="Spatial" parent="."]
 
@@ -186,6 +187,7 @@ shape = SubResource( 2 )
 
 [node name="StrikeArea" type="Area" parent="."]
 monitoring = false
+monitorable = false
 collision_layer = 4096
 collision_mask = 32
 

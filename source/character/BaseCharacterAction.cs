@@ -27,9 +27,9 @@ public class BaseCharacterAction : Node
 		animationStateMachine.Travel(actionName);
 	}
 
-	public void SetIgnoreHit(bool active)
+	public void SetIgnoreTransition(bool active)
 	{
-		ignoreHit = active;
+		ignoreTransition = active;
 	}
 
 	protected string CanTransitToMove()
@@ -106,11 +106,11 @@ public class BaseCharacterAction : Node
 		InitializeBodyDirectionMap();
 	}
 
-	public bool IgnoreHit
+	public bool IgnoreTransition
 	{	
 		set
 		{	
-			ignoreHit = value;
+			ignoreTransition = value;
 		}
 	}
 
@@ -144,5 +144,5 @@ public class BaseCharacterAction : Node
 	protected Area hurtArea;
 	protected AnimationNodeStateMachinePlayback animationStateMachine;
 
-	protected bool ignoreHit;
+	protected bool ignoreTransition;
 }

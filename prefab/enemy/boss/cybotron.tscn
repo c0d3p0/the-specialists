@@ -18,6 +18,7 @@
 [ext_resource path="res://animation/character/cybotron/die.tres" type="Animation" id=16]
 [ext_resource path="res://source/character/skill/Boss4Skill.cs" type="Script" id=17]
 [ext_resource path="res://animation/default/start.tres" type="Animation" id=18]
+[ext_resource path="res://animation/character/cybotron/invulnerable.tres" type="Animation" id=19]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.49
@@ -25,77 +26,49 @@ radius = 0.49
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.3, 1, 0.2 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "invulnerable"
-length = 6.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Cybotron/MeshInstance:material/0:next_pass:next_pass:shader_param/blink")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("Source/EnemyAction")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ false ],
-"method": "SetIgnoreHit"
-} ]
-}
-
-[sub_resource type="AnimationNodeAnimation" id=4]
+[sub_resource type="AnimationNodeAnimation" id=3]
 animation = "active"
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "die"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "hit"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "inactive"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "run"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "skill"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "start"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=12]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=13]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=15]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 switch_mode = 2
 auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
@@ -104,34 +77,32 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=23]
-states/active/node = SubResource( 4 )
+[sub_resource type="AnimationNodeStateMachine" id=22]
+states/active/node = SubResource( 3 )
 states/active/position = Vector2( 141, 186.906 )
-states/die/node = SubResource( 5 )
+states/die/node = SubResource( 4 )
 states/die/position = Vector2( 661, 186.906 )
-states/hit/node = SubResource( 6 )
+states/hit/node = SubResource( 5 )
 states/hit/position = Vector2( 412, 186.906 )
-states/idle/node = SubResource( 7 )
+states/idle/node = SubResource( 6 )
 states/idle/position = Vector2( 298, 107.1 )
-states/inactive/node = SubResource( 8 )
+states/inactive/node = SubResource( 7 )
 states/inactive/position = Vector2( 141, 107.1 )
-states/run/node = SubResource( 9 )
+states/run/node = SubResource( 8 )
 states/run/position = Vector2( 526.151, 107.1 )
-states/skill/node = SubResource( 10 )
+states/skill/node = SubResource( 9 )
 states/skill/position = Vector2( 412, 16.8519 )
-states/start/node = SubResource( 11 )
+states/start/node = SubResource( 10 )
 states/start/position = Vector2( 141, 16.8519 )
-transitions = [ "inactive", "active", SubResource( 12 ), "active", "idle", SubResource( 13 ), "idle", "hit", SubResource( 14 ), "hit", "idle", SubResource( 15 ), "idle", "skill", SubResource( 16 ), "skill", "idle", SubResource( 17 ), "run", "skill", SubResource( 18 ), "run", "hit", SubResource( 19 ), "run", "idle", SubResource( 20 ), "idle", "run", SubResource( 21 ), "start", "inactive", SubResource( 22 ) ]
+transitions = [ "inactive", "active", SubResource( 11 ), "active", "idle", SubResource( 12 ), "idle", "hit", SubResource( 13 ), "hit", "idle", SubResource( 14 ), "idle", "skill", SubResource( 15 ), "skill", "idle", SubResource( 16 ), "run", "skill", SubResource( 17 ), "run", "hit", SubResource( 18 ), "run", "idle", SubResource( 19 ), "idle", "run", SubResource( 20 ), "start", "inactive", SubResource( 21 ) ]
 start_node = "inactive"
 end_node = "die"
 graph_offset = Vector2( -42.849, -50.3138 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
 [node name="Cybotron" type="KinematicBody"]
 collision_layer = 2
@@ -211,13 +182,13 @@ anims/skill = ExtResource( 12 )
 anims/start = ExtResource( 18 )
 
 [node name="InvulnerableAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/invulnerable = SubResource( 3 )
+anims/invulnerable = ExtResource( 19 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 23 )
+tree_root = SubResource( 22 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 24 )
+parameters/playback = SubResource( 23 )
 
 [node name="Source" type="Node" parent="."]
 

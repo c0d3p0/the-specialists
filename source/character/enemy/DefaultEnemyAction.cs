@@ -5,9 +5,9 @@ public class DefaultEnemyAction : BaseCharacterAction
 {
 	public void Hit(Area attackerArea, Area victimArea, int damageTaken)
 	{
-		if(!ignoreHit)
+		if(!ignoreTransition)
 		{
-			ignoreHit = true;
+			ignoreTransition = true;
 			EmitSignal(this.GetSignalIncreaseHealth(), -damageTaken);
 			character.Call(this.GetMethodSetProcessBehavior(), false);
 
@@ -57,9 +57,11 @@ public class DefaultEnemyAction : BaseCharacterAction
 	{
 		string a = CanTransitToSkill();
 
-		if(a != null && this.Call<bool>(character, this.GetMethodCanExecuteSkill()))
+		if(a != null && !ignoreTransition && 
+				this.Call<bool>(character, this.GetMethodCanExecuteSkill()))
 		{
 			hurtArea.Monitoring = false;
+			ignoreTransition = true;
 			FixBodyDirection(direction);
 			animationStateMachine.Travel(animationName != null ? animationName : a);
 			character.Call(this.GetMethodSetProcessBehavior(), false);

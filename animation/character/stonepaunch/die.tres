@@ -467,7 +467,7 @@ tracks/57/loop_wrap = true
 tracks/57/imported = false
 tracks/57/enabled = true
 tracks/57/keys = {
-"times": PoolRealArray( 1.4 ),
+"times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
@@ -479,7 +479,7 @@ tracks/58/loop_wrap = true
 tracks/58/imported = false
 tracks/58/enabled = true
 tracks/58/keys = {
-"times": PoolRealArray( 1.4 ),
+"times": PoolRealArray( 1 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]

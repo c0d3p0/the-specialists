@@ -84,17 +84,20 @@ start_node = "inactive"
 [sub_resource type="AnimationNodeStateMachinePlayback" id=13]
 
 [node name="IncreaseDetonateTimeItem" type="Area"]
+monitoring = false
+monitorable = false
 collision_layer = 512
-collision_mask = 17504
+collision_mask = 279552
 script = ExtResource( 1 )
 animationTreeNP = NodePath("AnimationTree")
 featureId = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
+disabled = true
 
 [node name="Structure" type="Spatial" parent="."]
-transform = Transform( -0.949458, 0.0985297, 0.298029, 0, -0.949458, 0.313894, 0.313894, 0.298029, 0.90147, 0, -0.0203267, 0 )
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.0203267, 0 )
 
 [node name="ItemMeshInstance" parent="Structure" instance=ExtResource( 4 )]
 transform = Transform( -1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 0, 0 )

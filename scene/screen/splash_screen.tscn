@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://source/screen/load/MaterialPreLoader.cs" type="Script" id=1]
+[ext_resource path="res://source/screen/load/PreLoader.cs" type="Script" id=1]
 [ext_resource path="res://source/screen/load/LoadScreen.cs" type="Script" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -62,18 +62,18 @@ one_shot = true
 autoplay = "splash"
 anims/splash = SubResource( 3 )
 
-[node name="MaterialContainer" type="Spatial" parent="."]
+[node name="NodeContainer" type="Spatial" parent="."]
 
-[node name="Camera" type="Camera" parent="MaterialContainer"]
+[node name="Camera" type="Camera" parent="NodeContainer"]
 
 [node name="Source" type="Node" parent="."]
 
-[node name="MaterialPreLoader" type="Node" parent="Source"]
+[node name="PreLoader" type="Node" parent="Source"]
 script = ExtResource( 1 )
 nextNodeNP = NodePath("../LoadScreen")
-materialRenderContainerNP = NodePath("../../MaterialContainer")
+nodeRenderContainerNP = NodePath("../../NodeContainer")
 renderTimerNP = NodePath("../../RenderTimer")
-materialRenderScenePathList = [ "res://prefab/screen/material_pre_render.tscn", "res://prefab/screen/material_pre_render_2.tscn", "res://prefab/screen/material_pre_render_3.tscn", "res://prefab/screen/material_pre_render_4.tscn" ]
+nodeRenderScenePathList = [ "res://prefab/screen/material_pre_render.tscn", "res://prefab/screen/material_pre_render_2.tscn", "res://prefab/screen/material_pre_render_3.tscn", "res://prefab/screen/material_pre_render_4.tscn" ]
 
 [node name="LoadScreen" type="Node" parent="Source"]
 script = ExtResource( 3 )

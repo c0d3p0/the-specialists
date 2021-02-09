@@ -398,13 +398,25 @@ tracks/51/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/52/type = "method"
-tracks/52/path = NodePath(".")
+tracks/52/type = "value"
+tracks/52/path = NodePath("HurtArea/CollisionShape:disabled")
 tracks/52/interp = 1
 tracks/52/loop_wrap = true
 tracks/52/imported = false
 tracks/52/enabled = true
 tracks/52/keys = {
+"times": PoolRealArray( 0.08 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/53/type = "method"
+tracks/53/path = NodePath(".")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/keys = {
 "times": PoolRealArray( 0.08 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {

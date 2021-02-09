@@ -440,3 +440,17 @@ tracks/56/keys = {
 "method": "SetProcessBehavior"
 } ]
 }
+tracks/57/type = "method"
+tracks/57/path = NodePath("Source/SpecialistCharacterAction")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/keys = {
+"times": PoolRealArray( 1.04 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ false ],
+"method": "SetIgnoreTransition"
+} ]
+}

@@ -297,8 +297,9 @@ collision_layer = 64
 collision_mask = 17408
 
 [node name="CollisionShape" type="CollisionShape" parent="HurtArea"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1000, 0 )
 shape = SubResource( 5 )
+disabled = true
 
 [node name="StrikeArea" type="Area" parent="."]
 monitoring = false

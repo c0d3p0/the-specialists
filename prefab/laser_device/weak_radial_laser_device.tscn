@@ -4,7 +4,7 @@
 [ext_resource path="res://source/character/CharacterPhysics.cs" type="Script" id=2]
 [ext_resource path="res://source/laser_device/DefaultLaserDevice.cs" type="Script" id=3]
 [ext_resource path="res://source/laser_device/DefaultLaserDeviceAction.cs" type="Script" id=4]
-[ext_resource path="res://animation/laser_device/moab/detonate.tres" type="Animation" id=5]
+[ext_resource path="res://animation/laser_device/radial/detonate.tres" type="Animation" id=5]
 [ext_resource path="res://.import/laser_device_active.wav-b3dfc152597f47cfd4e4e03d45342bc0.sample" type="AudioStream" id=6]
 [ext_resource path="res://animation/laser_device/radial/active.tres" type="Animation" id=7]
 [ext_resource path="res://material/laser_device/blue_laser_device.tres" type="Material" id=8]
@@ -13,9 +13,10 @@
 [ext_resource path="res://model/laser_device/laser_device_glass.tscn" type="PackedScene" id=11]
 [ext_resource path="res://material/laser_device/glass.tres" type="Material" id=12]
 [ext_resource path="res://animation/laser_device/default/idle.tres" type="Animation" id=13]
-[ext_resource path="res://animation/laser_device/default/recycle.tres" type="Animation" id=14]
+[ext_resource path="res://animation/laser_device/radial/recycle.tres" type="Animation" id=14]
 [ext_resource path="res://shader/color_change.shader" type="Shader" id=15]
 [ext_resource path="res://material/laser_device/glass_ray.tres" type="Material" id=16]
+[ext_resource path="res://animation/laser_device/radial/inactive.tres" type="Animation" id=17]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.48, 0.48, 0.48 )
@@ -42,105 +43,6 @@ shader_param/color5 = Color( 0, 0, 2, 0.7 )
 shader_param/color6 = Color( 2, 0, 2, 0.7 )
 shader_param/alpha_override = 1.0
 shader_param/duration = 0.24
-
-[sub_resource type="Animation" id=6]
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Structure:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Structure:translation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("CenterRayArea:monitoring")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("CenterRayArea:monitorable")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("CenterRayArea:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("CollisionShape:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("HurtArea/CollisionShape:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("CenterRayArea/MeshInstance:material/0:shader_param/alpha_override")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 1.0 ]
-}
 
 [sub_resource type="Animation" id=7]
 length = 0.1
@@ -220,11 +122,9 @@ disabled = true
 transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 
 [node name="LaserDeviceStructureMI" parent="Structure" instance=ExtResource( 10 )]
-transform = Transform( 100, 0, 0, 0, 50, 0, 0, 0, 100, 0, 0, 0 )
 material/0 = ExtResource( 8 )
 
 [node name="LaserDeviceGlassMI" parent="Structure" instance=ExtResource( 11 )]
-transform = Transform( 100, 0, 0, 0, 50, 0, 0, 0, 100, 0, 0, 0 )
 material/0 = ExtResource( 16 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Structure"]
@@ -243,12 +143,12 @@ disabled = true
 [node name="CenterRayArea" type="Area" parent="."]
 visible = false
 monitoring = false
-monitorable = false
 collision_layer = 1024
 collision_mask = 992
 
 [node name="CollisionShape" type="CollisionShape" parent="CenterRayArea"]
 shape = SubResource( 3 )
+disabled = true
 
 [node name="MeshInstance" type="MeshInstance" parent="CenterRayArea"]
 mesh = SubResource( 4 )
@@ -258,7 +158,7 @@ material/0 = SubResource( 5 )
 anims/active = ExtResource( 7 )
 anims/detonate = ExtResource( 5 )
 anims/idle = ExtResource( 13 )
-anims/inactive = SubResource( 6 )
+anims/inactive = ExtResource( 17 )
 anims/recycle = ExtResource( 14 )
 anims/start = SubResource( 7 )
 
@@ -271,6 +171,7 @@ parameters/playback = SubResource( 21 )
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 6 )
 attenuation_model = 3
+unit_db = 6.0
 
 [node name="Source" type="Node" parent="."]
 

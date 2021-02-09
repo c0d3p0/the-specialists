@@ -3,10 +3,10 @@ using Godot;
 
 public class MineLaserDeviceAction : DefaultLaserDeviceAction
 {
-	public void OnTimerTimeout()
-	{
-		sensorArea.Monitoring = true;
-	}
+	// public void OnTimerTimeout()
+	// {
+	// 	sensorArea.Monitoring = true;
+	// }
 
 	public void OnSensorAreaEntered(Area area)
 	{

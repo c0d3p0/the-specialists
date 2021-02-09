@@ -28,7 +28,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0, 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CenterRayArea:monitoring")
+tracks/2/path = NodePath("CenterRayArea/CollisionShape:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -37,10 +37,10 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("CenterRayArea:monitorable")
+tracks/3/path = NodePath("ForwardRayArea/CollisionShape:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -49,10 +49,10 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("CenterRayArea:visible")
+tracks/4/path = NodePath("LeftRayArea/CollisionShape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -61,10 +61,10 @@ tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("ForwardRayArea:monitoring")
+tracks/5/path = NodePath("BackRayArea/CollisionShape:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -73,10 +73,10 @@ tracks/5/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("ForwardRayArea:monitorable")
+tracks/6/path = NodePath("RightRayArea/CollisionShape:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -85,10 +85,10 @@ tracks/6/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("ForwardRayArea:visible")
+tracks/7/path = NodePath("CenterRayArea:monitoring")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -100,7 +100,7 @@ tracks/7/keys = {
 "values": [ false ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("LeftRayArea:monitoring")
+tracks/8/path = NodePath("CenterRayArea:monitorable")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -109,10 +109,10 @@ tracks/8/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("LeftRayArea:monitorable")
+tracks/9/path = NodePath("CenterRayArea:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -124,7 +124,7 @@ tracks/9/keys = {
 "values": [ false ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("LeftRayArea:visible")
+tracks/10/path = NodePath("ForwardRayArea:monitoring")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -136,7 +136,7 @@ tracks/10/keys = {
 "values": [ false ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("RightRayArea:monitoring")
+tracks/11/path = NodePath("ForwardRayArea:monitorable")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -145,10 +145,10 @@ tracks/11/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("RightRayArea:monitorable")
+tracks/12/path = NodePath("ForwardRayArea:visible")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -160,7 +160,7 @@ tracks/12/keys = {
 "values": [ false ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("RightRayArea:visible")
+tracks/13/path = NodePath("LeftRayArea:monitoring")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -172,7 +172,7 @@ tracks/13/keys = {
 "values": [ false ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("BackRayArea:monitoring")
+tracks/14/path = NodePath("LeftRayArea:monitorable")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -181,10 +181,10 @@ tracks/14/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("BackRayArea:monitorable")
+tracks/15/path = NodePath("LeftRayArea:visible")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -196,7 +196,7 @@ tracks/15/keys = {
 "values": [ false ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("BackRayArea:visible")
+tracks/16/path = NodePath("RightRayArea:monitoring")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -208,7 +208,7 @@ tracks/16/keys = {
 "values": [ false ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("SensorArea:monitoring")
+tracks/17/path = NodePath("RightRayArea:monitorable")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -217,10 +217,10 @@ tracks/17/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("SensorArea:monitorable")
+tracks/18/path = NodePath("RightRayArea:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -232,7 +232,7 @@ tracks/18/keys = {
 "values": [ false ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("SensorArea:scale")
+tracks/19/path = NodePath("BackRayArea:monitoring")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -240,11 +240,11 @@ tracks/19/enabled = true
 tracks/19/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0.001, 0.001, 0.001 ) ]
+"update": 1,
+"values": [ false ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("CollisionShape:disabled")
+tracks/20/path = NodePath("BackRayArea:monitorable")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -256,7 +256,7 @@ tracks/20/keys = {
 "values": [ true ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("HurtArea/CollisionShape:disabled")
+tracks/21/path = NodePath("BackRayArea:visible")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -265,10 +265,10 @@ tracks/21/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("FrontRayCast:enabled")
+tracks/22/path = NodePath("SensorArea:monitoring")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -280,7 +280,7 @@ tracks/22/keys = {
 "values": [ false ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("LeftRayCast:enabled")
+tracks/23/path = NodePath("SensorArea:monitorable")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -292,7 +292,7 @@ tracks/23/keys = {
 "values": [ false ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("BackRayCast:enabled")
+tracks/24/path = NodePath("SensorArea:scale")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -300,11 +300,11 @@ tracks/24/enabled = true
 tracks/24/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
+"update": 0,
+"values": [ Vector3( 0.001, 0.001, 0.001 ) ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("RightRayCast:enabled")
+tracks/25/path = NodePath("SensorArea/VCollisionShape:disabled")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -313,15 +313,99 @@ tracks/25/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ true ]
 }
 tracks/26/type = "value"
-tracks/26/path = NodePath("CenterRayArea/MeshInstance:material/0:shader_param/alpha_override")
+tracks/26/path = NodePath("SensorArea/HCollisionShape:disabled")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/imported = false
 tracks/26/enabled = true
 tracks/26/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("CollisionShape:disabled")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("HurtArea/CollisionShape:disabled")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/29/type = "value"
+tracks/29/path = NodePath("FrontRayCast:enabled")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/30/type = "value"
+tracks/30/path = NodePath("LeftRayCast:enabled")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/31/type = "value"
+tracks/31/path = NodePath("BackRayCast:enabled")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/32/type = "value"
+tracks/32/path = NodePath("RightRayCast:enabled")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("CenterRayArea/MeshInstance:material/0:shader_param/alpha_override")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,

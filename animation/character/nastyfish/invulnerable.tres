@@ -2,7 +2,8 @@
 
 [resource]
 resource_name = "invulnerable"
-length = 6.1
+length = 6.12
+step = 0.04
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/Nastyfish/MeshInstance:material/0:next_pass:shader_param/blink")
 tracks/0/interp = 1
@@ -10,22 +11,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 6.1 ),
+"times": PoolRealArray( 0, 6.12 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath("Source/EnemyAction")
+tracks/1/type = "value"
+tracks/1/path = NodePath("HurtArea/CollisionShape:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 6.1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ false ],
-"method": "SetIgnoreHit"
-} ]
+"times": PoolRealArray( 0, 6.08, 6.12 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
 }

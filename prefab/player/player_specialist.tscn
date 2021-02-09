@@ -20,6 +20,7 @@
 [ext_resource path="res://animation/character/specialist/inactive.tres" type="Animation" id=18]
 [ext_resource path="res://animation/character/specialist/active.tres" type="Animation" id=19]
 [ext_resource path="res://animation/character/specialist/cheer.tres" type="Animation" id=20]
+[ext_resource path="res://animation/character/specialist/invulnerable.tres" type="Animation" id=21]
 [ext_resource path="res://animation/default/start.tres" type="Animation" id=23]
 [ext_resource path="res://.import/specialist_hit.wav-ee90101ec51301451d254998019b976d.sample" type="AudioStream" id=24]
 [ext_resource path="res://material/character/specialist_brown.tres" type="Material" id=25]
@@ -39,74 +40,47 @@ extents = Vector3( 0.3, 1, 0.3 )
 flags = 7
 load_path = "res://.import/disease_icon.png-0c1ee4c57070d602145195334fe9d7d7.stex"
 
-[sub_resource type="Animation" id=4]
-length = 6.0
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Specialist/BodyMeshInstance:material/0:next_pass:shader_param/blink")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("Source/SpecialistCharacterAction")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ false ],
-"method": "SetIgnoreHit"
-} ]
-}
-
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "active"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "cheer"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=6]
 animation = "die"
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "hit"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "inactive"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "run"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "skill"
 
-[sub_resource type="AnimationNodeTimeScale" id=13]
+[sub_resource type="AnimationNodeTimeScale" id=12]
 
-[sub_resource type="AnimationNodeBlendTree" id=14]
-nodes/Animation/node = SubResource( 12 )
+[sub_resource type="AnimationNodeBlendTree" id=13]
+nodes/Animation/node = SubResource( 11 )
 nodes/Animation/position = Vector2( 80, 140 )
-nodes/TimeScale/node = SubResource( 13 )
+nodes/TimeScale/node = SubResource( 12 )
 nodes/TimeScale/position = Vector2( 280, 140 )
 nodes/output/position = Vector2( 480, 140 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "start"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
@@ -115,64 +89,62 @@ animation = "walk"
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=21]
 switch_mode = 2
 auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
-switch_mode = 2
-auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=25]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
 switch_mode = 2
 auto_advance = true
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=28]
 switch_mode = 2
 auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=29]
-switch_mode = 2
-auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=30]
-
-[sub_resource type="AnimationNodeStateMachine" id=31]
-states/active/node = SubResource( 5 )
+[sub_resource type="AnimationNodeStateMachine" id=30]
+states/active/node = SubResource( 4 )
 states/active/position = Vector2( 310, 190.124 )
-states/cheer/node = SubResource( 6 )
+states/cheer/node = SubResource( 5 )
 states/cheer/position = Vector2( 139, 282.124 )
-states/die/node = SubResource( 7 )
+states/die/node = SubResource( 6 )
 states/die/position = Vector2( 764.918, 46.1238 )
-states/hit/node = SubResource( 8 )
+states/hit/node = SubResource( 7 )
 states/hit/position = Vector2( 631, 190.124 )
-states/idle/node = SubResource( 9 )
+states/idle/node = SubResource( 8 )
 states/idle/position = Vector2( 470, 190.124 )
-states/inactive/node = SubResource( 10 )
+states/inactive/node = SubResource( 9 )
 states/inactive/position = Vector2( 139, 190.124 )
-states/run/node = SubResource( 11 )
+states/run/node = SubResource( 10 )
 states/run/position = Vector2( 346, 46.1238 )
-states/skill/node = SubResource( 14 )
+states/skill/node = SubResource( 13 )
 states/skill/position = Vector2( 470, 46.1238 )
-states/start/node = SubResource( 15 )
+states/start/node = SubResource( 14 )
 states/start/position = Vector2( 139, 46.1238 )
-states/walk/node = SubResource( 16 )
+states/walk/node = SubResource( 15 )
 states/walk/position = Vector2( 599, 46.1238 )
-transitions = [ "idle", "run", SubResource( 17 ), "run", "idle", SubResource( 18 ), "idle", "walk", SubResource( 19 ), "walk", "idle", SubResource( 20 ), "hit", "idle", SubResource( 21 ), "idle", "hit", SubResource( 22 ), "inactive", "active", SubResource( 23 ), "active", "idle", SubResource( 24 ), "idle", "skill", SubResource( 25 ), "skill", "idle", SubResource( 26 ), "skill", "hit", SubResource( 27 ), "start", "inactive", SubResource( 28 ), "cheer", "inactive", SubResource( 29 ), "idle", "cheer", SubResource( 30 ) ]
+transitions = [ "idle", "run", SubResource( 16 ), "run", "idle", SubResource( 17 ), "idle", "walk", SubResource( 18 ), "walk", "idle", SubResource( 19 ), "hit", "idle", SubResource( 20 ), "idle", "hit", SubResource( 21 ), "inactive", "active", SubResource( 22 ), "active", "idle", SubResource( 23 ), "idle", "skill", SubResource( 24 ), "skill", "idle", SubResource( 25 ), "skill", "hit", SubResource( 26 ), "start", "inactive", SubResource( 27 ), "cheer", "inactive", SubResource( 28 ), "idle", "cheer", SubResource( 29 ) ]
 start_node = "start"
 end_node = "die"
 graph_offset = Vector2( 36.918, 55.6103 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=31]
 
 [node name="PlayerSpecialist" type="KinematicBody"]
 collision_mask = 28
@@ -208,6 +180,17 @@ collision_mask = 29696
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
 shape = SubResource( 2 )
 
+[node name="SpecialistTriggerArea" type="Area" parent="." groups=[
+"specialist",
+]]
+monitoring = false
+collision_layer = 262144
+collision_mask = 512
+
+[node name="CollisionShape" type="CollisionShape" parent="SpecialistTriggerArea"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 2 )
+
 [node name="DiseaseSprite3D" type="Sprite3D" parent="."]
 transform = Transform( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 2.1, 0 )
 visible = false
@@ -238,13 +221,13 @@ anims/t_pose = ExtResource( 13 )
 anims/walk = ExtResource( 12 )
 
 [node name="InvulnerableAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/invulnerable = SubResource( 4 )
+anims/invulnerable = ExtResource( 21 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 31 )
+tree_root = SubResource( 30 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 32 )
+parameters/playback = SubResource( 31 )
 parameters/skill/TimeScale/scale = 3.0
 
 [node name="Source" type="Node" parent="."]
@@ -313,6 +296,7 @@ characterMoveNP = NodePath("../CharacterMove")
 specialistCharacterActionNP = NodePath("../SpecialistCharacterAction")
 specialistCharacterStatusNP = NodePath("../PlayerCharacterStatus")
 hurtAreaNP = NodePath("../../HurtArea")
+specialistTriggerAreaNP = NodePath("../../SpecialistTriggerArea")
 playerInputInterpreterNP = NodePath("../PlayerInputInterpreter")
 
 [node name="SpecialistCharacterDebug" type="Node" parent="Source"]

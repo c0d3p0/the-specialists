@@ -6,9 +6,9 @@ public class SpecialistCharacterAction : BaseCharacterAction
 {
 	public void Hit(Area attackerArea, Area victimArea, int damageTaken)
 	{
-		if(!cheer && (!ignoreHit || damageTaken >= 100000))
+		if(!cheer && (!ignoreTransition || damageTaken >= 100000))
 		{
-			ignoreHit = true;
+			ignoreTransition = true;
 			int fixedDamageTaken = damageTaken >= 100000 ? -damageTaken : -100;
 			EmitSignal(this.GetSignalIncreaseHealth(), fixedDamageTaken);
 			character.Call(this.GetMethodSetProcessBehavior(), false);
@@ -25,7 +25,7 @@ public class SpecialistCharacterAction : BaseCharacterAction
 	{
 		string a = CanTransitToPlantDevice();
 
-		if(a != null)
+		if(a != null && !ignoreTransition)
 		{
 			Dictionary lddm = this.Call<Dictionary>(character,
 					this.GetMethodTryToIncreasePlantedLaserDeviceAmount());
@@ -59,7 +59,7 @@ public class SpecialistCharacterAction : BaseCharacterAction
 	{
 		string a = CanTransitToExecuteSkill();
 
-		if(!cheer && a != null)
+		if(!cheer && !ignoreTransition && a != null)
 		{
 			if(this.Call<bool>(character, this.GetMethodHasPushSkill()))
 			{
@@ -82,7 +82,7 @@ public class SpecialistCharacterAction : BaseCharacterAction
 	{
 		string a = CanTransitToMove();
 
-		if(!cheer && a != null)
+		if(!cheer && !ignoreTransition && a != null)
 		{
 
 			if(direction.x != 0 || direction.z != 0 && a != null)
@@ -124,7 +124,7 @@ public class SpecialistCharacterAction : BaseCharacterAction
 	public void Cheer()
 	{
 		cheer = true;
-		ignoreHit = true;
+		ignoreTransition = true;
 		character.Call(this.GetMethodSetProcessBehavior(), false);
 	}	
 

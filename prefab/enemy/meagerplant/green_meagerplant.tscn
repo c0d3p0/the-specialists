@@ -17,6 +17,7 @@
 [ext_resource path="res://animation/character/meagerplant/t_pose.tres" type="Animation" id=15]
 [ext_resource path="res://animation/character/meagerplant/inactive.tres" type="Animation" id=16]
 [ext_resource path="res://animation/default/start.tres" type="Animation" id=17]
+[ext_resource path="res://animation/character/meagerplant/invulnerable.tres" type="Animation" id=18]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.49
@@ -24,84 +25,55 @@ radius = 0.49
 [sub_resource type="BoxShape" id=2]
 extents = Vector3( 0.15, 1, 0.15 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "invulnerable"
-length = 6.0
-step = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath("Body/Meagerplant/MeshInstance:material/0:next_pass:shader_param/blink")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
-tracks/1/type = "method"
-tracks/1/path = NodePath("Source/EnemyAction")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ false ],
-"method": "SetIgnoreHit"
-} ]
-}
-
-[sub_resource type="AnimationNodeAnimation" id=4]
+[sub_resource type="AnimationNodeAnimation" id=3]
 animation = "active"
 
-[sub_resource type="AnimationNodeAnimation" id=5]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "die"
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "hit"
 
-[sub_resource type="AnimationNodeTimeScale" id=7]
+[sub_resource type="AnimationNodeTimeScale" id=6]
 
-[sub_resource type="AnimationNodeBlendTree" id=8]
+[sub_resource type="AnimationNodeBlendTree" id=7]
 graph_offset = Vector2( -348.425, 43.5 )
-nodes/Animation/node = SubResource( 6 )
+nodes/Animation/node = SubResource( 5 )
 nodes/Animation/position = Vector2( -60, 160 )
-nodes/TimeScale/node = SubResource( 7 )
+nodes/TimeScale/node = SubResource( 6 )
 nodes/TimeScale/position = Vector2( 120, 160 )
 nodes/output/position = Vector2( 300, 160 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=9]
 animation = "inactive"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "start"
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "walk"
 
-[sub_resource type="AnimationNodeTimeScale" id=13]
+[sub_resource type="AnimationNodeTimeScale" id=12]
 
-[sub_resource type="AnimationNodeBlendTree" id=14]
-nodes/Animation/node = SubResource( 12 )
+[sub_resource type="AnimationNodeBlendTree" id=13]
+nodes/Animation/node = SubResource( 11 )
 nodes/Animation/position = Vector2( 60, 100 )
-nodes/TimeScale/node = SubResource( 13 )
+nodes/TimeScale/node = SubResource( 12 )
 nodes/TimeScale/position = Vector2( 260, 100 )
 nodes/output/position = Vector2( 460, 100 )
 node_connections = [ "output", 0, "TimeScale", "TimeScale", 0, "Animation" ]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=16]
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
 switch_mode = 2
 auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=16]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=17]
 
@@ -110,36 +82,34 @@ auto_advance = true
 [sub_resource type="AnimationNodeStateMachineTransition" id=19]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+auto_advance = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=22]
-switch_mode = 2
-auto_advance = true
-
-[sub_resource type="AnimationNodeStateMachine" id=23]
-states/active/node = SubResource( 4 )
+[sub_resource type="AnimationNodeStateMachine" id=22]
+states/active/node = SubResource( 3 )
 states/active/position = Vector2( 89.151, 192.906 )
-states/die/node = SubResource( 5 )
+states/die/node = SubResource( 4 )
 states/die/position = Vector2( 595.151, 192.906 )
-states/hit/node = SubResource( 8 )
+states/hit/node = SubResource( 7 )
 states/hit/position = Vector2( 368.151, 192.906 )
-states/idle/node = SubResource( 9 )
+states/idle/node = SubResource( 8 )
 states/idle/position = Vector2( 255.151, 110.906 )
-states/inactive/node = SubResource( 10 )
+states/inactive/node = SubResource( 9 )
 states/inactive/position = Vector2( 89.151, 110.906 )
-states/start/node = SubResource( 11 )
+states/start/node = SubResource( 10 )
 states/start/position = Vector2( -69.4475, 110.906 )
-states/walk/node = SubResource( 14 )
+states/walk/node = SubResource( 13 )
 states/walk/position = Vector2( 475.151, 110.906 )
-transitions = [ "inactive", "active", SubResource( 15 ), "active", "idle", SubResource( 16 ), "idle", "walk", SubResource( 17 ), "walk", "idle", SubResource( 18 ), "idle", "hit", SubResource( 19 ), "walk", "hit", SubResource( 20 ), "hit", "idle", SubResource( 21 ), "start", "inactive", SubResource( 22 ) ]
+transitions = [ "inactive", "active", SubResource( 14 ), "active", "idle", SubResource( 15 ), "idle", "walk", SubResource( 16 ), "walk", "idle", SubResource( 17 ), "idle", "hit", SubResource( 18 ), "walk", "hit", SubResource( 19 ), "hit", "idle", SubResource( 20 ), "start", "inactive", SubResource( 21 ) ]
 start_node = "start"
 end_node = "die"
 graph_offset = Vector2( -203.447, 50.9064 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=24]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=23]
 
 [node name="GreenMeagerplant" type="KinematicBody"]
 collision_layer = 2
@@ -211,13 +181,13 @@ anims/t_pose = ExtResource( 15 )
 anims/walk = ExtResource( 14 )
 
 [node name="InvulnerableAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/invulnerable = SubResource( 3 )
+anims/invulnerable = ExtResource( 18 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 23 )
+tree_root = SubResource( 22 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 24 )
+parameters/playback = SubResource( 23 )
 parameters/hit/TimeScale/scale = 1.4
 parameters/walk/TimeScale/scale = 1.5
 

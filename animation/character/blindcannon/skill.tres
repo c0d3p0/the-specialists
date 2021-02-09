@@ -214,25 +214,13 @@ tracks/28/keys = {
 "update": 1,
 "values": [ true ]
 }
-tracks/29/type = "value"
-tracks/29/path = NodePath("HurtArea/CollisionShape:disabled")
+tracks/29/type = "audio"
+tracks/29/path = NodePath("AudioStreamPlayer3D")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/imported = false
 tracks/29/enabled = true
 tracks/29/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/30/type = "audio"
-tracks/30/path = NodePath("AudioStreamPlayer3D")
-tracks/30/interp = 1
-tracks/30/loop_wrap = true
-tracks/30/imported = false
-tracks/30/enabled = true
-tracks/30/keys = {
 "clips": [ {
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -240,13 +228,13 @@ tracks/30/keys = {
 } ],
 "times": PoolRealArray( 0.4 )
 }
-tracks/31/type = "method"
-tracks/31/path = NodePath("CooldownTimer")
-tracks/31/interp = 1
-tracks/31/loop_wrap = true
-tracks/31/imported = false
-tracks/31/enabled = true
-tracks/31/keys = {
+tracks/30/type = "method"
+tracks/30/path = NodePath("CooldownTimer")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/keys = {
 "times": PoolRealArray( 3.16 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -254,13 +242,13 @@ tracks/31/keys = {
 "method": "start"
 } ]
 }
-tracks/32/type = "method"
-tracks/32/path = NodePath("Source/EnemySkill")
-tracks/32/interp = 1
-tracks/32/loop_wrap = true
-tracks/32/imported = false
-tracks/32/enabled = true
-tracks/32/keys = {
+tracks/31/type = "method"
+tracks/31/path = NodePath("Source/EnemySkill")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/keys = {
 "times": PoolRealArray( 0.56 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
@@ -268,8 +256,22 @@ tracks/32/keys = {
 "method": "ExecuteSkill"
 } ]
 }
+tracks/32/type = "method"
+tracks/32/path = NodePath(".")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 3.16 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ true ],
+"method": "SetProcessBehavior"
+} ]
+}
 tracks/33/type = "method"
-tracks/33/path = NodePath(".")
+tracks/33/path = NodePath("Source/EnemyAction")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/imported = false
@@ -278,7 +280,7 @@ tracks/33/keys = {
 "times": PoolRealArray( 3.16 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ true ],
-"method": "SetProcessBehavior"
+"args": [ false ],
+"method": "SetIgnoreTransition"
 } ]
 }

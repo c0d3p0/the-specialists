@@ -9,6 +9,7 @@ public class SpecialistCharacterInitializer : Node
 		characterPhysics = GetNode<CharacterPhysics>(characterPhysicsNP);
 		characterMove = GetNode<CharacterMove>(characterMoveNP);
 		hurtArea = GetNode<Area>(hurtAreaNP);
+		specialistTriggerArea = GetNode<Area>(specialistTriggerAreaNP);
 		specialistCharacterAction = GetNode<SpecialistCharacterAction>(
 					specialistCharacterActionNP);
 		specialistCharacterStatus = GetNode<SpecialistCharacterStatus>(
@@ -39,11 +40,16 @@ public class SpecialistCharacterInitializer : Node
 	private void InitializeHurtArea()
 	{
 		hurtArea.AddUserSignal(this.GetSignalHit());
-		hurtArea.AddUserSignal(this.GetSignalApplyItem());
 
 		hurtArea.Connect(this.GetSignalHit(),
 				specialistCharacterAction, this.GetMethodHit());
-		hurtArea.Connect(this.GetSignalApplyItem(),
+	}
+
+	private void InitializeSpecialistTriggerArea()
+	{
+		specialistTriggerArea.AddUserSignal(this.GetSignalApplyItem());
+
+		specialistTriggerArea.Connect(this.GetSignalApplyItem(),
 				specialistCharacter, this.GetMethodApplyItem());
 	}
 
@@ -53,6 +59,7 @@ public class SpecialistCharacterInitializer : Node
 		InitializeCharacterMove();
 		InitializeSpecialistCharacterAction();
 		InitializeHurtArea();
+		InitializeSpecialistTriggerArea();
 	}
 
 
@@ -74,6 +81,9 @@ public class SpecialistCharacterInitializer : Node
 	[Export]
 	public NodePath hurtAreaNP;
 
+	[Export]
+	public NodePath specialistTriggerAreaNP;
+
 
 	protected SpecialistCharacter specialistCharacter;
 	protected CharacterPhysics characterPhysics;
@@ -81,4 +91,5 @@ public class SpecialistCharacterInitializer : Node
 	protected SpecialistCharacterAction specialistCharacterAction;
 	protected SpecialistCharacterStatus specialistCharacterStatus;
 	protected Area hurtArea;
+	protected Area specialistTriggerArea;
 }

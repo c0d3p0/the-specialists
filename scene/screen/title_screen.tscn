@@ -361,7 +361,7 @@ margin_top = 668.0
 margin_right = 1260.0
 margin_bottom = 700.0
 custom_colors/font_color = Color( 0.721569, 0.890196, 1, 1 )
-text = "Version 1.0"
+text = "Version 1.1"
 __meta__ = {
 "_edit_use_anchors_": false
 }

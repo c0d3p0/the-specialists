@@ -22,7 +22,8 @@ public class BattleLevelProgress : Node
 	{
 		battleTimer.Paused = true;
 
-		if(specialistAliveList.Count > 0)
+		if(specialistAliveList.Count > 0 &&
+				!this.Call<bool>(specialistAliveList[0], this.GetMethodIsDead()))
 		{
 			int specialistId = this.Call<int>(specialistAliveList[0],
 					this.GetMethodGetSpecialistId());

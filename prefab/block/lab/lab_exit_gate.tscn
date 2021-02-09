@@ -93,7 +93,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0 )
 monitoring = false
 monitorable = false
 collision_layer = 32768
-collision_mask = 32
+collision_mask = 262144
 
 [node name="CollisionShape" type="CollisionShape" parent="ExitArea"]
 shape = SubResource( 4 )
