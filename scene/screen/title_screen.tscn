@@ -361,7 +361,7 @@ margin_top = 668.0
 margin_right = 1260.0
 margin_bottom = 700.0
 custom_colors/font_color = Color( 0.721569, 0.890196, 1, 1 )
-text = "Version 1.1"
+text = "Version 1.2"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -562,6 +562,7 @@ cheatCodeDataMap = {
 "ltil": [ "sceneToLoad", "res://scene/test/item_test_level.tscn" ],
 "mpause": [ "manualPause", true ]
 }
+
 [connection signal="pressed" from="ContentControl/ActionControl/StoryModeButton" to="Source/TitleScreen" method="OnStoryModeButtonPressed"]
 [connection signal="pressed" from="ContentControl/ActionControl/LoadGameButton" to="Source/TitleScreen" method="OnLoadGameButtonPressed"]
 [connection signal="pressed" from="ContentControl/ActionControl/BattleModeButton" to="Source/TitleScreen" method="OnBattleModeButtonPressed"]

@@ -23,7 +23,7 @@ public class InputMappingGUI : Node
 	{
 		int newId = playerId + shift;
 		newId = newId < 1 ? 1 : newId > playerAmount ? playerAmount : newId;
-		playerId = (byte) newId;
+		playerId = newId;
 		playerIdLabel.Text = this.CreateString("Player ", playerId);
 		UpdateCurrentInputMapping();
 		UpdateButtonsTextToCurrentMapping();
@@ -364,7 +364,7 @@ public class InputMappingGUI : Node
 	private Label deviceTypeLabel;
 	private Dictionary<object, Button> buttonMap;
 
-	private byte playerId;
+	private int playerId;
 	private bool keyboardMappingActive;
 	private Dictionary keyboardInputMapping;
 	private Dictionary controllerInputMapping;

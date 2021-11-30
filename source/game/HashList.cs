@@ -18,7 +18,7 @@ public class HashList<T> : Godot.Object
 		list = new List<T>(size);
 	}
 
-  public T this[int index]
+	public T this[int index]
 	{
 		get
 		{
@@ -29,17 +29,17 @@ public class HashList<T> : Godot.Object
 		}
 	}
 
-  public void Add(T item)
-  {
+	public void Add(T item)
+	{
 		if(!hashMap.ContainsKey(item))
 		{
 			hashMap.Add(item, list.Count);
 			list.Add(item);
 		}
-  }
+	}
 
-  public bool Remove(T item)
-  {
+	public bool Remove(T item)
+	{
 		if(hashMap.ContainsKey(item))
 		{
 			int removedIndex = hashMap[item];
@@ -51,33 +51,37 @@ public class HashList<T> : Godot.Object
 				list[removedIndex] = lastValue;
 				hashMap[lastValue] = removedIndex;
 			}
-			
+
+			list.RemoveAt(hashMap.Count);
 			return true;
 		}
 
 		return false;
-  }
+	}
 
-  public void RemoveAt(int index)
-  {
+	public void RemoveAt(int index)
+	{
 		if(IsValidIndex(index))
+		{
 			Remove(list[index]);
+			return;
+		}
 
 		throw new System.IndexOutOfRangeException();
-  }
+	}
 
-  public void Clear()
-  {
-	hashMap.Clear();
-		list.Clear();
-  }
+	public void Clear()
+	{
+		hashMap.Clear();
+			list.Clear();
+	}
 
-  public bool Contains(T item)
-  {
+	public bool Contains(T item)
+	{
 		return hashMap.ContainsKey(item);
-  }
+	}
 
-  public int Count
+	public int Count
 	{
 		get
 		{

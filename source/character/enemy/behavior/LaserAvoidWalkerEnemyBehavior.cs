@@ -10,7 +10,7 @@ public class LaserAvoidWalkerEnemyBehavior : WalkerEnemyBehavior
 
 		if(left && right)	
 		{
-			byte index = (byte) this.RandiRange(rng, LEFT_RAY, RIGHT_RAY);
+			int index = this.RandiRange(rng, LEFT_RAY, RIGHT_RAY);
 			direction = body.GlobalTransform.basis.z.Round().Rotated(
 					Vector3.Up, directionAngles[index]).Round();        
 		}

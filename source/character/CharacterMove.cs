@@ -35,7 +35,7 @@ public class CharacterMove : Node
 
   public override void _PhysicsProcess(float physicsDelta)
   {
-    if(constantDirection.LengthSquared() > 0)
+	if(constantDirection.LengthSquared() > 0)
 			ApplyMove(constantDirection);
   }
 

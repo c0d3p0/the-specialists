@@ -13,14 +13,14 @@ public class PreLoader : Node
 			SCG.IEnumerator<string> it = nodeRenderScenePathList.GetEnumerator();
 			PackedScene ps;
 			Spatial s;
-			ulong instanceId;
+			string instanceId;
 			int index = 0;
 
 			while(it.MoveNext())
 			{
 				ps = ResourceLoader.Load<PackedScene>(it.Current);
 				s = ps.Instance() as Spatial;
-				instanceId = s.GetInstanceId();
+				instanceId = s.GetInstanceId().ToString();
 				nodeRenderSceneMap.Add(instanceId, s);
 				nodeRenderIdsList.Add(index++, instanceId);
 					
@@ -38,7 +38,7 @@ public class PreLoader : Node
 		if(renderTimer.IsStopped())
 		{
 			Spatial s;
-			ulong checkingId;
+			string checkingId;
 
 			for(int i = 0; i < nodeRenderScenePathList.Count; i++)
 			{
@@ -50,7 +50,7 @@ public class PreLoader : Node
 					nodeRenderContainer.CallDeferred(this.GetGDMethodAddChild(), s);
 					addedNodeRenderIdsList.Add(checkingId, null);
 					renderTimer.Start();
-					addedNodeIdList.Add(s.GetInstanceId());
+					addedNodeIdList.Add(s.GetInstanceId().ToString());
 
 					if(OS.IsDebugBuild())
 						GD.PushWarning("Adding: " + s.Name);
@@ -63,7 +63,7 @@ public class PreLoader : Node
 	{
 		if(renderTimer.IsStopped() && addedNodeIdList.Count > 0)
 		{
-			ulong id = addedNodeIdList[0];
+			string id = addedNodeIdList[0];
 			Spatial s = nodeRenderSceneMap[id];
 			s.QueueFree();
 			addedNodeIdList.RemoveAt(0);
@@ -89,10 +89,10 @@ public class PreLoader : Node
 
 	private void Initialize()
 	{
-		nodeRenderSceneMap = new Dictionary<ulong, Spatial>();
-		nodeRenderIdsList = new Dictionary<int, ulong>();
-		addedNodeRenderIdsList = new Dictionary<ulong, object>();
-		addedNodeIdList = new Array<ulong>();
+		nodeRenderSceneMap = new Dictionary<string, Spatial>();
+		nodeRenderIdsList = new Dictionary<int, string>();
+		addedNodeRenderIdsList = new Dictionary<string, object>();
+		addedNodeIdList = new Array<string>();
 		
 		taskRunner.Call(this.GetMethodSetActive(), true);
 		taskRunner.Call(this.GetMethodPut(), this, nameof(RequestResources));
@@ -161,8 +161,8 @@ public class PreLoader : Node
 	private Spatial nodeRenderContainer;
 	private Timer renderTimer;
 
-	private Dictionary<ulong, Spatial> nodeRenderSceneMap;
-	private Dictionary<int, ulong> nodeRenderIdsList;
-	private Dictionary<ulong, object> addedNodeRenderIdsList;
-	private Array<ulong> addedNodeIdList;
+	private Dictionary<string, Spatial> nodeRenderSceneMap;
+	private Dictionary<int, string> nodeRenderIdsList;
+	private Dictionary<string, object> addedNodeRenderIdsList;
+	private Array<string> addedNodeIdList;
 }

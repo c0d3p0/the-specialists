@@ -45,11 +45,11 @@ public class PlayerInputInterpreter : Node
 
 	private void ComputerActionInputs()
 	{
-		byte actionInputMask = (byte) (Input.IsActionPressed(inputPlantDevice) ?
+		int actionInputMask = (int) (Input.IsActionPressed(inputPlantDevice) ?
 				PLANT_DEVICE_MASK : 0);
-		actionInputMask |= (byte) (Input.IsActionPressed(inputChangeSlot) ?
+		actionInputMask |= (int) (Input.IsActionPressed(inputChangeSlot) ?
 				CHANGE_SLOT_MASK : 0);
-		actionInputMask |= (byte) (Input.IsActionPressed(inputExecuteSkill) ?
+		actionInputMask |= (int) (Input.IsActionPressed(inputExecuteSkill) ?
 				EXECUTE_SKILL_MASK : 0);
 		currentActionInputMask = actionInputMask;
 		
@@ -62,14 +62,14 @@ public class PlayerInputInterpreter : Node
 
 	private void ComputeActionInputUnionMask()
 	{
-		SCG.IEnumerator<byte> it = actionInputBufferList.GetEnumerator();
+		SCG.IEnumerator<int> it = actionInputBufferList.GetEnumerator();
 		actionInputUnionMask = PLANT_DEVICE_MASK | CHANGE_SLOT_MASK | EXECUTE_SKILL_MASK;
 
 		while(it.MoveNext())
 			actionInputUnionMask &= it.Current;
 	}
 
-	private bool IsActionInputPressed(byte actionInput)
+	private bool IsActionInputPressed(int actionInput)
 	{
 		return ((actionInput & actionInputUnionMask) == 0) &&
 				((actionInput & currentActionInputMask) == actionInput);
@@ -115,7 +115,7 @@ public class PlayerInputInterpreter : Node
 
 	private void Initialize()
 	{
-		actionInputBufferList = new Array<byte>();
+		actionInputBufferList = new Array<int>();
 		actionInputBufferList.Add(0);
 
 		Input.SetMouseMode(Input.MouseMode.Captured);
@@ -142,15 +142,15 @@ public class PlayerInputInterpreter : Node
 
 
 	[Export]
-	private byte buttonInputBufferLength = 5;
+	private int buttonInputBufferLength = 5;
 
 
 	private int playerId;
 
 	private Vector3 direction;
-	private Array<byte> actionInputBufferList;
-	private byte currentActionInputMask;
-	private byte actionInputUnionMask;
+	private Array<int> actionInputBufferList;
+	private int currentActionInputMask;
+	private int actionInputUnionMask;
 
 	private string inputUp = "up";
 	private string inputDown = "down";
@@ -161,7 +161,7 @@ public class PlayerInputInterpreter : Node
 	private string inputChangeSlot = "change_slot";
 	private string inputExecuteSkill = "execute_skill";
 
-	private const byte PLANT_DEVICE_MASK = 1;
-	private const byte CHANGE_SLOT_MASK = 2;
-	private const byte EXECUTE_SKILL_MASK = 4;
+	private const int PLANT_DEVICE_MASK = 1;
+	private const int CHANGE_SLOT_MASK = 2;
+	private const int EXECUTE_SKILL_MASK = 4;
 }

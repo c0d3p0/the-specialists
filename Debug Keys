@@ -1,0 +1,10 @@
+KeyPad / = Select previous player index.
+KeyPad * = Select next player index.
+KeyPad - = Force selected player to take a hit.
+
+KeyPad 7 	= Select previous item index.
+KeyPad 8 	= Deacrese item amount (selected index).
+KeyPad 9 	= Increase item amount (selected index).
+KeyPad + 	= Select next item index.
+
+KeyPad . 	= Kill all players.

@@ -132,7 +132,7 @@ public class LevelProgress : Node
 
 	private void UpdateGameplayTotalTime()
 	{
-		long totalTime = System.Convert.ToInt64(GetGlobal<string>("totalTime"));
+		ulong totalTime = System.Convert.ToUInt64(GetGlobal<string>("totalTime"));
 		totalTime += OS.GetTicksMsec() - startTime;
 		PutGlobal("totalTime", totalTime.ToString());
 	}
@@ -344,5 +344,5 @@ public class LevelProgress : Node
 	private HashList<Spatial> bossAliveList;
 	private int specialistAmount;
 	private bool levelCleared;
-	private long startTime;
+	private ulong startTime;
 }

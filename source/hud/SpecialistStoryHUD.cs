@@ -52,7 +52,7 @@ public class SpecialistStoryHUD : Node
 	public void UpdateDeviceSlotsContent(Array slotList)
 	{
 		for(int i = 0; i < slotList.Count; i++)
-			labelMap[(byte) (SLOT1_LABEL_ID + i)].Text = slotList[i] as string;
+			labelMap[SLOT1_LABEL_ID + i].Text = slotList[i] as string;
 	}
 
 	public void UpdateHealthHUD(int health)
@@ -74,14 +74,14 @@ public class SpecialistStoryHUD : Node
 			textureRectMap[SKILL_PICTURE_ID].Visible = false;
 	}
 
-	private void UpdateLabel(byte labelId, byte labelSignId, int oldValue, int value)
+	private void UpdateLabel(int labelId, int labelSignId, int oldValue, int value)
 	{
 		Label l = labelMap[labelId];
 		UpdateSignLabel(labelSignId, oldValue, value);
 		l.Text = value.ToString();
 	}
 
-	private void UpdateSignLabel(byte updateLabelId, int oldValue, int newValue)
+	private void UpdateSignLabel(int updateLabelId, int oldValue, int newValue)
 	{
 		Label l = labelMap[updateLabelId];
 
@@ -97,7 +97,7 @@ public class SpecialistStoryHUD : Node
 
 	private void UpdateSignLabelVisibility(bool visible)
 	{
-		for(byte i = UPDATE_LIVES_LABEL_ID; i <= UPDATE_DETONATE_TIME_LABEL_ID; i++)
+		for(int i = UPDATE_LIVES_LABEL_ID; i <= UPDATE_DETONATE_TIME_LABEL_ID; i++)
 			labelMap[i].Visible = visible;
 	}
 
@@ -142,9 +142,9 @@ public class SpecialistStoryHUD : Node
 
 	private void Initialize()
 	{
-		labelMap = new Dictionary<byte, Label>();
-		textureRectMap = new Dictionary<byte, TextureRect>();
-		textureButtonMap = new Dictionary<byte, TextureButton>();
+		labelMap = new Dictionary<int, Label>();
+		textureRectMap = new Dictionary<int, TextureRect>();
+		textureButtonMap = new Dictionary<int, TextureButton>();
 		specialistAmount = this.GetGlobal<int>("specialistAmount");
 		lives = -1;
 		speedLevel = -1;
@@ -300,9 +300,9 @@ public class SpecialistStoryHUD : Node
 	private Node globalData;
 	private Control dataControl;
 	private Control notInBattleControl;
-	private Dictionary<byte, Label> labelMap;
-	private Dictionary<byte, TextureRect> textureRectMap;
-	private Dictionary<byte, TextureButton> textureButtonMap;
+	private Dictionary<int, Label> labelMap;
+	private Dictionary<int, TextureRect> textureRectMap;
+	private Dictionary<int, TextureButton> textureButtonMap;
 	private Timer updateTimer;
 
 	private int specialistAmount;
@@ -312,24 +312,24 @@ public class SpecialistStoryHUD : Node
 	private int laserDeviceAmount;
 	private int detonateTimeLevel;
 
-	private const byte PROFILE_PICTURE_ID = 0;
-	private const byte ARMOR_PICTURE_ID = 1;
-	private const byte SKILL_PICTURE_ID = 2;
+	private const int PROFILE_PICTURE_ID = 0;
+	private const int ARMOR_PICTURE_ID = 1;
+	private const int SKILL_PICTURE_ID = 2;
 
 
-	private const byte LIVES_LABEL_ID = 10;
-	private const byte SLOT1_LABEL_ID = 11;
-	private const byte SLOT2_LABEL_ID = 12;
-	private const byte SPEED_LEVEL_LABEL_ID = 13;
-	private const byte LASER_RAY_LEVEL_LABEL_ID = 14;
-	private const byte DEVICE_AMOUNT_LABEL_ID = 15;
-	private const byte DETONATE_TIME_LABEL_ID = 16;
-	private const byte UPDATE_LIVES_LABEL_ID = 17;
-	private const byte UPDATE_SPEED_LEVEL_LABEL_ID = 18;
-	private const byte UPDATE_LASER_RAY_LEVEL_LABEL_ID = 19;
-	private const byte UPDATE_DEVICE_AMOUNT_LABEL_ID = 20;
-	private const byte UPDATE_DETONATE_TIME_LABEL_ID = 21;
+	private const int LIVES_LABEL_ID = 10;
+	private const int SLOT1_LABEL_ID = 11;
+	private const int SLOT2_LABEL_ID = 12;
+	private const int SPEED_LEVEL_LABEL_ID = 13;
+	private const int LASER_RAY_LEVEL_LABEL_ID = 14;
+	private const int DEVICE_AMOUNT_LABEL_ID = 15;
+	private const int DETONATE_TIME_LABEL_ID = 16;
+	private const int UPDATE_LIVES_LABEL_ID = 17;
+	private const int UPDATE_SPEED_LEVEL_LABEL_ID = 18;
+	private const int UPDATE_LASER_RAY_LEVEL_LABEL_ID = 19;
+	private const int UPDATE_DEVICE_AMOUNT_LABEL_ID = 20;
+	private const int UPDATE_DETONATE_TIME_LABEL_ID = 21;
 
-	private const byte SLOT1_BORDER_ID = 30;
-	private const byte SLOT2_BORDER_ID = 31;
+	private const int SLOT1_BORDER_ID = 30;
+	private const int SLOT2_BORDER_ID = 31;
 }

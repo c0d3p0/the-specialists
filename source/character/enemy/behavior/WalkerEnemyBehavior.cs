@@ -29,7 +29,7 @@ public class WalkerEnemyBehavior : Node
 	{
 		validDirectionList.Clear();
 			
-		for(byte i = BACK_RAY; i < rayCasts.Length; i++)
+		for(int i = BACK_RAY; i < rayCasts.Length; i++)
 		{
 			rayCasts[i].ForceRaycastUpdate();
 
@@ -44,7 +44,7 @@ public class WalkerEnemyBehavior : Node
 	{
 		if(validDirectionList.Count > 0)
 		{
-			byte index = (byte) this.RandiRange(rng, 0, validDirectionList.Count - 1);
+			int index = this.RandiRange(rng, 0, validDirectionList.Count - 1);
 			direction = body.GlobalTransform.basis.z.Round().Rotated(
 					Vector3.Up, directionAngles[validDirectionList[index]]).Round();
 		}
@@ -65,7 +65,7 @@ public class WalkerEnemyBehavior : Node
 
 	protected virtual void Initialize()
 	{
-		validDirectionList = new HashList<byte>(5);
+		validDirectionList = new HashList<int>(5);
 		rng = new RandomNumberGenerator();
 		directionAngles = new float[]{Mathf.Deg2Rad(0f),
 				Mathf.Deg2Rad(180f), Mathf.Deg2Rad(90f), Mathf.Deg2Rad(-90f)};
@@ -122,11 +122,11 @@ public class WalkerEnemyBehavior : Node
 
 	protected Vector3 direction;
 	protected float[] directionAngles;
-	protected HashList<byte> validDirectionList;
+	protected HashList<int> validDirectionList;
 	protected RandomNumberGenerator rng;
 
-	protected const byte FRONT_RAY = 0;
-	protected const byte BACK_RAY = 1;
-	protected const byte LEFT_RAY = 2;
-	protected const byte RIGHT_RAY = 3;
+	protected const int FRONT_RAY = 0;
+	protected const int BACK_RAY = 1;
+	protected const int LEFT_RAY = 2;
+	protected const int RIGHT_RAY = 3;
 }

@@ -7,7 +7,7 @@ public class TurnerEnemyBehavior : WalkerEnemyBehavior
 	{
 		if(validDirectionList.Count > 1)
 		{
-			byte index = (byte) this.RandiRange(rng, 1, validDirectionList.Count - 1);
+			int index = this.RandiRange(rng, 1, validDirectionList.Count - 1);
 			direction = body.GlobalTransform.basis.z.Round().Rotated(
 					Vector3.Up, directionAngles[validDirectionList[index]]).Round();
 		}

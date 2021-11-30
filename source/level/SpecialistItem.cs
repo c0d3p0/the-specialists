@@ -177,5 +177,5 @@ public class SpecialistItem : Area
 	private string[] specialistMethods;
 	private bool operating;
 
-	private const byte LAST_FEATURE_ID = 22;
+	private const int LAST_FEATURE_ID = 22;
 }
